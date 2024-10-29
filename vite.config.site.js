@@ -7,7 +7,7 @@ const buildConfig = {
   ...defaultConfig,
   base: '/zenless-ui',
   build: {
-    outDir: resolve(__dirname, 'website')
+    outDir: resolve(__dirname, 'docs')
   }
 }
 
