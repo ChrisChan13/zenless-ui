@@ -1,0 +1,56 @@
+.z-select {
+  display: inline-block;
+  width: 100%;
+  border-radius: $--round-border-radius;
+  position: relative;
+  &.is-focused {
+    outline: 2px solid transparent;
+    animation: z_ani_outline_color $--animate-color-duration $--animate-color-bezier infinite alternate,
+               z_ani_outline_size $--animate-size-duration $--animate-size-bezier infinite alternate;
+  }
+  &.is-disabled {
+    .z-select {
+      &__arrow {
+        color: #808080;
+      }
+    }
+  }
+  &__wrap {
+    width: 100%;
+  }
+  &__input {
+    background: $--color-black;
+    cursor: pointer;
+    @include chessboard-background;
+    :deep(>.z-input__inner) {
+      cursor: pointer;
+    }
+  }
+  &__options {
+    max-height: 240px;
+    border-radius: 20px;
+    .selected {
+      color: $--color-black;
+      animation: z_ani_background $--animate-color-duration $--animate-color-bezier infinite alternate;
+    }
+  }
+  &__arrow {
+    font-size: 38px;
+    color: $--color-white;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    &::before {
+      transform: scale(0.75, 1.15);
+    }
+  }
+  &__empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+  }
+}

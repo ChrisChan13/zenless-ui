@@ -1,0 +1,43 @@
+.z-form {
+  display: block;
+  width: 100%;
+  &.is-inline {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    .z-form {
+      &-item {
+        margin-right: 18px;
+      }
+    }
+  }
+  &-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+    &.is-inline {
+      flex-direction: row;
+    }
+    &.is-required {
+      .z-form-item {
+        &__label::before {
+          content: '*';
+          color: #f56c6c;
+          margin-right: 4px;
+        }
+      }
+    }
+    &__label {
+      font-size: 14px;
+      color: #8e8e8e;
+      padding-right: 1.5em;
+      text-align: right;
+      line-height: 40px;
+    }
+    &__content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

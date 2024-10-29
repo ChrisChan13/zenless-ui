@@ -1,0 +1,63 @@
+.z-switch {
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  color: $--color-black;
+  background: $--switch-background;
+  border-radius: $--round-border-radius;
+  width: 85px;
+  height: 34px;
+  box-sizing: border-box;
+  padding: 0 18px;
+  transition: background 0.2s;
+  user-select: none;
+  border: 1px solid $--color-black;
+  box-shadow: inset -1px -1px 2px $--color-black,
+              inset 1px 1px 2px rgba(255, 255, 255, 0.25),
+              inset 2px -2px 2px $--color-black,
+              inset 0 3px 4px $--color-black,
+              inset 3px 3px 2px $--color-black,
+              inset -1px -1px 4px rgba(255, 255, 255, 0.25),
+              inset 0 0 0 4px $--switch-background,
+              inset 0 0 0 5px $--color-black;
+  &.is-checked {
+    justify-content: flex-start;
+    background: $--color-success;
+    >.z-switch__handle {
+      left: calc(100% - 28px);
+    }
+  }
+  &.is-disabled {
+    cursor: not-allowed;
+    background: $--switch-disabled-background;
+    color: $--switch-disabled-color;
+    &.is-checked {
+      background: $--switch-checked-disabled-background;
+    }
+  }
+  &__label {
+    line-height: 1;
+    font-size: 14px;
+  }
+  &__handle {
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: left 0.2s;
+    & { @include widget-knob; }
+  }
+  &__input {
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "zenless-ui",
+  "version": "1.0.0",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:site": "vite build --config vite.config.site.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ChrisChan13/zenless-ui.git"
+  },
+  "homepage": "https://chrischan13.github.io/zenless-ui",
+  "keywords": [
+    "zenless",
+    "vue",
+    "components"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChrisChan13/zenless-ui/issues"
+  },
+  "style": "./dist/index.css",
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.2",
+    "sass": "^1.77.8",
+    "vite": "^5.4.0",
+    "vue": "^3.4.35",
+    "vue-router": "^4.4.3"
+  },
+  "dependencies": {
+    "throttle-debounce": "^5.0.2"
+  }
+}

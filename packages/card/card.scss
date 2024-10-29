@@ -1,0 +1,81 @@
+.z-card {
+  border: 2px solid $--color-black;
+  border-radius: 20px 20px 0 20px;
+  background: #222;
+  overflow: hidden;
+  position: relative;
+  &__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: #4b4b4b;
+  }
+  &__user {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+    height: 30px;
+    display: flex;
+    align-items: flex-end;
+  }
+  &__avatar {
+    margin-right: 4px;
+    position: relative;
+    >img {
+      width: 52px;
+      height: 52px;
+      border: 2px solid #222;
+      border-radius: 100%;
+      background: #a2a2a2;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 30px;
+      width: 20px;
+      height: 20px;
+      border-radius: 100%;
+      box-shadow: 0 0 0 20px #222;
+    }
+    &::before {
+      right: 100%;
+      clip-path: inset(60% -10px 0 50%);
+      transform: translateX(3px);
+    }
+    &::after {
+      left: 100%;
+      clip-path: inset(60% 50% 0 -10px);
+      transform: translateX(-3px);
+    }
+  }
+  &__nickname {
+    flex: 1;
+    color: #636363;
+    font-size: 15px;
+    line-height: 28px;
+    border-bottom: 2px solid #353535;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &__title {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 16px;
+    font-size: 16px;
+    color: $--color-white;
+    margin: 8px 0;
+  }
+  &__content {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 16px;
+    font-size: 14px;
+    color: #b4b4b4;
+    margin: 8px 0;
+  }
+}

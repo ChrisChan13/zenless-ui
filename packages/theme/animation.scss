@@ -1,0 +1,32 @@
+@keyframes z_ani_background {
+  from { background: $--gradient-yellow; }
+  to { background: $--gradient-green; }
+}
+@keyframes z_ani_border_color {
+  from { border-color: $--gradient-yellow; }
+  to { border-color: $--gradient-green; }
+}
+@keyframes z_ani_color {
+  from { color: $--gradient-yellow; }
+  to { color: $--gradient-green; }
+}
+@keyframes z_ani_outline_color {
+  from { outline-color: $--gradient-yellow; }
+  to { outline-color: $--gradient-green; }
+}
+@keyframes z_ani_size {
+  20% { transform: scale(1); }
+  to { transform: scale(1.3); }
+}
+@keyframes z_ani_skew_size {
+  20% { transform: skew(-20deg) scale(1); }
+  to { transform: skew(-20deg) scale(1.3); }
+}
+@keyframes z_ani_loading {
+  from { transform: rotate(0); }
+  from { transform: rotate(1turn); }
+}
+@keyframes z_ani_outline_size {
+  20% { outline-width: 2px; }
+  to { outline-width: 8px; }
+}

@@ -1,0 +1,77 @@
+.z-link {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  user-select: none;
+  padding: 0;
+  color: $--color-white;
+  font-size: $--link-font-size;
+  &--highlight,
+  &:active {
+    animation: z_ani_color $--animate-color-duration $--animate-color-bezier infinite alternate;
+  }
+  &--primary {
+    color: $--color-primary;
+  }
+  &--success {
+    color: $--color-success;
+  }
+  &--danger {
+    color: $--color-danger;
+  }
+  &--warning {
+    color: $--color-warning;
+  }
+  &--info {
+    color: $--color-info;
+  }
+  &--ether {
+    color: $--color-ether;
+  }
+  &--fire {
+    color: $--color-fire;
+  }
+  &--electric {
+    color: $--color-electric;
+  }
+  &--ice {
+    color: $--color-ice;
+  }
+  &--physical {
+    color: $--color-physical;
+  }
+  &--underline {
+    &:active::after,
+    &:hover::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 0;
+      bottom: -1px;
+      border-bottom: currentColor 1px solid;
+    }
+  }
+  &--disabled {
+    cursor: not-allowed;
+    color: $--link-disabled-color;
+    &:active {
+      animation: none;
+    }
+    &:active::after,
+    &:hover::after {
+      content: none;
+    }
+  }
+  :deep([class*=z-icon-]+*),
+  :deep(*+[class*=z-icon-]) {
+    margin-left: 5px;
+  }
+  &+.z-link {
+    margin-left: 10px;
+  }
+}

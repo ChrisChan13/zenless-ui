@@ -1,0 +1,121 @@
+.z-tag {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: $--color-black;
+  border: 2px solid transparent;
+  font-size: $--tag-font-size;
+  padding: 0 $--tag-padding;
+  height: $--tag-height;
+  line-height: $--tag-height;
+  &--default {
+    color: $--color-white;
+    background: $--tag-background;
+    border-color: $--tag-border-color;
+  }
+  &--primary {
+    color: $--color-white;
+    background: $--color-primary;
+  }
+  &--success {
+    background: $--color-success;
+  }
+  &--info {
+    background: $--color-info;
+  }
+  &--warning {
+    background: $--color-warning;
+  }
+  &--danger {
+    background: $--color-danger;
+  }
+  &--ether {
+    background: $--color-ether;
+  }
+  &--fire {
+    background: $--color-fire;
+  }
+  &--electric {
+    background: $--color-electric;
+  }
+  &--ice {
+    background: $--color-ice;
+  }
+  &--physical {
+    background: $--color-physical;
+  }
+  &--plain,
+  &--hollow {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: inherit;
+    }
+    >[class*=z-icon-] {
+      position: relative;
+    }
+  }
+  &--plain {
+    color: $--color-black;
+    &::before {
+      background: $--button-plain-background;
+    }
+  }
+  &--hollow {
+    color: $--color-white;
+    &::before {
+      background: $--color-black;
+    }
+  }
+  &.is-disabled {
+    background: #020202;
+    border-color: #030303;
+    color: #404040;
+  }
+  &--round {
+    border-radius: $--round-border-radius;
+  }
+  &--extra {
+    padding: 0 $--tag-extra-padding;
+    height: $--tag-extra-height;
+    line-height: $--tag-extra-height;
+    font-size: $--tag-extra-font-size;
+  }
+  &--large {
+    padding: 0 $--tag-large-padding;
+    height: $--tag-large-height;
+    line-height: $--tag-large-height;
+    font-size: $--tag-large-font-size;
+  }
+  &--small {
+    padding: 0 $--tag-small-padding;
+    height: $--tag-small-height;
+    line-height: $--tag-small-height;
+    font-size: $--tag-small-font-size;
+  }
+  &--mini {
+    padding: 0 $--tag-mini-padding;
+    height: $--tag-mini-height;
+    line-height: $--tag-mini-height;
+    font-size: $--tag-mini-font-size;
+  }
+  &__content {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  >[class*=z-icon-] {
+    cursor: pointer;
+    margin-left: 0.6em;
+    margin-right: -0.4em;
+  }
+  &+.z-tag {
+    margin-left: 10px;
+  }
+}

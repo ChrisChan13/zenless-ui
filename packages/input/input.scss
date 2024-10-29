@@ -1,0 +1,144 @@
+.z-input {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  font-size: $--input-font-size;
+  position: relative;
+  border: 1px solid $--color-black;
+  border-radius: $--round-border-radius;
+  background: $--input-background;
+  cursor: text;
+  &.is-disabled {
+    background: $--input-disabled-background;
+    cursor: not-allowed;
+    .z-input__inner {
+      cursor: not-allowed;
+      color: $--input-disabled-color;
+      &::placeholder {
+        color: $--input-placeholder;
+      }
+    }
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    border-radius: $--round-border-radius;
+    border: $--input-border;
+  }
+  &.is-focused:not(.is-readonly)::after {
+    animation: z_ani_border_color $--animate-color-duration $--animate-color-bezier infinite alternate;
+  }
+  &--extra {
+    font-size: $--input-extra-font-size;
+    >.z-input__inner {
+      height: $--input-extra-height;
+      padding: 0 $--input-extra-padding;
+    }
+  }
+  &--large {
+    font-size: $--input-large-font-size;
+    >.z-input__inner {
+      height: $--input-large-height;
+      padding: 0 $--input-large-padding;
+    }
+  }
+  &--small {
+    font-size: $--input-small-font-size;
+    >.z-input__inner {
+      height: $--input-small-height;
+      padding: 0 $--input-small-padding;
+    }
+  }
+  &--mini {
+    font-size: $--input-mini-font-size;
+    >.z-input__inner {
+      height: $--input-mini-height;
+      padding: 0 $--input-mini-padding;
+    }
+  }
+  &__inner {
+    flex: 1;
+    width: 0;
+    height: $--input-height;
+    line-height: $--input-height;
+    box-sizing: border-box;
+    appearance: none;
+    outline: none;
+    background: transparent;
+    color: $--color-white;
+    padding: 0 $--input-padding;
+    border: 0;
+    font-size: inherit;
+    &::placeholder {
+      color: $--input-placeholder;
+    }
+  }
+  &__prepend,
+  &__append {
+    z-index: 1;
+  }
+  &__prefix,
+  &__suffix {
+    color: $--input-placeholder;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+  }
+  &__prefix {
+    padding-left: 15px;
+    margin-right: -6px;
+  }
+  &__suffix {
+    padding-right: 15px;
+    margin-left: -6px;
+  }
+  &__clear {
+    cursor: pointer;
+    &:hover {
+      color: $--input-disabled-color;
+    }
+  }
+}
+.z-textarea {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+  &::after {
+    border-radius: inherit;
+  }
+  &.is-disabled {
+    .z-textarea__inner {
+      cursor: not-allowed;
+      color: $--input-disabled-color;
+      &::placeholder {
+        color: $--input-placeholder;
+      }
+    }
+  }
+  &__inner {
+    background: transparent;
+    appearance: none;
+    outline: none;
+    padding: 12px 16px;
+    flex: 1;
+    box-sizing: border-box;
+    color: $--color-white;
+    resize: none;
+    font-size: inherit;
+    min-height: inherit;
+    max-height: inherit;
+    border: inherit;
+    &::placeholder {
+      color: $--input-placeholder;
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

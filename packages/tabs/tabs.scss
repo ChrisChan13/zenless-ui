@@ -1,0 +1,101 @@
+.z-tabs {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  &.at-top-left,
+  &.at-bottom-left {
+    justify-content: flex-start;
+  }
+  &.at-top,
+  &.at-bottom {
+    justify-content: center;
+  }
+  &.at-top-right,
+  &.at-bottom-right {
+    justify-content: flex-end;
+  }
+  &.at-bottom-left,
+  &.at-bottom,
+  &.at-bottom-right {
+    flex-wrap: wrap-reverse;
+  }
+  &__header {
+    display: flex;
+    background: $--color-black;
+    @include button-border($--button-border-color);
+    @include chessboard-background;
+    border: 1px solid $--color-black;
+    border-radius: $--round-border-radius;
+  }
+  &__item {
+    height: 40px;
+    min-width: 150px;
+    padding: 6px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    border-radius: 10px;
+    &:first-of-type:not(:last-of-type) {
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      padding-left: 60px;
+      &.is-active::before {
+        border-radius: 20px 18px 18px 50px;
+      }
+    }
+    &:last-of-type:not(:first-of-type) {
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      padding-right: 60px;
+      &.is-active::before {
+        border-radius: 18px 50px 20px 18px;
+      }
+    }
+    &:first-of-type:is(:last-of-type) {
+      border-radius: $--round-border-radius;
+      &.is-active::before {
+        transform: none;
+        animation: z_ani_background $--animate-color-duration $--animate-color-bezier infinite alternate,
+                   z_ani_size $--animate-size-duration $--animate-size-bezier infinite alternate;
+
+      }
+    }
+    &:active {
+      color: $--tabs-item-active-color;
+    }
+    &.is-active {
+      color: $--color-black;
+      &::before {
+        content: '';
+        position: absolute;
+        left: -1px;
+        right: -1px;
+        top: -1px;
+        bottom: -1px;
+        border-radius: inherit;
+        transform: skew(-20deg);
+        animation: z_ani_background $--animate-color-duration $--animate-color-bezier infinite alternate,
+                   z_ani_skew_size $--animate-size-duration $--animate-size-bezier infinite alternate;
+      }
+    }
+    &.is-disabled {
+      color: $--tabs-item-disabled-color;
+      cursor: not-allowed;
+    }
+  }
+  &__content {
+    width: 100%;
+    margin: 15px 0;
+  }
+}
+.z-tab-item {
+  z-index: 1;
+  line-height: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

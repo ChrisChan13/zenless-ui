@@ -1,0 +1,113 @@
+@font-face {
+  font-family: 'material_symbols';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./icons.woff2') format('woff2');
+}
+
+[class^="z-icon-"], [class*=" z-icon-"] {
+  font-family: 'material_symbols';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+.z-icon-home::before {
+  content: '\e88a';
+}
+.z-icon-search::before {
+  content: '\e8b6';
+}
+.z-icon-loading::before {
+  content: '\e627';
+}
+.z-icon-loading::before {
+  content: '\e2e7';
+}
+.z-icon-error::before {
+  content: '\e5c9';
+}
+.z-icon-success::before {
+  content: '\e86c';
+}
+.z-icon-check::before {
+  content: '\e5ca';
+}
+.z-icon-close::before {
+  content: '\e5cd';
+}
+.z-icon-undo::before {
+  content: '\e166';
+}
+.z-icon-plus::before {
+  content: '\e145';
+}
+.z-icon-circle-plus::before {
+  content: '\e147';
+}
+.z-icon-minus::before {
+  content: '\e15b';
+}
+.z-icon-circle-minus::before {
+  content: '\e644';
+}
+.z-icon-arrow-left::before {
+  content: '\e314';
+}
+.z-icon-arrow-right::before {
+  content: '\e315';
+}
+.z-icon-arrow-top::before {
+  content: '\e316';
+}
+.z-icon-arrow-bottom::before {
+  content: '\e313';
+}
+.z-icon-caret-left::before {
+  content: '\e5de';
+}
+.z-icon-caret-right::before {
+  content: '\e5df';
+}
+.z-icon-caret-top::before {
+  content: '\e5c7';
+}
+.z-icon-caret-bottom::before {
+  content: '\e5c5';
+}
+.z-icon-info::before {
+  content: '\e88e';
+}
+.z-icon-bold::before {
+  content: '\e238';
+}
+.z-icon-italic::before {
+  content: '\e23f';
+}
+.z-icon-close::before {
+  content: '\e5cd';
+}
+.z-icon-check::before {
+  content: '\e5ca';
+}
+.z-icon-plus::before {
+  content: '\e145';
+}
+.z-icon-minus::before {
+  content: '\e15b';
+}
+.z-icon-visible::before {
+  content:'\e8f4';
+}
+.z-icon-invisible::before {
+  content:'\e8f5';
+}

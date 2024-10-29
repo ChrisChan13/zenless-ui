@@ -1,0 +1,43 @@
+.z-table {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #ccc;
+  &--border {
+    border: 2px solid #232323;
+    .z-table {
+      &__cell:not(:last-of-type) {
+        border-right: 2px solid #232323;
+      }
+    }
+  }
+  &__body {
+    width: 100%;
+  }
+  &__row {
+    background: $--color-black;
+    &:not(:last-of-type) {
+      >.z-table__cell {
+        border-bottom: 2px solid #232323;
+      }
+    } 
+  }
+  &__header {
+    background: #1c1c1c;
+    >.z-table__cell {
+      border-bottom: 2px solid #232323;
+    }
+  }
+  &__cell {
+    padding: 10px 0;
+    >.empty {
+      padding: 30px;
+      text-align: center;
+    }
+    >.cell {
+      padding: 0 10px;
+      text-align: center;
+    }
+  }
+}

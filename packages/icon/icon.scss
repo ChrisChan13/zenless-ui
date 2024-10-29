@@ -1,0 +1,32 @@
+.z-icon {
+  &--primary {
+    color: $--color-primary;
+  }
+  &--success {
+    color: $--color-success;
+  }
+  &--danger {
+    color: $--color-danger;
+  }
+  &--warning {
+    color: $--color-warning;
+  }
+  &--info {
+    color: $--color-info;
+  }
+  &--ether {
+    color: $--color-ether;
+  }
+  &--fire {
+    color: $--color-fire;
+  }
+  &--electric {
+    color: $--color-electric;
+  }
+  &--ice {
+    color: $--color-ice;
+  }
+  &--physical {
+    color: $--color-physical;
+  }
+}

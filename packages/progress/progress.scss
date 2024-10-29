@@ -1,0 +1,165 @@
+@mixin progress-track-background($color) {
+  background: $color;
+  background-image: linear-gradient(90deg, transparent, $--color-white),
+                    linear-gradient(90deg, transparent, $color),
+                    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3));
+}
+
+.z-progress {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  &--circle {
+    width: unset;
+  }
+  &__circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    border: 1px solid $--color-black;
+    box-sizing: border-box;
+    position: relative;
+    color: #4664ff;
+    transform: rotateY(180deg);
+  }
+  &__content {
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    right: 6px;
+    bottom: 6px;
+    color: #262421;
+    background: #4664ff;
+    border-radius: 100%;
+    box-sizing: border-box;
+    border: 2px solid $--color-black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg);
+  }
+  &__rail {
+    flex: 1;
+    height: 10px;
+    background: #222;
+    border-radius: $--round-border-radius;
+    border: 1px solid $--color-black;
+  }
+  &__track {
+    width: 0;
+    height: 100%;
+    border-radius: $--round-border-radius;
+    @include progress-track-background(#4664ff);
+    background-blend-mode: overlay;
+  }
+  &--primary {
+    .z-progress__circle {
+      color: $--color-primary;
+    }
+    .z-progress__content {
+      background: $--color-primary;
+    }
+    .z-progress__track {
+      @include progress-track-background($--color-primary);
+    }
+  }
+  &--success {
+    .z-progress__circle {
+      color: $--color-success;
+    }
+    .z-progress__content {
+      background: $--color-success;
+    }
+    .z-progress__track {
+      @include progress-track-background($--color-success);
+    }
+  }
+  &--danger {
+    .z-progress__circle {
+      color: $--color-danger;
+    }
+    .z-progress__content {
+      background: $--color-danger;
+    }
+    .z-progress__track {
+      @include progress-track-background($--color-danger);
+    }
+  }
+  &--warning {
+    .z-progress__circle {
+      color: $--color-warning;
+    }
+    .z-progress__content {
+      background: $--color-warning;
+    }
+    .z-progress__track {
+      @include progress-track-background($--color-warning);
+    }
+  }
+  &--info {
+    .z-progress__circle {
+      color: $--color-info;
+    }
+    .z-progress__content {
+      background: $--color-info;
+    }
+    .z-progress__track {
+      @include progress-track-background($--color-info);
+    }
+  }
+  &--ether {
+    .z-progress__circle {
+      color: $--color-ether;
+    }
+    .z-progress__content {
+      background: $--color-ether;
+    }
+    .z-progress__track {
+      @include progress-track-background($--color-ether);
+    }
+  }
+  &--fire {
+    .z-progress__circle {
+      color: $--color-fire;
+    }
+    .z-progress__content {
+      background: $--color-fire;
+    }
+    .z-progress__track {
+      @include progress-track-background($--color-fire);
+    }
+  }
+  &--electric {
+    .z-progress__circle {
+      color: $--color-electric;
+    }
+    .z-progress__content {
+      background: $--color-electric;
+    }
+    .z-progress__track {
+      @include progress-track-background($--color-electric);
+    }
+  }
+  &--ice {
+    .z-progress__circle {
+      color: $--color-ice;
+    }
+    .z-progress__content {
+      background: $--color-ice;
+    }
+    .z-progress__track {
+      @include progress-track-background($--color-ice);
+    }
+  }
+  &--physical {
+    .z-progress__circle {
+      color: $--color-physical;
+    }
+    .z-progress__content {
+      background: $--color-physical;
+    }
+    .z-progress__track {
+      @include progress-track-background($--color-physical);
+    }
+  }
+}

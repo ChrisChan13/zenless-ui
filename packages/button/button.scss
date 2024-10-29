@@ -1,0 +1,356 @@
+.z-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  appearance: none;
+  outline: none;
+  user-select: none;
+  margin: 0;
+  padding: $--button-padding-y $--button-padding-x;
+  font-size: $--button-font-size;
+  border-radius: 6px;
+  line-height: 1;
+  white-space: nowrap;
+  text-align: center;
+  border: 1px solid $--color-black;
+  position: relative;
+  min-width: 1em;
+  min-height: 1em;
+  box-sizing: content-box;
+  color: $--color-black;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    @include button-border($--button-border-color);
+  }
+  &:has(.z-button__icon) {
+    padding-left: calc($--button-padding-x + $--button-icon-size + $--button-icon-margin);
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: calc($--button-icon-size + 2 * $--button-icon-margin);
+      height: calc($--button-icon-size + 2 * $--button-icon-margin);
+      border-radius: inherit;
+    }
+  }
+  &--default {
+    color: $--color-white;
+    background: $--color-black;
+    @include chessboard-background;
+    &:not(.z-button--plain):not(.z-button--hollow):not(.z-button--circle):has(.z-button__icon) {
+      &::before {
+        @include button-border($--button-border-color, false, false);
+      }
+      &::after {
+        @include button-border($--button-border-color, false);
+      }
+    }
+    &.z-button--disabled {
+      &:not(.z-button--plain):not(.z-button--hollow):not(.z-button--circle):has(.z-button__icon) {
+        &::before {
+          @include button-border($--button-disabled-background, false, false);
+        }
+        &::after {
+          @include button-border($--button-disabled-background, false);
+        }
+      }
+    }
+  }
+  &--primary {
+    color: $--color-white;
+    background: $--color-primary;
+    @include chessboard-background;
+    &::after {
+      @include button-border($--color-primary);
+    }
+  }
+  &--success {
+    background: $--color-success;
+    @include chessboard-background;
+    &::after {
+      @include button-border($--color-success);
+    }
+  }
+  &--info {
+    background: $--color-info;
+    @include chessboard-background;
+    &::after {
+      @include button-border($--color-info);
+    }
+  }
+  &--warning {
+    background: $--color-warning;
+    @include chessboard-background;
+    &::after {
+      @include button-border($--color-warning);
+    }
+  }
+  &--danger {
+    background: $--color-danger;
+    @include chessboard-background;
+    &::after {
+      @include button-border($--color-danger);
+    }
+  }
+  &--ether {
+    background: $--color-ether;
+    @include chessboard-background;
+    &::after {
+      @include button-border($--color-ether);
+    }
+  }
+  &--fire {
+    background: $--color-fire;
+    @include chessboard-background;
+    &::after {
+      @include button-border($--color-fire);
+    }
+  }
+  &--electric {
+    background: $--color-electric;
+    @include chessboard-background;
+    &::after {
+      @include button-border($--color-electric);
+    }
+  }
+  &--ice {
+    background: $--color-ice;
+    @include chessboard-background;
+    &::after {
+      @include button-border($--color-ice);
+    }
+  }
+  &--physical {
+    background: $--color-physical;
+    @include chessboard-background;
+    &::after {
+      @include button-border($--color-physical);
+    }
+  }
+  &--highlight {
+    animation: z_ani_color $--animate-color-duration $--animate-color-bezier infinite alternate;
+    &.z-button--disabled {
+      animation: none;
+    }
+  }
+  &--plain {
+    &.z-button--default,
+    &.z-button--primary {
+      color: $--color-black;
+    }
+    &::after {
+      background: $--button-plain-background;
+      @include chessboard-background;
+    }
+  }
+  &--hollow {
+    color: $--color-white;
+    &::after {
+      background: $--color-black;
+      @include chessboard-background;
+    }
+  }
+  &--round {
+    border-radius: $--round-border-radius;
+  }
+  &--circle {
+    border-radius: 50%;
+    padding: $--button-padding-y;
+    &:has(.z-button__icon) {
+      padding-left: $--button-padding-y;
+    }
+    &.z-button--extra {
+      padding: $--button-extra-padding-y;
+      &:has(.z-button__icon) {
+        padding-left: $--button-extra-padding-y;
+      }
+    }
+    &.z-button--large {
+      padding: $--button-large-padding-y;
+      &:has(.z-button__icon) {
+        padding-left: $--button-large-padding-y;
+      }
+    }
+    &.z-button--small {
+      padding: $--button-small-padding-y;
+      &:has(.z-button__icon) {
+        padding-left: $--button-small-padding-y;
+      }
+    }
+    &.z-button--mini {
+      padding: $--button-mini-padding-y;
+      &:has(.z-button__icon) {
+        padding-left: $--button-mini-padding-y;
+      }
+    }
+  }
+  &--disabled {
+    cursor: not-allowed;
+    color: $--button-hollow-disabled-color;
+    &>[class*=z-icon-] {
+      color: #b0b0b0;
+    }
+    &::after {
+      @include button-border($--button-disabled-background, false);
+    }
+    &:not(.z-button--plain) {
+      background: $--color-black;
+      @include chessboard-background;
+    }
+    &.z-button--plain {
+      color: $--button-disabled-color;
+      background: $--color-black;
+      &>[class*=z-icon-] {
+        color: $--button-disabled-color;
+      }
+    }
+    &.z-button--hollow {
+      color: $--button-disabled-color;
+      &>[class*=z-icon-] {
+        color: $--button-disabled-color;
+      }
+      &::after {
+        background: $--button-disabled-background;
+      }
+    }
+  }
+  &--extra {
+    padding: $--button-extra-padding-y $--button-extra-padding-x;
+    font-size: $--button-extra-font-size;
+    &:has(.z-button__icon) {
+      padding-left: calc($--button-extra-padding-x + $--button-extra-icon-size + $--button-extra-icon-margin);
+      &::before {
+        width: calc($--button-extra-icon-size + 2 * $--button-extra-icon-margin);
+        height: calc($--button-extra-icon-size + 2 * $--button-extra-icon-margin);
+      }
+    }
+    &>.z-button__icon {
+      left: $--button-extra-icon-margin;
+      font-size: $--button-extra-icon-size;
+    }
+  }
+  &--large {
+    padding: $--button-large-padding-y $--button-large-padding-x;
+    font-size: $--button-large-font-size;
+    &:has(.z-button__icon) {
+      padding-left: calc($--button-large-padding-x + $--button-large-icon-size + $--button-large-icon-margin);
+      &::before {
+        width: calc($--button-large-icon-size + 2 * $--button-large-icon-margin);
+        height: calc($--button-large-icon-size + 2 * $--button-large-icon-margin);
+      }
+    }
+    &>.z-button__icon {
+      left: $--button-large-icon-margin;
+      font-size: $--button-large-icon-size;
+    }
+  }
+  &--small {
+    padding: $--button-small-padding-y $--button-small-padding-x;
+    font-size: $--button-small-font-size;
+    &:has(.z-button__icon) {
+      padding-left: calc($--button-small-padding-x + $--button-small-icon-size + $--button-small-icon-margin);
+      &::before {
+        width: calc($--button-small-icon-size + 2 * $--button-small-icon-margin);
+        height: calc($--button-small-icon-size + 2 * $--button-small-icon-margin);
+      }
+    }
+    &>.z-button__icon {
+      left: $--button-small-icon-margin;
+      font-size: $--button-small-icon-size;
+    }
+  }
+  &--mini {
+    padding: $--button-mini-padding-y $--button-mini-padding-x;
+    font-size: $--button-mini-font-size;
+    &:has(.z-button__icon) {
+      padding-left: calc($--button-mini-padding-x + $--button-mini-icon-size + $--button-mini-icon-margin);
+      &::before {
+        width: calc($--button-mini-icon-size + 2 * $--button-mini-icon-margin);
+        height: calc($--button-mini-icon-size + 2 * $--button-mini-icon-margin);
+      }
+    }
+    &>.z-button__icon {
+      left: $--button-mini-icon-margin;
+      font-size: $--button-mini-icon-size;
+    }
+  }
+  &--active {
+    z-index: 1;
+    animation: z_ani_btn_inactive 10s linear infinite;
+    @keyframes z_ani_btn_inactive {
+      from, to { color: $--color-black; }
+    }
+    $button-active-animate: z_ani_background $--animate-color-duration $--animate-color-bezier infinite alternate,
+                            z_ani_size $--animate-size-duration $--animate-size-bezier infinite alternate;
+    &:has(.is-fadeout) {
+      animation: z_ani_btn_inactive_color $--animate-flash-duration $--animate-flash-bezier $--animate-flash-count alternate;
+      &>.z-button__content,
+      &>.z-button__icon,
+      &>.z-button__content :deep([class*=z-icon-]) {
+        animation: z_ani_btn_inactive_color $--animate-flash-duration $--animate-flash-bezier $--animate-flash-count alternate;
+      }
+    }
+    @keyframes z_ani_btn_inactive_color {
+      from { color: $--color-black; }
+    }
+    &__bg {
+      z-index: 2;
+      position: absolute;
+      left: -1px;
+      top: -1px;
+      right: -1px;
+      bottom: -1px;
+      border-radius: inherit;
+      animation: $button-active-animate;
+      &.is-fadeout {
+        opacity: 1;
+        $button-active-animate: append($button-active-animate, z_ani_btn_inactive_bg $--animate-flash-duration $--animate-flash-bezier $--animate-flash-count alternate);
+        animation: $button-active-animate;
+        @keyframes z_ani_btn_inactive_bg {
+          to { opacity: 0; }
+        }
+      }
+    }
+    &>.z-button__content,
+    &>.z-button__icon {
+      z-index: 2;
+      animation: z_ani_btn_inactive 10s linear infinite;
+    }
+    &>.z-button__content :deep([class*=z-icon-]) {
+      animation: z_ani_btn_inactive 10s linear infinite;
+    }
+  }
+  &__content {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+    :deep([class*=z-icon-]+*),
+    :deep(*+[class*=z-icon-]) {
+      margin-left: 5px;
+    }
+  }
+  &__icon {
+    z-index: 1;
+    letter-spacing: 0;
+    position: absolute;
+    left: $--button-icon-margin;
+    font-size: $--button-icon-size;
+    &.is-loading {
+      animation: z_ani_loading 1.5s linear infinite;
+    }
+  }
+  &+.z-button {
+    margin-left: 10px;
+  }
+}

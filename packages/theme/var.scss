@@ -1,0 +1,244 @@
+$--color-black: #000;
+$--color-white: #fff;
+
+$--color-primary: #008bff;
+$--color-success: #00cc0d;
+$--color-danger: #c01c00;
+$--color-warning: #ffc300;
+$--color-info: #ccc;
+
+$--color-ether: #fe427e;
+$--color-fire: #ff5522;
+$--color-electric: #2eb6ff;
+$--color-ice: #98eff0;
+$--color-physical: #f0d12a;
+
+$--gradient-green: #91bc00;
+$--gradient-yellow: #ffea00;
+
+$--animate-color-duration: 1s;
+$--animate-color-bezier: ease-in-out;
+$--animate-size-duration: 0.33s;
+$--animate-size-bezier: cubic-bezier(1, 0, 0.5, 1);
+$--animate-flash-duration: 0.07s;
+$--animate-flash-bezier: linear;
+$--animate-flash-count: 3;
+
+$--round-border-radius: 9999px;
+
+@mixin chessboard-background {
+  $color: rgba(255, 255, 255, 0.06);
+  background-image: linear-gradient(45deg, $color 25%, transparent 0 75%, $color 0),
+                    linear-gradient(45deg, $color 25%, transparent 0 75%, $color 0);
+  background-position: 0 0, 3px 3px;
+  background-size: 6px 6px;
+  background-repeat: repeat;
+}
+
+@mixin grid-pattern-background {
+  $color: rgba(0, 0, 0, 0.2);
+  $color-rate: 12%;
+  $blank-rate: calc(100% - $color-rate);
+  $angle: 65deg;
+  $angle-reverse: calc(180deg - $angle);
+  background-image: linear-gradient($angle, $color $color-rate, transparent 0 $blank-rate, $color 0),
+                    linear-gradient($angle, $color $color-rate, transparent 0 $blank-rate, $color 0),
+                    linear-gradient($angle-reverse, $color $color-rate, transparent 0 $blank-rate, $color 0),
+                    linear-gradient($angle-reverse, $color $color-rate, transparent 0 $blank-rate, $color 0);
+  background-position: 0 0, 4px 7px;
+  background-size: 8px 14px;
+  background-repeat: repeat;
+}
+
+@mixin linear-pattern-background {
+  background-image: repeating-linear-gradient(40deg, transparent 0 5px, rgba(255, 255, 255, 0.07) 5px 10px);
+}
+
+@mixin button-border($color, $layered: true, $reflective: true) {
+  $border: ();
+  @if $reflective {
+    $border: inset 0 1px 2px rgba(255, 255, 255, 0.2), inset 0 0 0 3px $color;
+  } @else {
+    $border: inset 0 0 0 3px $color,;
+  }
+  @if $layered {
+    $border: append($border, inset 0 0 0 4px $--color-black);
+  } @else {
+    $border: append($border, inset 0 0 0 4px transparent);
+  }
+  box-shadow: $border;
+}
+
+@mixin widget-knob {
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  background: #585858 conic-gradient(transparent 0 10deg, rgba(0, 0, 0, 0.7) 90deg, transparent 200deg, rgba(0, 0, 0, 0.3) 230deg, transparent 260deg, rgba(255, 255, 255, 0.5) 320deg, transparent);
+  box-sizing: border-box;
+  border: 1px solid $--color-black;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    background: radial-gradient(#585858 60%, transparent 66%),
+              #585858 conic-gradient(from 140deg, rgba(0, 0, 0, 0.2), transparent 60deg, rgba(255, 255, 255, 0.8) 170deg, transparent 280deg, rgba(0, 0, 0, 0.2));
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 2px;
+    border-radius: $--round-border-radius;
+    box-shadow: inset 0.5px 0.5px 1px rgba(0, 0, 0, 0.3), 0.5px 0.5px 1px rgba(255, 255, 255, 0.4);
+  }
+}
+
+$--scrollbar-margin: 6px;
+$--scrollbar-size: 6px;
+$--scrollbar-icon-size: 18px;
+$--scrollbar-color: rgba(255, 255, 255, 0.5);
+$--scrollbar-border: 3px solid rgba(255, 255, 255, 0.2);
+$--scrollbar-background: rgba(0, 0, 0, 0.5);
+
+$--button-border-color: #333;
+$--button-plain-background: rgba(255, 255, 255, 0.6);
+$--button-disabled-color: #2e2e2e;
+$--button-disabled-background: #737373;
+$--button-hollow-disabled-color: #666;
+$--button-padding-x-step: 6px;
+$--button-padding-y-step: 2px;
+$--button-font-size-step: 2px;
+$--button-icon-size-step: 4px;
+$--button-icon-margin-step: 1px;
+$--button-padding-x: 28px;
+$--button-padding-y: 12px;
+$--button-font-size: 14px;
+$--button-icon-size: 22px;
+$--button-icon-margin: 8px;
+$--button-extra-padding-x: calc($--button-padding-x + 5 * $--button-padding-x-step);
+$--button-extra-padding-y: calc($--button-padding-y + 2 * $--button-padding-y-step);
+$--button-extra-font-size: calc($--button-font-size + 2 * $--button-font-size-step);
+$--button-extra-icon-size: calc($--button-icon-size + 2 * $--button-icon-size-step);
+$--button-extra-icon-margin: calc($--button-icon-margin + 2 * $--button-icon-margin-step);
+$--button-large-padding-x: calc($--button-padding-x + 3 * $--button-padding-x-step);
+$--button-large-padding-y: calc($--button-padding-y + $--button-padding-y-step);
+$--button-large-font-size: calc($--button-font-size + $--button-font-size-step);
+$--button-large-icon-size: calc($--button-icon-size + $--button-icon-size-step);
+$--button-large-icon-margin: calc($--button-icon-margin + $--button-icon-margin-step);
+$--button-small-padding-x: calc($--button-padding-x - $--button-padding-x-step);
+$--button-small-padding-y: calc($--button-padding-y - $--button-padding-y-step);
+$--button-small-font-size: calc($--button-font-size - $--button-font-size-step);
+$--button-small-icon-size: calc($--button-icon-size - $--button-icon-size-step);
+$--button-small-icon-margin: calc($--button-icon-margin - $--button-icon-margin-step);
+$--button-mini-padding-x: calc($--button-padding-x - 2 * $--button-padding-x-step);
+$--button-mini-padding-y: calc($--button-padding-y - 2 * $--button-padding-y-step);
+$--button-mini-font-size: calc($--button-font-size - $--button-font-size-step);
+$--button-mini-icon-size: calc($--button-icon-size - 2 * $--button-icon-size-step);
+$--button-mini-icon-margin: calc($--button-icon-margin - $--button-icon-margin-step);
+
+$--link-font-size: 14px;
+$--link-disabled-color: #666;
+
+$--collapse-content-color: #c6c6c6;
+$--collapse-plain-content-color: #808080;
+$--collapse-disabled-header-color: #666;
+$--collapse-plain-header-background: #222;
+
+$--menu-font-size: 14px;
+$--menu-icon-size: 18px;
+$--menu-vertical-padding-x: 4px;
+$--menu-vertical-padding-y: 5px;
+$--menu-vertical-background: rgba(0, 0, 0, 0.6);
+$--menu-vertical-border-color: rgba(255, 255, 255, 0.2);
+$--menu-vertical-affix-height: 26px;
+$--menu-vertical-affix-shadow: #404040;
+$--menu-vertical-affix-background: #323232;
+$--menu-item-border-width: 3px;
+$--menu-item-border-color: #181818;
+$--menu-item-disabled-color: #666;
+$--menu-item-active-color: #808080;
+$--menu-sub-color: #c2c2c2;
+
+$--tag-font-size: 14px;
+$--tag-padding: 16px;
+$--tag-height: 30px;
+$--tag-background: #1c1c1c;
+$--tag-border-color: #222;
+$--tag-padding-step: 6px;
+$--tag-height-step: 4px;
+$--tag-font-size-step: 2px;
+$--tag-extra-padding: calc($--tag-padding + 2 * $--tag-padding-step);
+$--tag-extra-height: calc($--tag-height + 2 * $--tag-height-step);
+$--tag-extra-font-size: calc($--tag-font-size + 2 * $--tag-font-size-step);
+$--tag-large-padding: calc($--tag-padding + $--tag-padding-step);
+$--tag-large-height: calc($--tag-height + $--tag-height-step);
+$--tag-large-font-size: calc($--tag-font-size + $--tag-font-size-step);
+$--tag-small-padding: calc($--tag-padding - $--tag-padding-step);
+$--tag-small-height: calc($--tag-height - $--tag-height-step);
+$--tag-small-font-size: calc($--tag-font-size - $--tag-font-size-step);
+$--tag-mini-padding: calc($--tag-padding - $--tag-padding-step);
+$--tag-mini-height: calc($--tag-height - 2 * $--tag-height-step);
+$--tag-mini-font-size: calc($--tag-font-size - $--tag-font-size-step);
+
+$--badge-background: #1c1c1c;
+$--badge-border-color: #222;
+
+$--tabs-item-disabled-color: #666;
+$--tabs-item-active-color: #808080;
+
+$--radio-color: #c2c2c2;
+$--radio-font-size: 14px;
+$--radio-input-size: 18px;
+$--radio-icon-size: 20px;
+$--radio-disabled-color: #666;
+$--radio-size-step: 2px;
+$--radio-extra-font-size: calc($--radio-font-size + 2 * $--radio-size-step);
+$--radio-extra-input-size: calc($--radio-input-size + 2 * $--radio-size-step);
+$--radio-extra-icon-size: calc($--radio-icon-size + 2 * $--radio-size-step);
+$--radio-large-font-size: calc($--radio-font-size + $--radio-size-step);
+$--radio-large-input-size: calc($--radio-input-size + $--radio-size-step);
+$--radio-large-icon-size: calc($--radio-icon-size + $--radio-size-step);
+$--radio-small-font-size: calc($--radio-font-size - $--radio-size-step);
+$--radio-small-input-size: calc($--radio-input-size - $--radio-size-step);
+$--radio-small-icon-size: calc($--radio-icon-size - $--radio-size-step);
+$--radio-mini-font-size: calc($--radio-font-size - $--radio-size-step);
+$--radio-mini-input-size: calc($--radio-input-size - 2 * $--radio-size-step);
+$--radio-mini-icon-size: calc($--radio-icon-size - 2 * $--radio-size-step);
+
+$--switch-background: #323232;
+$--switch-disabled-background: #1c1c1c;
+$--switch-disabled-color: #666;
+$--switch-checked-disabled-background: #2e2e2e;
+
+$--input-font-size: $--button-font-size;
+$--input-height: calc($--button-font-size + 2 * $--button-padding-y);
+$--input-border: 3px solid #323232;
+$--input-background: #1c1c1c;
+$--input-placeholder: #565656;
+$--input-disabled-background: #2e2e2e;
+$--input-disabled-color: #808080;
+$--input-padding: 16px;
+$--input-height-step: 2px;
+$--input-font-size-step: 2px;
+$--input-padding-step: 2px;
+$--input-extra-height: calc($--button-extra-font-size + 2 * $--button-extra-padding-y);
+$--input-large-height: calc($--button-large-font-size + 2 * $--button-large-padding-y);
+$--input-small-height: calc($--button-small-font-size + 2 * $--button-small-padding-y);
+$--input-mini-height: calc($--button-mini-font-size + 2 * $--button-mini-padding-y);
+$--input-extra-padding: calc($--input-padding + 2 * $--input-padding-step);
+$--input-large-padding: calc($--input-padding + $--input-padding-step);
+$--input-small-padding: calc($--input-padding - $--input-padding-step);
+$--input-mini-padding: calc($--input-padding - 2 * $--input-padding-step);
+$--input-extra-font-size: $--button-extra-font-size;
+$--input-large-font-size: $--button-large-font-size;
+$--input-small-font-size: $--button-small-font-size;
+$--input-mini-font-size: $--button-mini-font-size;

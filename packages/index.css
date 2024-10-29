@@ -1,0 +1,10 @@
+@import 'zenless-ui/theme/reset.scss';
+@import 'zenless-ui/theme/icon.css';
+@import 'zenless-ui/theme/animation.scss';
+
+.is-bold {
+  font-weight: bold;
+}
+.is-italic {
+  font-style: italic;
+}

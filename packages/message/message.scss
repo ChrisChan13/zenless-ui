@@ -1,0 +1,76 @@
+@keyframes z_ani_msg_hidden {
+  from { opacity: 1; }
+  80% { opacity: 0.66; }
+}
+@keyframes z_ani_msg_flash {
+  from { background: $--color-white; }
+}
+@keyframes z_ani_msg_flash_reverse {
+  from { background: $--color-black; }
+}
+@keyframes z_ani_msg_size {
+  from, 20% { max-width: 0; }
+  to { max-width: 100vw; }
+}
+@keyframes z_ani_msg_size_reverse {
+  from { max-width: 100vw; }
+  80%, to { max-width: 0; }
+}
+@keyframes z_ani_msg_opacity {
+  from { opacity: 0; }
+}
+@keyframes z_ani_msg_opacity_reverse {
+  from { opacity: 1; }
+}
+
+.z-message {
+  position: fixed;
+  top: 23px;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  transform: translateX(-50%);
+  padding: 0 17px;
+  z-index: 1000;
+  border-radius: $--round-border-radius;
+  background: $--color-black;
+  color: $--color-white;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.2;
+  height: 34px;
+  white-space: nowrap;
+  animation: z_ani_msg_flash $--animate-flash-duration $--animate-flash-bezier $--animate-flash-count alternate,
+             z_ani_msg_size 0.63s linear;
+  &--success {
+    color: mix($--color-white, $--color-success);
+    background: mix($--color-black, $--color-success);
+  }
+  &--error {
+    color: mix($--color-white, $--color-danger);
+    background: mix($--color-black, $--color-danger);
+  }
+  &--warning {
+    color: mix($--color-white, $--color-warning);
+    background: mix($--color-black, $--color-warning);
+  }
+  &__content {
+    overflow: hidden;
+    border-left: 17px solid transparent;
+    border-right: 17px solid transparent;
+    animation: z_ani_msg_opacity 0.42s linear;
+  }
+  &.hidden {
+    background: $--color-white;
+    max-width: 0;
+    opacity: 0;
+    animation: z_ani_msg_hidden 0.42s linear,
+               z_ani_msg_flash_reverse $--animate-flash-duration $--animate-flash-bezier $--animate-flash-count alternate,
+               z_ani_msg_size_reverse 0.42s linear;
+    .z-message__content {
+      opacity: 0;
+      animation: z_ani_msg_opacity_reverse 0.42s linear;
+    }
+  }
+}

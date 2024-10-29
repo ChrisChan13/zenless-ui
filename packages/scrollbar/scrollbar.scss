@@ -1,0 +1,52 @@
+.z-scrollbar {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  &__wrap {
+    flex: 1;
+    overflow: scroll;
+  }
+  &__view {
+    width: fit-content;
+    height: fit-content;
+    min-width: 100%;
+    min-height: 100%;
+  }
+  &__bar {
+    position: absolute;
+    z-index: 1;
+    right: $--scrollbar-margin;
+    bottom: $--scrollbar-margin;
+    border-radius: $--round-border-radius;
+    background: $--scrollbar-background;
+    border: $--scrollbar-border;
+    color: $--scrollbar-color;
+    display: flex;
+    align-items: center;
+    font-size: $--scrollbar-icon-size;
+  }
+  &__horizontal {
+    left: $--scrollbar-margin;
+    >[class*=z-icon] {
+      margin: -2px 0;
+    }
+  }
+  &__vertical {
+    flex-direction: column;
+    top: $--scrollbar-margin;
+    >[class*=z-icon] {
+      margin: 0 -2px;
+    }
+  }
+  &__thumb {
+    flex: 1;
+  }
+  &__track {
+    width: $--scrollbar-size;
+    height: $--scrollbar-size;
+    background: currentColor;
+    border-radius: $--scrollbar-size;
+  }
+}

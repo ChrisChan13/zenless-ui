@@ -1,0 +1,112 @@
+.z-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  color: $--color-white;
+  &.is-visible {
+    .z-dropdown {
+      &__content {
+        opacity: 1;
+        transform: translateY(100%) scaleY(1);
+      }
+    }
+  }
+  &--extra {
+    .z-dropdown {
+      &__content {
+        border-radius: 30px;
+      }
+      &-item {
+        height: 52px;
+        font-size: 18px;
+      }
+    }
+  }
+  &--large {
+    .z-dropdown {
+      &__content {
+        border-radius: 27px;
+      }
+      &-item {
+        height: 46px;
+        font-size: 16px;
+      }
+    }
+  }
+  &--small {
+    .z-dropdown {
+      &__content {
+        border-radius: 21px;
+      }
+      &-item {
+        height: 34px;
+        font-size: 12px;
+      }
+    }
+  }
+  &--mini {
+    .z-dropdown {
+      &__content {
+        border-radius: 19px;
+      }
+      &-item {
+        height: 30px;
+        font-size: 12px;
+      }
+    }
+  }
+  &__content {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    bottom: -8px;
+    width: 100%;
+    min-width: max-content;
+    transform-origin: top;
+    opacity: 0;
+    transform: translateY(100%) scaleY(0);
+    background: #323232;
+    padding: 4px;
+    border-radius: 24px;
+    cursor: default;
+    transition: opacity 0.07s linear,
+                transform 0.13s ease-in-out;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: -8px;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+  }
+  &-item {
+    height: 40px;
+    padding: 0 30px;
+    border-radius: $--round-border-radius;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: $--color-white;
+    cursor: pointer;
+    line-height: 1.35;
+    &:not(:last-of-type) {
+      margin-bottom: 4px;
+    }
+    &:not(.is-disabled):not(.selected):active {
+      color: #808080;
+    }
+    &.is-disabled {
+      cursor: not-allowed;
+      background: #222;
+      color: #5e5e5e;
+    }
+  }
+  &+.z-dropdown {
+    margin-left: 30px;
+  }
+}

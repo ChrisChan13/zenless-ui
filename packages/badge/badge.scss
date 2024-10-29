@@ -1,0 +1,60 @@
+.z-badge {
+  display: inline-flex;
+  position: relative;
+  &__content {
+    position: absolute;
+    font-size: 12px;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 6px;
+    text-align: center;
+    white-space: nowrap;
+    top: 0;
+    right: 14px;
+    transform: translateY(-30%) translateX(100%);
+    border: 2px solid $--color-black;
+    border-radius: $--round-border-radius;
+    box-sizing: content-box;
+    color: $--color-black;
+  }
+  &--default>.z-badge__content {
+    background: $--color-danger;
+  }
+  &--primary>.z-badge__content {
+    color: $--color-white;
+    background: $--color-primary;
+  }
+  &--success>.z-badge__content {
+    background: $--color-success;
+  }
+  &--info>.z-badge__content {
+    background: $--color-info;
+  }
+  &--warning>.z-badge__content {
+    background: $--color-warning;
+  }
+  &--danger>.z-badge__content {
+    background: $--color-danger;
+  }
+  &--ether>.z-badge__content {
+    background: $--color-ether;
+  }
+  &--fire>.z-badge__content {
+    background: $--color-fire;
+  }
+  &--electric>.z-badge__content {
+    background: $--color-electric;
+  }
+  &--ice>.z-badge__content {
+    background: $--color-ice;
+  }
+  &--physical>.z-badge__content {
+    background: $--color-physical;
+  }
+  &--dot>.z-badge__content {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    right: 10px;
+  }
+}

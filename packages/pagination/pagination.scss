@@ -1,0 +1,33 @@
+.z-pagination {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  background: #303030;
+  border-radius: $--round-border-radius;
+  border: 1px solid $--color-black;
+  @include chessboard-background;
+  &.is-minimal {
+    .z-pagination {
+      &__prev,
+      &__next {
+        padding: 4px 30px;
+        [class*=z-icon-] {
+          font-size: 30px;
+        }
+      }
+      &__content {
+        padding: 0 30px;
+      }
+    }
+  }
+  &__prev,
+  &__next {
+    margin: -1px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  &__content {
+    padding: 0 40px;
+    line-height: 1;
+  }
+}
