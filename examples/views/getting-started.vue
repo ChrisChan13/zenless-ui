@@ -31,7 +31,7 @@ const codes = {
   install: `pnpm i zenless-ui -S`,
   import: `import { createApp } from 'vue'
 import ZenlessUI from 'zenless-ui'
-import 'zenless-ui/index.css'
+import 'zenless-ui/dist/index.css'
 import App from './App.vue'
   
 const app = createApp(App)

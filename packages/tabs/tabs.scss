@@ -3,6 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
+  color: $--color-white;
   &.at-top-left,
   &.at-bottom-left {
     justify-content: flex-start;

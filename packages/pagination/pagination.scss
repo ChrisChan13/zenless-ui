@@ -3,6 +3,7 @@
   align-items: center;
   height: 40px;
   background: #303030;
+  color: $--color-white;
   border-radius: $--round-border-radius;
   border: 1px solid $--color-black;
   @include chessboard-background;

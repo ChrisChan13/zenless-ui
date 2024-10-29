@@ -1,6 +1,7 @@
 .z-menu {
   display: flex;
   font-size: $--menu-font-size;
+  color: $--color-white;
   &--vertical {
     flex-direction: column;
     min-width: 200px;
