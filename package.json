@@ -1,6 +1,6 @@
 {
   "name": "zenless-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "files": [
     "dist"
@@ -9,7 +9,8 @@
   "exports": {
     ".": {
       "import": "./dist/index.js"
-    }
+    },
+    "./*": "./*"
   },
   "scripts": {
     "dev": "vite",

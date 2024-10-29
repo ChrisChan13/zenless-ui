@@ -42,6 +42,7 @@ import ZTable from 'zenless-ui/table/index'
 import ZTableColumn from 'zenless-ui/table-column/index'
 import ZForm from 'zenless-ui/form/index'
 import ZFormItem from 'zenless-ui/form-item/index'
+import './index.css'
 
 const components = [
   ZScrollbar,
