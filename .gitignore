@@ -1,4 +1,5 @@
 .vscode
 build
 dist
+docs
 node_modules
