@@ -4,9 +4,9 @@
       <h1>404</h1>
       <h3>页面似乎找不到了 \[ o_x ]/</h3>
       <span>Page not found</span>
-      <z-link href="/">
+      <router-link :to="{ name: 'home' }">
         <z-button size="large">回到首页</z-button>
-      </z-link>
+      </router-link>
     </div>
   </div>
 </template>

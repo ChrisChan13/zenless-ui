@@ -4,10 +4,10 @@
       <div class="header">
         <div class="header-wrap">
           <div class="header-content">
-            <a class="logo" href="/">
+            <router-link class="logo" :to="{ name: 'home' }">
               <img src="/zenless.png" alt="Zenless UI">
               <span>Zenless</span>
-            </a>
+            </router-link>
             <div class="nav">
               <z-link class="nav-item" target="_blank" rel="noreferrer" href="https://github.com/ChrisChan13/zenless-ui">
                 <z-button hollow>
