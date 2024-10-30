@@ -5,8 +5,8 @@
     <div class="component-preview">
       <div class="component-preview-line">
         <z-card
-          image="/zenless.png"
-          avatar="/zenless.png"
+          image="./zenless.png"
+          avatar="./zenless.png"
           nickname="ZenlessUI"
           title="[ 情报 ] Zenless UI 发布"
           content="今天是 2024 年 10 月 30 日，Zenless UI v1.0 正式发布！"

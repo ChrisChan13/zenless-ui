@@ -5,7 +5,7 @@ import { defaultConfig } from './vite.config'
 
 const buildConfig = {
   ...defaultConfig,
-  base: '/zenless-ui',
+  base: './',
   build: {
     outDir: resolve(__dirname, 'docs')
   }
