@@ -38,7 +38,8 @@
 <script setup>
 import { computed, inject, ref } from 'vue'
 import { generateId } from '@src/utils'
-import { radioSizes, radioModes, radioShapes, radioGroupContextKey } from './constants'
+import { radioModes, radioShapes, radioGroupContextKey } from './constants'
+import { zenlessSizes } from '../constants'
 import Tag from '../tag'
 import { useZenless } from 'zenless-ui/index'
 
@@ -54,7 +55,7 @@ const props = defineProps({
   disabled: Boolean,
   size: {
     type: String,
-    validator: (v) => radioSizes.includes(v)
+    validator: (v) => zenlessSizes.includes(v)
   },
   mode: {
     type: String,

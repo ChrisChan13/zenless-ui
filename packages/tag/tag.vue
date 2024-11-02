@@ -27,7 +27,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useZenless } from 'zenless-ui/index'
-import { tagSizes, tagTypes } from './constants'
+import { zenlessSizes, zenlessColors } from '../constants'
 
 defineOptions({
   name: 'ZTag'
@@ -37,11 +37,11 @@ const zenless = useZenless()
 defineProps({
   size: {
     type: String,
-    validator: (v) => tagSizes.includes(v)
+    validator: (v) => zenlessSizes.includes(v)
   },
   type: {
     type: String,
-    validator: (v) => tagTypes.includes(v)
+    validator: (v) => zenlessColors.includes(v)
   },
   plain: Boolean,
   hollow: Boolean,

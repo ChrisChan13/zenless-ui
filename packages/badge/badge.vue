@@ -12,7 +12,7 @@
 
 <script setup>
 import { useZenless } from 'zenless-ui/index'
-import { badgeTypes } from './constants'
+import { zenlessColors } from '../constants'
 
 defineOptions({
   name: 'ZBadge'
@@ -22,7 +22,7 @@ const zenless = useZenless()
 defineProps({
   type: {
     type: String,
-    validator: (v) => badgeTypes.includes(v)
+    validator: (v) => zenlessColors.includes(v)
   },
   isDot: Boolean,
   value: [String, Number]

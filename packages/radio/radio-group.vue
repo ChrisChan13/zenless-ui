@@ -6,7 +6,8 @@
 
 <script setup>
 import { provide } from 'vue'
-import { radioSizes, radioModes, radioGroupContextKey } from './constants'
+import { radioModes, radioGroupContextKey } from './constants'
+import { zenlessSizes } from '../constants'
 
 defineOptions({
   name: 'ZRadioGroup'
@@ -16,7 +17,7 @@ const props = defineProps({
   disabled: Boolean,
   size: {
     type: String,
-    validator: (v) => radioSizes.includes(v)
+    validator: (v) => zenlessSizes.includes(v)
   },
   min: Number,
   max: Number,

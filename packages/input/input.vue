@@ -83,7 +83,7 @@
 <script setup>
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useZenless } from 'zenless-ui/index'
-import { inputSizes } from './constants'
+import { zenlessSizes } from '../constants'
 import calcTextareaHeight from '@src/utils/textarea-height'
 import { isValidValue } from '@src/utils/index'
 
@@ -108,7 +108,7 @@ const props = defineProps({
   clearable: Boolean,
   size: {
     type: String,
-    validator: (v) => inputSizes.includes(v)
+    validator: (v) => zenlessSizes.includes(v)
   },
   prefixIcon: String,
   suffixIcon: String,

@@ -32,7 +32,7 @@
 
 <script setup>
 import { ref, computed, nextTick } from 'vue'
-import { buttonSizes, buttonTypes } from './constants'
+import { zenlessSizes, zenlessColors } from '../constants'
 import { useZenless } from 'zenless-ui/index'
 
 const buttonRef = ref(null)
@@ -46,11 +46,11 @@ defineOptions({
 const props = defineProps({
   size: {
     type: String,
-    validator: (v) => buttonSizes.includes(v)
+    validator: (v) => zenlessSizes.includes(v)
   },
   type: {
     type: String,
-    validator: (v) => buttonTypes.includes(v)
+    validator: (v) => zenlessColors.includes(v)
   },
   icon: [String, Object],
   loading: Boolean,
