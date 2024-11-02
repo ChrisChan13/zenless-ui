@@ -1,5 +1,5 @@
 # Zenless UI
-一套基于 Vue 3.0 的仿绝区零桌面端组件库
+A Vue.js 3 UI Library inspired by Zenless Zone Zero
 
 [中文](https://github.com/ChrisChan13/zenless-ui/blob/main/README.md) | [English](https://github.com/ChrisChan13/zenless-ui/blob/main/README.EN.md)
 
@@ -20,7 +20,7 @@ const app = createApp(App)
 app.use(ZenlessUI)
 app.mount('#app')
 ```
-更多内容请查阅 [快速上手](https://chrischan13.github.io/zenless-ui)
+Checkout [Quick Start](https://chrischan13.github.io/zenless-ui) for more information.
 
 ## LICENSE
 [MIT](https://github.com/ChrisChan13/zenless-ui/blob/main/LICENSE)
