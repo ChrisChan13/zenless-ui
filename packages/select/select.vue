@@ -30,7 +30,7 @@
         <z-scrollbar hide-scroll :resizable="false" class="z-select__options">
           <div v-if="isEmpty" class="z-select__empty">
             <slot v-if="$slots.empty" name="empty"></slot>
-            <span v-else>{{ emptyText }}</span>
+            <span v-else>{{ emptyText || defaultEmptyText }}</span>
           </div>
           <slot></slot>
         </z-scrollbar>
@@ -43,12 +43,15 @@
 import { ref, provide, computed } from 'vue'
 import { zenlessSizes } from '../constants'
 import { selectContextKey } from './constants'
+import { useZenless } from 'zenless-ui/index'
+import { zhCn } from 'zenless-ui/locale/index'
 
 defineOptions({
   name: 'ZSelect'
 })
 
-defineProps({
+const zenless = useZenless()
+const props = defineProps({
   name: String,
   disabled: Boolean,
   placeholder: String,
@@ -57,10 +60,7 @@ defineProps({
     type: String,
     validator: (v) => zenlessSizes.includes(v)
   },
-  emptyText: {
-    type: String,
-    default: '暂无数据... \\[ o_x ]/'
-  }
+  emptyText: String
 })
 
 const focused = ref(false)
@@ -70,6 +70,7 @@ const modelValue = defineModel({
 })
 const options = ref({})
 const isEmpty = computed(() => Object.keys(options.value).length === 0)
+const defaultEmptyText = computed(() => zenless?.locale?.data?.select?.empty || zhCn.data.select.empty)
 const emit = defineEmits(['change', 'clear'])
 
 const handleTrigger = (value) => {

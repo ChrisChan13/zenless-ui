@@ -24,8 +24,8 @@
       <div v-if="showFooter" class="z-modal__footer">
         <slot v-if="$slots.footer" name="footer"></slot>
         <template v-else>
-          <z-button v-if="showCancel" @click="handleCancel" :icon="{ error: 'danger' }" class="z-modal__cancel">{{ cancelText || '取消' }}</z-button>
-          <z-button @click="handleConfirm" :icon="{ success: 'success' }" class="z-modal__confirm">{{ confirmText || '确认' }}</z-button>
+          <z-button v-if="showCancel" @click="handleCancel" :icon="{ error: 'danger' }" class="z-modal__cancel">{{ cancelText || defaultCancelText }}</z-button>
+          <z-button @click="handleConfirm" :icon="{ success: 'success' }" class="z-modal__confirm">{{ confirmText || defaultConfirmText }}</z-button>
         </template>
       </div>
     </div>
@@ -35,6 +35,7 @@
 <script setup>
 import { ref, watch, computed } from 'vue'
 import { useZenless } from 'zenless-ui/index'
+import { zhCn } from 'zenless-ui/locale/index'
 
 defineOptions({
   name: 'ZModal'
@@ -77,6 +78,8 @@ const modelValue = defineModel({
 })
 const modalRef = ref(null)
 const isDrawer = computed(() => props.mode === 'drawer')
+const defaultCancelText = computed(() => zenless?.locale?.data?.modal?.cancel || zhCn.data.modal.cancel)
+const defaultConfirmText = computed(() => zenless?.locale?.data?.modal?.confirm || zhCn.data.modal.confirm)
 
 const emits = defineEmits(['open', 'close', 'cancel', 'confirm'])
 watch(modelValue, (value) => {

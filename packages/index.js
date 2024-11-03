@@ -3,6 +3,7 @@ import zenlessCtx from './context'
 import { zenlessContextKey } from './constants'
 import '@src/utils/animate-sync'
 
+import * as locale from 'zenless-ui/locale/index'
 import ZScrollbar from 'zenless-ui/scrollbar/index'
 import ZButton from 'zenless-ui/button/index'
 import ZIcon from 'zenless-ui/icon/index'
@@ -93,6 +94,9 @@ const install = (app, opts = { isBold: false }) => {
   if ('isItalic' in opts) {
     zenlessCtx.value.isItalic = !!opts.isItalic
   }
+  if ('locale' in opts) {
+    zenlessCtx.value.locale = opts.locale
+  }
   app.provide(zenlessContextKey, unref(zenlessCtx))
   components.forEach((component) => {
     component.install(app)
@@ -101,6 +105,7 @@ const install = (app, opts = { isBold: false }) => {
 
 export const useZenless = () => inject(zenlessContextKey)
 
+export { locale }
 export { ZScrollbar }
 export { ZIcon }
 export { ZButton }

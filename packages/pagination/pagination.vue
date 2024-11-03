@@ -5,7 +5,7 @@
   }]">
     <z-button class="z-pagination__prev" :disabled="hasPrevPage" @click="onPrevPage">
       <i v-if="minimal" class="z-icon-arrow-left"></i>
-      <span v-else>{{ prevText || '上一页' }}</span>
+      <span v-else>{{ prevText || defaultPrevText }}</span>
     </z-button>
     <div class="z-pagination__content">
       <span>{{ currentPage }}</span>
@@ -13,7 +13,7 @@
     </div>
     <z-button class="z-pagination__next" :disabled="hasNextPage" @click="onNextPage">
       <i v-if="minimal" class="z-icon-arrow-right"></i>
-      <span v-else>{{ nextText || '下一页' }}</span>
+      <span v-else>{{ nextText || defaultNextText }}</span>
     </z-button>
   </div>
 </template>
@@ -22,6 +22,7 @@
 import { computed } from 'vue'
 import { prefixNumber } from '@src/utils/index'
 import { useZenless } from 'zenless-ui/index'
+import { zhCn } from 'zenless-ui/locale/index'
 
 defineOptions({
   name: 'ZPagination'
@@ -49,6 +50,8 @@ const currentPage = computed(() => prefixNumber(modelValue.value))
 const pageCount = computed(() => prefixNumber(Math.ceil(props.total / props.pageSize)))
 const hasPrevPage = computed(() => modelValue.value <= 1)
 const hasNextPage = computed(() => modelValue.value >= +pageCount.value)
+const defaultPrevText = computed(() => zenless?.locale?.data?.pagination?.prev || zhCn.data.pagination.prev)
+const defaultNextText = computed(() => zenless?.locale?.data?.pagination?.next || zhCn.data.pagination.next)
 const emits = defineEmits(['change'])
 
 const onPrevPage = () => {

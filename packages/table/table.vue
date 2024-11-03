@@ -31,7 +31,7 @@
         <tr v-if="!data || data.length === 0" class="z-table__row">
           <td class="z-table__cell" :colspan="columns.length">
             <slot name="empty"></slot>
-            <div v-if="!slots.empty" class="empty">{{ emptyText  }}</div>
+            <div v-if="!slots.empty" class="empty">{{ emptyText || defaultEmptyText }}</div>
           </td>
         </tr>
       </tbody>
@@ -40,8 +40,9 @@
 </template>
 
 <script setup>
-import { ref, useSlots, watchEffect } from 'vue'
+import { ref, useSlots, computed, watchEffect } from 'vue'
 import { useZenless } from 'zenless-ui/index'
+import { zhCn } from 'zenless-ui/locale/index'
 import Cell from './cell'
 
 defineOptions({
@@ -55,14 +56,12 @@ const props = defineProps({
     type: Boolean,
     default: true
   },
-  emptyText: {
-    type: String,
-    default: '暂无数据... \\[ o_x ]/'
-  }
+  emptyText: String
 })
 
 let columns = ref([])
 const slots = useSlots()
+const defaultEmptyText = computed(() => zenless?.locale?.data?.table?.empty || zhCn.data.table.empty)
 watchEffect(() => {
   columns.value = slots.default().filter((v) => v.type.name === 'ZTableColumn')
 })
