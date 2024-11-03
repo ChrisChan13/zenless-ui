@@ -12,6 +12,9 @@
     <source-code class="component-codeblock" :code="codes.globals" lang="js"></source-code>
     <div class="component-content"><code>isBold</code>和<code>isItalic</code>同样支持在流程中修改，具体操作如下：</div>
     <source-code class="component-codeblock" :code="codes.setGlobals" lang="js"></source-code>
+    <div class="component-header">国际化</div>
+    <div class="component-content">Zenless 组件默认使用中文，如果你希望使用其他语言，你可以参考下面的方案：</div>
+    <source-code class="component-codeblock" :code="codes.i18n" lang="js"></source-code>
     <div class="component-header">开始使用</div>
     <div class="component-content">现在就可以编写代码了，各个组件的使用方法请参阅它们各自的文档。</div>
     <div class="component-header">最后 \[ o_x ]/</div>
@@ -47,6 +50,11 @@ app.mount('#app')`,
 const zenless = useZenless()
 
 zenless.isBold = true
-zenless.isItalic = true`
+zenless.isItalic = true`,
+  i18n: `import ZenlessUI, { locale } from 'zenless-ui'
+
+app.use(ZenlessUI, {
+  locale: locale.zhCn
+})`
 }
 </script>
