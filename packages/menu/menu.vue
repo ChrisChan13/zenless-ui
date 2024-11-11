@@ -19,7 +19,7 @@ import { ref, provide } from 'vue'
 import { menuContextKey } from './constants'
 
 defineOptions({
-  name: 'z-menu'
+  name: 'ZMenu'
 })
 
 const props = defineProps({

@@ -73,11 +73,6 @@
       background: $--color-black;
     }
   }
-  &.is-disabled {
-    background: #020202;
-    border-color: #030303;
-    color: #404040;
-  }
   &--round {
     border-radius: $--round-border-radius;
   }

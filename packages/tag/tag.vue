@@ -6,8 +6,7 @@
     [`z-tag--${type}`]: type,
     'z-tag--plain': plain && !hollow,
     'z-tag--hollow': hollow,
-    'z-tag--round': round,
-    'is-disabled': disabled
+    'z-tag--round': round
   }]">
     <div class="z-tag__content">
       <slot></slot>
@@ -49,8 +48,7 @@ defineProps({
     type: Boolean,
     default: true
   },
-  closable: Boolean,
-  disabled: Boolean
+  closable: Boolean
 })
 const isHover = ref(false)
 
