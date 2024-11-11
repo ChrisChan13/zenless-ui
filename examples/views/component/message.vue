@@ -1,114 +1,107 @@
 <template>
   <div class="component">
-    <div class="component-title">Message 消息提示</div>
-    <div class="component-header">基础用法</div>
+    <div class="component-title">{{ $t('component.message.title') }}</div>
+    <div class="component-header">{{ $t('component.message.usage') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-button @click="openMessage">打开 Message</z-button>
+        <z-button @click="openMessage">{{ $t('component.message.show') }}</z-button>
       </div>
       <source-code :code="codes.general" collapse></source-code>
     </div>
-    <div class="component-header">不同状态</div>
+    <div class="component-header">{{ $t('component.message.type') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-button @click="successMessage">成功 Message</z-button>
-        <z-button @click="warningMessage">警告 Message</z-button>
-        <z-button @click="errorMessage">错误 Message</z-button>
+        <z-button @click="successMessage">{{ $t('component.message.success') }}</z-button>
+        <z-button @click="warningMessage">{{ $t('component.message.warning') }}</z-button>
+        <z-button @click="errorMessage">{{ $t('component.message.error') }}</z-button>
       </div>
       <source-code :code="codes.type" collapse></source-code>
     </div>
-    <div class="component-header">引用方式</div>
+    <div class="component-header">{{ $t('component.message.import') }}</div>
     <source-code class="component-codeblock" :code="codes.usage" lang="js"></source-code>
-    <div class="component-content">此时调用方法为<code>message(options)</code>。其中 options 可以为 string，将视为仅传入 options.message。同时也为每个 type 定义了各自的方法，如<code>message.success(options)</code>。</div>
+    <div class="component-content" v-html="$t('component.message.import-desc')"></div>
     <div class="component-header">Message Options</div>
-    <z-table :data="messageOptions">
-      <z-table-column prop="prop" label="参数"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="type" label="类型"></z-table-column>
-      <z-table-column prop="values" label="可选值"></z-table-column>
-      <z-table-column prop="default" label="默认值"></z-table-column>
-    </z-table>
+    <attribute-table :data="messageOptions"></attribute-table>
     <div class="component-header">Message Methods</div>
-    <z-table :data="messageMethods">
-      <z-table-column prop="name" label="方法名"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-    </z-table>
+    <method-table :data="messageMethods"></method-table>
   </div>
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { useMessage } from 'zenless-ui'
+import { $t } from '@/locale'
 
 const message = useMessage()
 const openMessage = () => {
-  message('这是一条消息提示')
+  message($t('component.message.text'))
 }
 const successMessage = () => {
-  message.success('恭喜，这是一条成功消息')
+  message.success($t('component.message.success-text'))
 }
 const warningMessage = () => {
-  message.warning('提示，这是一条警告消息')
+  message.warning($t('component.message.warning-text'))
 }
 const errorMessage = () => {
-  message.error('抱歉，这是一条错误消息')
+  message.error($t('component.message.error-text'))
 }
 
-const codes = {
-  general: `<z-button @click="openMessage">打开 Message</z-button>
+const codes = computed(() => ({
+  general: `<z-button @click="openMessage">${$t('component.message.show')}</z-button>
 
 <script>
 import { useMessage } from 'zenless-ui'
 
 const message = useMessage()
 const openMessage = () => {
-  message('这是一条消息提示')
+  message('${$t('component.message.text')}')
 }
 <\/script>`,
-  type: `<z-button @click="successMessage">成功 Message</z-button>
-<z-button @click="warningMessage">警告 Message</z-button>
-<z-button @click="errorMessage">错误 Message</z-button>
+  type: `<z-button @click="successMessage">${$t('component.message.success')}</z-button>
+<z-button @click="warningMessage">${$t('component.message.warning')}</z-button>
+<z-button @click="errorMessage">${$t('component.message.error')}</z-button>
 
 <script>
 import { useMessage } from 'zenless-ui'
 
 const message = useMessage()
 const successMessage = () => {
-  message.success('恭喜，这是一条成功消息')
+  message.success('${$t('component.message.success-text')}')
 }
 const warningMessage = () => {
-  message.warning('提示，这是一条警告消息')
+  message.warning('${$t('component.message.warning-text')}')
 }
 const errorMessage = () => {
-  message.error('抱歉，这是一条错误消息')
+  message.error('${$t('component.message.error-text')}')
 }
 <\/script>`,
   usage: `import { useMessage } from 'zenless-ui'
 
 const message = useMessage()`
-}
-const messageOptions = [{
+}))
+const messageOptions = computed(() => [{
   prop: 'message',
-  desc: '消息文字',
+  desc: $t('option.message.message'),
   type: 'string'
 }, {
   prop: 'type',
-  desc: '主题',
+  desc: $t('option.message.type'),
   type: 'string',
   values: 'success / warning / error'
 }, {
   prop: 'duration',
-  desc: '显示时间，毫秒',
+  desc: $t('option.message.duration'),
   type: 'number',
   default: '3000'
-}]
-const messageMethods = [{
+}])
+const messageMethods = computed(() => [{
   name: 'success',
-  desc: '显示 success 主题的 message，参数与 message options 一致'
+  desc: $t('method.message.success')
 }, {
   name: 'warning',
-  desc: '显示 warning 主题的 message，参数与 message options 一致'
+  desc: $t('method.message.warning')
 }, {
   name: 'error',
-  desc: '显示 error 主题的 message，参数与 message options 一致'
-}]
+  desc: $t('method.message.error')
+}])
 </script>

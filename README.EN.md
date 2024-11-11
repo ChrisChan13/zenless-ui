@@ -20,7 +20,7 @@ const app = createApp(App)
 app.use(ZenlessUI)
 app.mount('#app')
 ```
-Checkout [Quick Start](https://chrischan13.github.io/zenless-ui) for more information.
+Checkout [Quick Start](https://chrischan13.github.io/zenless-ui/#/getting-started?lang=en) for more information.
 
 ## LICENSE
 [MIT](https://github.com/ChrisChan13/zenless-ui/blob/main/LICENSE)

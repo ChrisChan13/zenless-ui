@@ -1,57 +1,45 @@
 <template>
   <div class="component">
-    <div class="component-title">Drawer 抽屉</div>
-    <div class="component-header">基础用法</div>
+    <div class="component-title">{{ $t('component.drawer.title') }}</div>
+    <div class="component-header">{{ $t('component.drawer.usage') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-button @click="visible = !visible">打开 Drawer</z-button>
-        <z-drawer v-model="visible" title="提示" @cancel="visible = false" @confirm="visible = false">
-          <span>这是一段信息</span>
+        <z-button @click="visible = !visible">{{ $t('component.drawer.open') }}</z-button>
+        <z-drawer v-model="visible" :title="$t('component.drawer.drawer-title')" @cancel="visible = false" @confirm="visible = false">
+          <span>{{ $t('component.drawer.drawer-text') }}</span>
         </z-drawer>
       </div>
       <source-code :code="codes.general" collapse></source-code>
     </div>
-    <div class="component-header">全屏模式</div>
+    <div class="component-header">{{ $t('component.drawer.fullscreen') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-button @click="visible2 = !visible2">打开 Drawer</z-button>
-        <z-drawer v-model="visible2" title="提示" fullscreen @cancel="visible2 = false" @confirm="visible2 = false">
-          <span>这是一段信息</span>
+        <z-button @click="visible2 = !visible2">{{ $t('component.drawer.open') }}</z-button>
+        <z-drawer v-model="visible2" :title="$t('component.drawer.drawer-title')" fullscreen @cancel="visible2 = false" @confirm="visible2 = false">
+          <span>{{ $t('component.drawer.drawer-text') }}</span>
         </z-drawer>
       </div>
       <source-code :code="codes.fullscreen" collapse></source-code>
     </div>
     <div class="component-header">Drawer Attributes</div>
-    <z-table :data="drawerAttributes">
-      <z-table-column prop="prop" label="参数"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="type" label="类型"></z-table-column>
-      <z-table-column prop="values" label="可选值"></z-table-column>
-      <z-table-column prop="default" label="默认值"></z-table-column>
-    </z-table>
+    <attribute-table :data="drawerAttributes"></attribute-table>
     <div class="component-header">Drawer Slots</div>
-    <z-table :data="drawerSlots">
-      <z-table-column prop="name" label="name"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-    </z-table>
+    <slot-table :data="drawerSlots"></slot-table>
     <div class="component-header">Drawer Events</div>
-    <z-table :data="drawerEvents">
-      <z-table-column prop="name" label="事件名"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="params" label="回调参数"></z-table-column>
-    </z-table>
+    <event-table :data="drawerEvents"></event-table>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { $t } from '@/locale'
 
 const visible = ref(false)
 const visible2 = ref(false)
-const codes = {
-  general: `<z-button @click="visible = !visible">打开 Drawer</z-button>
-<z-drawer v-model="visible" title="提示">
-  <span>这是一段信息</span>
+const codes = computed(() => ({
+  general: `<z-button @click="visible = !visible">${$t('component.drawer.open')}</z-button>
+<z-drawer v-model="visible" title="${$t('component.drawer.drawer-title')}">
+  <span>${$t('component.drawer.drawer-text')}</span>
 </z-drawer>
 
 <script setup>
@@ -59,9 +47,9 @@ import { ref } from 'vue'
 
 const visible = ref(false)
 <\/script>`,
-  fullscreen: `<z-button @click="visible = !visible">打开 Drawer</z-button>
-<z-drawer v-model="visible" title="提示" fullscreen>
-  <span>这是一段信息</span>
+  fullscreen: `<z-button @click="visible = !visible">${$t('component.drawer.open')}</z-button>
+<z-drawer v-model="visible" title="${$t('component.drawer.drawer-title')}" fullscreen>
+  <span>${$t('component.drawer.drawer-text')}</span>
 </z-drawer>
 
 <script setup>
@@ -69,78 +57,78 @@ import { ref } from 'vue'
 
 const visible = ref(false)
 <\/script>`
-}
-const drawerAttributes = [{
+}))
+const drawerAttributes = computed(() => [{
   prop: 'v-model',
-  desc: '是否显示 drawer',
+  desc: $t('attribute.drawer.v-model'),
   type: 'boolean',
   default: 'false'
 }, {
   prop: 'title',
-  desc: 'drawer 的标题',
+  desc: $t('attribute.drawer.title'),
   type: 'string'
 }, {
   prop: 'mask',
-  desc: '是否展示遮罩',
+  desc: $t('attribute.drawer.mask'),
   type: 'boolean',
   default: 'true'
 }, {
   prop: 'mask-closable',
-  desc: '点击蒙层是否允许关闭',
+  desc: $t('attribute.drawer.mask-closable'),
   type: 'boolean',
   default: 'true'
 }, {
   prop: 'closable',
-  desc: '是否显示关闭按钮，fullscreen 模式不支持',
+  desc: $t('attribute.drawer.closable'),
   type: 'boolean',
   default: 'true'
 }, {
   prop: 'fullscreen',
-  desc: '全屏模式',
+  desc: $t('attribute.drawer.fullscreen'),
   type: 'boolean',
   default: 'false'
 }, {
   prop: 'show-footer',
-  desc: '是否展示按钮操作区',
+  desc: $t('attribute.drawer.show-footer'),
   type: 'boolean',
   default: 'true'
 }, {
   prop: 'show-cancel',
-  desc: '是否展示取消按钮',
+  desc: $t('attribute.drawer.show-cancel'),
   type: 'boolean',
   default: 'true'
 }, {
   prop: 'cancel-text',
-  desc: '取消按钮的文字',
+  desc: $t('attribute.drawer.cancel-text'),
   type: 'string',
   default: '取消'
 }, {
   prop: 'confirm-text',
-  desc: '确认按钮的文字',
+  desc: $t('attribute.drawer.confirm-text'),
   type: 'string',
   default: '确认'
-}]
-const drawerSlots = [{
+}])
+const drawerSlots = computed(() => [{
   name: 'default',
-  desc: 'drawer 的内容'
+  desc: $t('slot.drawer.default')
 }, {
   name: 'title',
-  desc: 'drawer 标题区的内容'
+  desc: $t('slot.drawer.title')
 }, {
   name: 'footer',
-  desc: 'drawer 按钮操作区的内容'
-}]
-const drawerEvents = [{
+  desc: $t('slot.drawer.footer')
+}])
+const drawerEvents = computed(() => [{
   name: 'open',
-  desc: 'drawer 打开的回调'
+  desc: $t('event.drawer.open')
 }, {
   name: 'close',
-  desc: 'drawer 关闭的回调，关闭按钮 或 遮罩层 触发'
+  desc: $t('event.drawer.close')
 }, {
   name: 'cancel',
-  desc: 'drawer 取消的回调'
+  desc: $t('event.drawer.cancel')
 }, {
   name: 'confirm',
-  desc: 'drawer 确认的回调'
-}]
+  desc: $t('event.drawer.confirm')
+}])
 </script>

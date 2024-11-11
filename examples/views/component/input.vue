@@ -1,227 +1,217 @@
 <template>
   <div class="component">
-    <div class="component-title">Input 输入框</div>
-    <div class="component-header">基础用法</div>
+    <div class="component-title">{{ $t('component.input.title') }}</div>
+    <div class="component-header">{{ $t('component.input.usage') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-input placeholder="请输入"></z-input>
+        <z-input :placeholder="$t('component.input.placeholder')"></z-input>
       </div>
       <source-code collapse :code="codes.general"></source-code>
     </div>
-    <div class="component-header">禁用状态</div>
+    <div class="component-header">{{ $t('component.input.disabled') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-input placeholder="请输入" disabled></z-input>
+        <z-input :placeholder="$t('component.input.placeholder')" disabled></z-input>
       </div>
       <source-code collapse :code="codes.disabled"></source-code>
     </div>
-    <div class="component-header">可清空</div>
+    <div class="component-header">{{ $t('component.input.clearable') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-input placeholder="请输入" clearable></z-input>
+        <z-input :placeholder="$t('component.input.placeholder')" clearable></z-input>
       </div>
       <source-code collapse :code="codes.clearable"></source-code>
     </div>
-    <div class="component-header">密码框</div>
+    <div class="component-header">{{ $t('component.input.password') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-input placeholder="请输入密码" type="password"></z-input>
+        <z-input :placeholder="$t('component.input.pwd-placeholder')" type="password"></z-input>
       </div>
       <source-code collapse :code="codes.password"></source-code>
     </div>
-    <div class="component-header">前缀和后缀</div>
+    <div class="component-header">{{ $t('component.input.mixed') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-input placeholder="请输入" suffix-icon="info"></z-input>
+        <z-input :placeholder="$t('component.input.placeholder')" suffix-icon="info"></z-input>
       </div>
       <div class="component-preview-line">
-        <z-input placeholder="请输入" prefix-icon="info"></z-input>
+        <z-input :placeholder="$t('component.input.placeholder')" prefix-icon="info"></z-input>
       </div>
       <div class="component-preview-line">
-        <z-input placeholder="请输入">
+        <z-input :placeholder="$t('component.input.placeholder')">
           <template #prefix>http(s)://</template>
           <template #suffix>.com</template>
         </z-input>
       </div>
       <source-code collapse :code="codes.affix"></source-code>
     </div>
-    <div class="component-header">复合输入框</div>
+    <div class="component-header">{{ $t('component.input.combined') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-input placeholder="验证码">
+        <z-input :placeholder="$t('component.input.combined-code')">
           <template #append>
-            <z-button>发送</z-button>
+            <z-button>{{ $t('component.input.combined-send') }}</z-button>
           </template>
         </z-input>
       </div>
       <source-code collapse :code="codes.compact"></source-code>
     </div>
-    <div class="component-header">不同尺寸</div>
+    <div class="component-header">{{ $t('component.input.size') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-input size="extra" placeholder="请输入" suffix-icon="info"></z-input>
-        <z-input size="large" placeholder="请输入" suffix-icon="info"></z-input>
+        <z-input size="extra" :placeholder="$t('component.input.placeholder')" suffix-icon="info"></z-input>
+        <z-input size="large" :placeholder="$t('component.input.placeholder')" suffix-icon="info"></z-input>
       </div>
       <div class="component-preview-line">
-        <z-input placeholder="请输入" suffix-icon="info"></z-input>
-        <z-input size="small" placeholder="请输入" suffix-icon="info"></z-input>
-        <z-input size="mini" placeholder="请输入" suffix-icon="info"></z-input>
+        <z-input :placeholder="$t('component.input.placeholder')" suffix-icon="info"></z-input>
+        <z-input size="small" :placeholder="$t('component.input.placeholder')" suffix-icon="info"></z-input>
+        <z-input size="mini" :placeholder="$t('component.input.placeholder')" suffix-icon="info"></z-input>
       </div>
       <source-code collapse :code="codes.size"></source-code>
     </div>
     <div class="component-header">Input Attributes</div>
-    <z-table :data="inputAttributes">
-      <z-table-column prop="prop" label="参数"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="type" label="类型"></z-table-column>
-      <z-table-column prop="values" label="可选值"></z-table-column>
-      <z-table-column prop="default" label="默认值"></z-table-column>
-    </z-table>
+    <attribute-table :data="inputAttributes"></attribute-table>
     <div class="component-header">Input Slots</div>
-    <z-table :data="inputSlots">
-      <z-table-column prop="name" label="name"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-    </z-table>
+    <slot-table :data="inputSlots"></slot-table>
     <div class="component-header">Input Events</div>
-    <z-table :data="inputEvents">
-      <z-table-column prop="name" label="事件名"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="params" label="回调参数"></z-table-column>
-    </z-table>
+    <event-table :data="inputEvents"></event-table>
   </div>
 </template>
 
 <script setup>
-const codes = {
-  general: `<z-input placeholder="请输入"></z-input>`,
-  disabled: `<z-input placeholder="请输入" disabled></z-input>`,
-  clearable: `<z-input placeholder="请输入" clearable></z-input>`,
-  password: `<z-input placeholder="请输入密码" type="password"></z-input>`,
-  affix: `<z-input placeholder="请输入" suffix-icon="info"></z-input>
-<z-input placeholder="请输入" prefix-icon="info"></z-input>
-<z-input placeholder="请输入">
+import { computed } from 'vue'
+import { $t } from '@/locale'
+
+const codes = computed(() => ({
+  general: `<z-input placeholder="${$t('component.input.placeholder')}"></z-input>`,
+  disabled: `<z-input placeholder="${$t('component.input.placeholder')}" disabled></z-input>`,
+  clearable: `<z-input placeholder="${$t('component.input.placeholder')}" clearable></z-input>`,
+  password: `<z-input placeholder="${$t('component.input.pwd-placeholder')}" type="password"></z-input>`,
+  affix: `<z-input placeholder="${$t('component.input.placeholder')}" suffix-icon="info"></z-input>
+<z-input placeholder="${$t('component.input.placeholder')}" prefix-icon="info"></z-input>
+<z-input placeholder="${$t('component.input.placeholder')}">
   <template #prefix>http(s)://</template>
   <template #suffix>.com</template>
 </z-input>`,
-  compact: `<z-input placeholder="验证码">
+  compact: `<z-input placeholder="${$t('component.input.combined-code')}">
   <template #append>
-    <z-button>发送</z-button>
+    <z-button>${$t('component.input.combined-send')}</z-button>
   </template>
 </z-input>`,
-  size: `<z-input size="extra" placeholder="请输入" suffix-icon="info"></z-input>
-<z-input size="large" placeholder="请输入" suffix-icon="info"></z-input>
-<z-input placeholder="请输入" suffix-icon="info"></z-input>
-<z-input size="small" placeholder="请输入" suffix-icon="info"></z-input>
-<z-input size="mini" placeholder="请输入" suffix-icon="info"></z-input>`,
-}
-const inputAttributes = [{
+  size: `<z-input size="extra" placeholder="${$t('component.input.placeholder')}" suffix-icon="info"></z-input>
+<z-input size="large" placeholder="${$t('component.input.placeholder')}" suffix-icon="info"></z-input>
+<z-input placeholder="${$t('component.input.placeholder')}" suffix-icon="info"></z-input>
+<z-input size="small" placeholder="${$t('component.input.placeholder')}" suffix-icon="info"></z-input>
+<z-input size="mini" placeholder="${$t('component.input.placeholder')}" suffix-icon="info"></z-input>`,
+}))
+const inputAttributes = computed(() => [{
   prop: 'v-model',
-  desc: '绑定值',
+  desc: $t('attribute.input.v-model'),
   type: 'string / number'
 }, {
   prop: 'type',
-  desc: '类型',
+  desc: $t('attribute.input.type'),
   type: 'string',
-  values: 'text 和其他原生 input 的 type 值',
+  values: $t('attribute.input.type-values'),
   default: 'text'
 }, {
   prop: 'disabled',
-  desc: '是否禁用',
+  desc: $t('attribute.input.disabled'),
   type: 'boolean',
   default: 'false'
 }, {
   prop: 'name',
-  desc: '原生属性',
+  desc: $t('attribute.input.name'),
   type: 'string'
 }, {
   prop: 'tabindex',
-  desc: '原生属性',
+  desc: $t('attribute.input.tabindex'),
   type: 'string / number'
 }, {
   prop: 'maxlength',
-  desc: '原生属性',
+  desc: $t('attribute.input.maxlength'),
   type: 'string / number'
 }, {
   prop: 'minlength',
-  desc: '原生属性',
+  desc: $t('attribute.input.minlength'),
   type: 'string / number'
 }, {
   prop: 'placeholder',
-  desc: '输入框占位文本',
+  desc: $t('attribute.input.placeholder'),
   type: 'string'
 }, {
   prop: 'clearable',
-  desc: '是否可清空',
+  desc: $t('attribute.input.clearable'),
   type: 'boolean',
   default: 'false'
 }, {
   prop: 'size',
-  desc: '输入框尺寸',
+  desc: $t('attribute.input.size'),
   type: 'string',
   values: 'extra / large / small / mini'
 }, {
   prop: 'prefix-icon',
-  desc: '输入框头部图标',
+  desc: $t('attribute.input.prefix-icon'),
   type: 'string'
 }, {
   prop: 'suffix-icon',
-  desc: '输入框尾部图标',
+  desc: $t('attribute.input.suffix-icon'),
   type: 'string'
 }, {
   prop: 'autocomplete',
-  desc: '原生属性',
+  desc: $t('attribute.input.autocomplete'),
   type: 'string',
   values: 'on / off',
   default: 'off'
 }, {
   prop: 'autofocus',
-  desc: '原生属性',
+  desc: $t('attribute.input.autofocus'),
   type: 'boolean',
   default: 'false'
 }, {
   prop: 'readonly',
-  desc: '原生属性',
+  desc: $t('attribute.input.readonly'),
   type: 'boolean',
   default: 'false'
 }, {
   prop: 'text-align',
-  desc: '输入框文字对齐方式',
+  desc: $t('attribute.input.text-align'),
   type: 'string',
-  values: '同 css 中 text-align 的值'
-}]
-const inputEvents = [{
+  values: $t('attribute.input.text-align-values')
+}])
+const inputEvents = computed(() => [{
   name: 'blur',
-  desc: 'input 失去焦点',
+  desc: $t('event.input.blur'),
   params: '(e: Event)'
 }, {
   name: 'focus',
-  desc: 'input 获得焦点',
+  desc: $t('event.input.focus'),
   params: '(e: Event)'
 }, {
   name: 'change',
-  desc: 'input 内容改变',
+  desc: $t('event.input.change'),
   params: '(value: string | number)'
 }, {
   name: 'input',
-  desc: 'input 的值改变',
+  desc: $t('event.input.input'),
   params: '(value: string | number)'
 }, {
   name: 'clear',
-  desc: 'input 点击清空'
-}]
-const inputSlots = [{
+  desc: $t('event.input.clear')
+}])
+const inputSlots = computed(() => [{
   name: 'prefix',
-  desc: '输入框头部内容'
+  desc: $t('slot.input.prefix')
 }, {
   name: 'suffix',
-  desc: '输入框尾部内容'
+  desc: $t('slot.input.suffix')
 }, {
   name: 'prepend',
-  desc: '输入框前置内容'
+  desc: $t('slot.input.prepend')
 }, {
   name: 'append',
-  desc: '输入框后置内容'
-}]
+  desc: $t('slot.input.append')
+}])
 </script>
 
 <style scoped>

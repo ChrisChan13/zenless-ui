@@ -1,18 +1,24 @@
 <template>
   <div class="source-code">
-    <div ref="codeRef" :class="['source-code-content', { 'is-visible': !collapse || isOpen }]"></div>
+    <z-scrollbar :fixed="false">
+      <div ref="codeRef" :class="['source-code-content', { 'is-visible': !collapse || isOpen }]"></div>
+    </z-scrollbar>
     <div v-if="collapse" :class="['source-code-expand', { 'is-sticky': isOpen }]" @click="isOpen = !isOpen">
       <i :class="[{
         'z-icon-caret-bottom': !isOpen,
         'z-icon-caret-top': isOpen
       }]"></i>
-      <span>{{ isOpen ? '隐藏' : '显示' }}代码</span>
+      <span>{{ isOpen ? $t('global.code.hide') : $t('global.code.show') }}</span>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, watchEffect } from 'vue'
+
+defineOptions({
+  name: 'SourceCode'
+})
 
 const props = defineProps({
   code: String,

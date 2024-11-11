@@ -9,8 +9,17 @@
               <span>Zenless</span>
             </router-link>
             <div class="nav">
-              <z-link class="nav-item" target="_blank" rel="noreferrer" href="https://github.com/ChrisChan13/zenless-ui">
-                <z-button hollow>
+              <div class="nav-item">
+                <z-tooltip :content="$t('layout.lang')" placement="bottom">
+                  <z-button class="lang" circle :highlight="translated" @click="switchLanguage">
+                    <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24">
+                      <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"></path>
+                    </svg>
+                  </z-button>
+                </z-tooltip>
+              </div>
+              <z-link class="nav-item" target="_blank" href="https://github.com/ChrisChan13/zenless-ui">
+                <z-button class="github">
                   <svg class="nav-icon" width="24" height="24" viewBox="0 0 24 24">
                     <path d="M12.5.75C6.146.75 1 5.896 1 12.25c0 5.089 3.292 9.387 7.863 10.91.575.101.79-.244.79-.546 0-.273-.014-1.178-.014-2.142-2.889.532-3.636-.704-3.866-1.35-.13-.331-.69-1.352-1.18-1.625-.402-.216-.977-.748-.014-.762.906-.014 1.553.834 1.769 1.179 1.035 1.74 2.688 1.25 3.349.948.1-.747.402-1.25.733-1.538-2.559-.287-5.232-1.279-5.232-5.678 0-1.25.445-2.285 1.178-3.09-.115-.288-.517-1.467.115-3.048 0 0 .963-.302 3.163 1.179.92-.259 1.897-.388 2.875-.388.977 0 1.955.13 2.875.388 2.2-1.495 3.162-1.179 3.162-1.179.633 1.581.23 2.76.115 3.048.733.805 1.179 1.825 1.179 3.09 0 4.413-2.688 5.39-5.247 5.678.417.36.776 1.05.776 2.128 0 1.538-.014 2.774-.014 3.162 0 .302.216.662.79.547C20.709 21.637 24 17.324 24 12.25 24 5.896 18.854.75 12.5.75Z"></path>
                   </svg>
@@ -28,56 +37,56 @@
           class="side-nav"
           @change="onMenuChange"
         >
-          <!-- <z-menu-item name="changelog">更新日志</z-menu-item> -->
-          <z-menu-item name="getting-started">快速上手</z-menu-item>
-          <z-sub-menu name="component-general" title="通用组件">
-            <z-menu-item name="component-icon">Icon 图标</z-menu-item>
-            <z-menu-item name="component-button">Button 按钮</z-menu-item>
-            <z-menu-item name="component-link">Link 链接</z-menu-item>
+          <!-- <z-menu-item name="changelog">{{ $t('layout.menu.changelog') }}</z-menu-item> -->
+          <z-menu-item name="getting-started">{{ $t('layout.menu.getting-started') }}</z-menu-item>
+          <z-sub-menu name="component-general" :title="$t('layout.menu.general')">
+            <z-menu-item name="component-icon">{{ $t('layout.menu.icon') }}</z-menu-item>
+            <z-menu-item name="component-button">{{ $t('layout.menu.button') }}</z-menu-item>
+            <z-menu-item name="component-link">{{ $t('layout.menu.link') }}</z-menu-item>
           </z-sub-menu>
-          <z-sub-menu name="component-navigation" title="导航组件">
-            <z-menu-item name="component-menu">Menu 导航菜单</z-menu-item>
-            <z-menu-item name="component-tabs">Tabs 标签页</z-menu-item>
-            <z-menu-item name="component-dropdown">Dropdown 下拉菜单</z-menu-item>
-            <z-menu-item name="component-pagination">Pagination 分页</z-menu-item>
+          <z-sub-menu name="component-navigation" :title="$t('layout.menu.navigation')">
+            <z-menu-item name="component-menu">{{ $t('layout.menu.menu') }}</z-menu-item>
+            <z-menu-item name="component-tabs">{{ $t('layout.menu.tabs') }}</z-menu-item>
+            <z-menu-item name="component-dropdown">{{ $t('layout.menu.dropdown') }}</z-menu-item>
+            <z-menu-item name="component-pagination">{{ $t('layout.menu.pagination') }}</z-menu-item>
           </z-sub-menu>
-          <z-sub-menu name="component-data-entry" title="数据录入">
-            <z-menu-item name="component-radio">Radio 单选框</z-menu-item>
-            <z-menu-item name="component-checkbox">Checkbox 多选框</z-menu-item>
-            <z-menu-item name="component-input">Input 输入框</z-menu-item>
-            <z-menu-item name="component-textarea">Textarea 输入框</z-menu-item>
-            <z-menu-item name="component-select">Select 选择器</z-menu-item>
-            <z-menu-item name="component-switch">Switch 开关</z-menu-item>
-            <z-menu-item name="component-slider">Slider 滑动输入条</z-menu-item>
-            <z-menu-item name="component-form">Form 表单</z-menu-item>
+          <z-sub-menu name="component-data-entry" :title="$t('layout.menu.data-entry')">
+            <z-menu-item name="component-radio">{{ $t('layout.menu.radio') }}</z-menu-item>
+            <z-menu-item name="component-checkbox">{{ $t('layout.menu.checkbox') }}</z-menu-item>
+            <z-menu-item name="component-input">{{ $t('layout.menu.input') }}</z-menu-item>
+            <z-menu-item name="component-textarea">{{ $t('layout.menu.textarea') }}</z-menu-item>
+            <z-menu-item name="component-select">{{ $t('layout.menu.select') }}</z-menu-item>
+            <z-menu-item name="component-switch">{{ $t('layout.menu.switch') }}</z-menu-item>
+            <z-menu-item name="component-slider">{{ $t('layout.menu.slider') }}</z-menu-item>
+            <z-menu-item name="component-form">{{ $t('layout.menu.form') }}</z-menu-item>
           </z-sub-menu>
-          <z-sub-menu name="component-data-display" title="数据展示">
-            <z-menu-item name="component-table">Table 表格</z-menu-item>
-            <z-menu-item name="component-tag">Tag 标签</z-menu-item>
-            <z-menu-item name="component-progress">Progress 进度条</z-menu-item>
-            <z-menu-item name="component-badge">Badge 徽标</z-menu-item>
-            <z-menu-item name="component-card">Card 卡片</z-menu-item>
-            <z-menu-item name="component-collapse">Collapse 折叠面板</z-menu-item>
+          <z-sub-menu name="component-data-display" :title="$t('layout.menu.data-display')">
+            <z-menu-item name="component-table">{{ $t('layout.menu.table') }}</z-menu-item>
+            <z-menu-item name="component-tag">{{ $t('layout.menu.tag') }}</z-menu-item>
+            <z-menu-item name="component-progress">{{ $t('layout.menu.progress') }}</z-menu-item>
+            <z-menu-item name="component-badge">{{ $t('layout.menu.badge') }}</z-menu-item>
+            <z-menu-item name="component-card">{{ $t('layout.menu.card') }}</z-menu-item>
+            <z-menu-item name="component-collapse">{{ $t('layout.menu.collapse') }}</z-menu-item>
           </z-sub-menu>
-          <z-sub-menu name="component-feedback" title="交互反馈">
-            <z-menu-item name="component-tooltip">Tooltip 文字提示</z-menu-item>
-            <z-menu-item name="component-message">Message 消息提示</z-menu-item>
-            <z-menu-item name="component-modal">Modal 对话框</z-menu-item>
-            <z-menu-item name="component-drawer">Drawer 抽屉</z-menu-item>
+          <z-sub-menu name="component-feedback" :title="$t('layout.menu.feedback')">
+            <z-menu-item name="component-tooltip">{{ $t('layout.menu.tooltip') }}</z-menu-item>
+            <z-menu-item name="component-message">{{ $t('layout.menu.message') }}</z-menu-item>
+            <z-menu-item name="component-modal">{{ $t('layout.menu.modal') }}</z-menu-item>
+            <z-menu-item name="component-drawer">{{ $t('layout.menu.drawer') }}</z-menu-item>
           </z-sub-menu>
-          <z-sub-menu name="component-other" title="其他组件">
-            <z-menu-item name="component-scrollbar">Scrollbar 滚动视图</z-menu-item>
-            <z-menu-item name="component-backtop">Backtop 回到顶部</z-menu-item>
+          <z-sub-menu name="component-other" :title="$t('layout.menu.other')">
+            <z-menu-item name="component-scrollbar">{{ $t('layout.menu.scrollbar') }}</z-menu-item>
+            <z-menu-item name="component-backtop">{{ $t('layout.menu.backtop') }}</z-menu-item>
           </z-sub-menu>
         </z-menu>
         <router-view></router-view>
       </div>
     </z-scrollbar>
     <div class="float-btn">
-      <z-tooltip content="全局斜体" placement="left">
+      <z-tooltip :content="$t('layout.float.italic')" placement="left">
         <z-button circle icon="italic" size="extra" :highlight="zenless.isItalic" @click="switchFontStyle"></z-button>
       </z-tooltip>
-      <z-tooltip content="全局粗体" placement="left">
+      <z-tooltip :content="$t('layout.float.bold')" placement="left">
         <z-button circle icon="bold" size="extra" :highlight="zenless.isBold" @click="switchFontWeight"></z-button>
       </z-tooltip>
     </div>
@@ -86,17 +95,20 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { useZenless } from 'zenless-ui'
+import { useZenless, locale } from 'zenless-ui'
+import * as i18n from '@/locale'
 
 const router = useRouter()
 const route = useRoute()
 const zenless = useZenless()
+const i18nCtx = i18n.useI18n()
 
 const routeName = ref(route.name)
 const scrollBarRef = ref(null)
 const defaultOpen = ['component-general', 'component-navigation', 'component-data-entry', 'component-data-display', 'component-feedback', 'component-other']
+const translated = ref(false)
 
 const scrollTarget = computed(() => {
   if (scrollBarRef.value) {
@@ -107,14 +119,34 @@ watch(() => route.name, (value) => {
   routeName.value = value
 })
 
+onMounted(() => {
+  if (route.query.lang === 'en') {
+    localStorage.setItem('page_translated', true)
+  }
+  translated.value = localStorage.getItem('page_translated') === 'true'
+  zenless.locale = translated.value ? locale.en : locale.zhCn
+  i18nCtx.value = translated.value ? i18n.en : i18n.zhCn
+  const isItalic = localStorage.getItem('component_is_italic')
+  zenless.isItalic = isItalic === null || isItalic === 'true'
+  zenless.isBold =  localStorage.getItem('component_is_bold') === 'true'
+})
+
 const onMenuChange = (name) => {
   router.push({ name })
 }
 const switchFontStyle = () => {
   zenless.isItalic = !zenless.isItalic
+  localStorage.setItem('component_is_italic', zenless.isItalic)
 }
 const switchFontWeight = () => {
   zenless.isBold = !zenless.isBold
+  localStorage.setItem('component_is_bold', zenless.isBold)
+}
+const switchLanguage = () => {
+  translated.value = !translated.value
+  zenless.locale = translated.value ? locale.en : locale.zhCn
+  i18nCtx.value = translated.value ? i18n.en : i18n.zhCn
+  localStorage.setItem('page_translated', translated.value)
 }
 </script>
 
@@ -183,17 +215,17 @@ const switchFontWeight = () => {
     &-item {
       margin-left: 10px;
       border-radius: $--round-border-radius;
+      .github:has(.nav-icon) {
+        padding-left: 58px;
+      }
+      .lang .nav-icon {
+        left: 8px;
+      }
     }
     &-icon {
       position: absolute;
       left: 7px;
-      fill: #fff;
-    }
-    .z-button:has(.nav-icon) {
-      padding-left: 58px;
-      &:active .nav-icon {
-        fill: #000;
-      }
+      fill: currentColor;
     }
   }
 }

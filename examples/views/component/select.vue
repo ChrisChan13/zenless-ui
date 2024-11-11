@@ -1,244 +1,232 @@
 <template>
   <div class="component">
-    <div class="component-title">Select 选择器</div>
-    <div class="component-header">基础用法</div>
+    <div class="component-title">{{ $t('component.select.title') }}</div>
+    <div class="component-header">{{ $t('component.select.usage') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-select placeholder="请选择">
-          <z-option value="30" label="等级 Lv.30"></z-option>
-          <z-option value="40" label="等级 Lv.40"></z-option>
-          <z-option value="50" label="等级 Lv.50"></z-option>
-          <z-option value="60" label="等级 Lv.60" disabled></z-option>
+        <z-select :placeholder="$t('component.select.placeholder')">
+          <z-option value="30" :label="$t('component.select.opt-1')"></z-option>
+          <z-option value="40" :label="$t('component.select.opt-2')"></z-option>
+          <z-option value="50" :label="$t('component.select.opt-3')"></z-option>
+          <z-option value="60" :label="$t('component.select.opt-4')" disabled></z-option>
         </z-select>
       </div>
       <source-code collapse :code="codes.general"></source-code>
     </div>
-    <div class="component-header">禁用状态</div>
+    <div class="component-header">{{ $t('component.select.disabled') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-select placeholder="请选择" disabled>
-          <z-option value="30" label="等级 Lv.30"></z-option>
-          <z-option value="40" label="等级 Lv.40"></z-option>
-          <z-option value="50" label="等级 Lv.50"></z-option>
-          <z-option value="60" label="等级 Lv.60" disabled></z-option>
+        <z-select :placeholder="$t('component.select.placeholder')" disabled>
+          <z-option value="30" :label="$t('component.select.opt-1')"></z-option>
+          <z-option value="40" :label="$t('component.select.opt-2')"></z-option>
+          <z-option value="50" :label="$t('component.select.opt-3')"></z-option>
+          <z-option value="60" :label="$t('component.select.opt-4')" disabled></z-option>
         </z-select>
       </div>
       <source-code collapse :code="codes.disabled"></source-code>
     </div>
-    <div class="component-header">可清空</div>
+    <div class="component-header">{{ $t('component.select.clearable') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-select placeholder="请选择" clearable>
-          <z-option value="30" label="等级 Lv.30"></z-option>
-          <z-option value="40" label="等级 Lv.40"></z-option>
-          <z-option value="50" label="等级 Lv.50"></z-option>
-          <z-option value="60" label="等级 Lv.60" disabled></z-option>
+        <z-select :placeholder="$t('component.select.placeholder')" clearable>
+          <z-option value="30" :label="$t('component.select.opt-1')"></z-option>
+          <z-option value="40" :label="$t('component.select.opt-2')"></z-option>
+          <z-option value="50" :label="$t('component.select.opt-3')"></z-option>
+          <z-option value="60" :label="$t('component.select.opt-4')" disabled></z-option>
         </z-select>
       </div>
       <source-code collapse :code="codes.clearable"></source-code>
     </div>
-    <div class="component-header">自定义模板</div>
+    <div class="component-header">{{ $t('component.select.custom') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-select placeholder="请选择">
-          <z-option value="30" label="等级 Lv.30">
+        <z-select :placeholder="$t('component.select.placeholder')">
+          <z-option value="30" :label="$t('component.select.opt-1')">
             <i class="z-icon-info"></i>
-            <span style="margin-left: 5px;">等级 Lv.30</span>
+            <span style="margin-left: 5px;">{{ $t('component.select.opt-1') }}</span>
           </z-option>
-          <z-option value="40" label="等级 Lv.40"></z-option>
-          <z-option value="50" label="等级 Lv.50"></z-option>
-          <z-option value="60" label="等级 Lv.60" disabled></z-option>
+          <z-option value="40" :label="$t('component.select.opt-2')"></z-option>
+          <z-option value="50" :label="$t('component.select.opt-3')"></z-option>
+          <z-option value="60" :label="$t('component.select.opt-4')" disabled></z-option>
         </z-select>
       </div>
       <source-code collapse :code="codes.custom"></source-code>
     </div>
-    <div class="component-header">不同尺寸</div>
+    <div class="component-header">{{ $t('component.select.size') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-select placeholder="请选择" size="extra">
-          <z-option value="30" label="等级 Lv.30"></z-option>
-          <z-option value="40" label="等级 Lv.40"></z-option>
-          <z-option value="50" label="等级 Lv.50"></z-option>
-          <z-option value="60" label="等级 Lv.60" disabled></z-option>
+        <z-select :placeholder="$t('component.select.placeholder')" size="extra">
+          <z-option value="30" :label="$t('component.select.opt-1')"></z-option>
+          <z-option value="40" :label="$t('component.select.opt-2')"></z-option>
+          <z-option value="50" :label="$t('component.select.opt-3')"></z-option>
+          <z-option value="60" :label="$t('component.select.opt-4')" disabled></z-option>
         </z-select>
-        <z-select placeholder="请选择" size="large">
-          <z-option value="30" label="等级 Lv.30"></z-option>
-          <z-option value="40" label="等级 Lv.40"></z-option>
-          <z-option value="50" label="等级 Lv.50"></z-option>
-          <z-option value="60" label="等级 Lv.60" disabled></z-option>
+        <z-select :placeholder="$t('component.select.placeholder')" size="large">
+          <z-option value="30" :label="$t('component.select.opt-1')"></z-option>
+          <z-option value="40" :label="$t('component.select.opt-2')"></z-option>
+          <z-option value="50" :label="$t('component.select.opt-3')"></z-option>
+          <z-option value="60" :label="$t('component.select.opt-4')" disabled></z-option>
         </z-select>
       </div>
       <div class="component-preview-line">
-        <z-select placeholder="请选择">
-          <z-option value="30" label="等级 Lv.30"></z-option>
-          <z-option value="40" label="等级 Lv.40"></z-option>
-          <z-option value="50" label="等级 Lv.50"></z-option>
-          <z-option value="60" label="等级 Lv.60" disabled></z-option>
+        <z-select :placeholder="$t('component.select.placeholder')">
+          <z-option value="30" :label="$t('component.select.opt-1')"></z-option>
+          <z-option value="40" :label="$t('component.select.opt-2')"></z-option>
+          <z-option value="50" :label="$t('component.select.opt-3')"></z-option>
+          <z-option value="60" :label="$t('component.select.opt-4')" disabled></z-option>
         </z-select>
-        <z-select placeholder="请选择" size="small">
-          <z-option value="30" label="等级 Lv.30"></z-option>
-          <z-option value="40" label="等级 Lv.40"></z-option>
-          <z-option value="50" label="等级 Lv.50"></z-option>
-          <z-option value="60" label="等级 Lv.60" disabled></z-option>
+        <z-select :placeholder="$t('component.select.placeholder')" size="small">
+          <z-option value="30" :label="$t('component.select.opt-1')"></z-option>
+          <z-option value="40" :label="$t('component.select.opt-2')"></z-option>
+          <z-option value="50" :label="$t('component.select.opt-3')"></z-option>
+          <z-option value="60" :label="$t('component.select.opt-4')" disabled></z-option>
         </z-select>
-        <z-select placeholder="请选择" size="mini">
-          <z-option value="30" label="等级 Lv.30"></z-option>
-          <z-option value="40" label="等级 Lv.40"></z-option>
-          <z-option value="50" label="等级 Lv.50"></z-option>
-          <z-option value="60" label="等级 Lv.60" disabled></z-option>
+        <z-select :placeholder="$t('component.select.placeholder')" size="mini">
+          <z-option value="30" :label="$t('component.select.opt-1')"></z-option>
+          <z-option value="40" :label="$t('component.select.opt-2')"></z-option>
+          <z-option value="50" :label="$t('component.select.opt-3')"></z-option>
+          <z-option value="60" :label="$t('component.select.opt-4')" disabled></z-option>
         </z-select>
       </div>
       <source-code collapse :code="codes.size"></source-code>
     </div>
     <div class="component-header">Select Attributes</div>
-    <z-table :data="selectAttributes">
-      <z-table-column prop="prop" label="参数"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="type" label="类型"></z-table-column>
-      <z-table-column prop="values" label="可选值"></z-table-column>
-      <z-table-column prop="default" label="默认值"></z-table-column>
-    </z-table>
+    <attribute-table :data="selectAttributes"></attribute-table>
     <div class="component-header">Select Slots</div>
-    <z-table :data="selectSlots">
-      <z-table-column prop="name" label="name"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-    </z-table>
+    <slot-table :data="selectSlots"></slot-table>
     <div class="component-header">Select Events</div>
-    <z-table :data="selectEvents">
-      <z-table-column prop="name" label="事件名"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="params" label="回调参数"></z-table-column>
-    </z-table>
+    <event-table :data="selectEvents"></event-table>
     <div class="component-header">Option Attributes</div>
-    <z-table :data="optionAttributes">
-      <z-table-column prop="prop" label="参数"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="type" label="类型"></z-table-column>
-      <z-table-column prop="values" label="可选值"></z-table-column>
-      <z-table-column prop="default" label="默认值"></z-table-column>
-    </z-table>
+    <attribute-table :data="optionAttributes"></attribute-table>
   </div>
 </template>
 
 <script setup>
-const codes = {
-  general: `<z-select placeholder="请选择">
-  <z-option value="30" label="等级 Lv.30"></z-option>
-  <z-option value="40" label="等级 Lv.40"></z-option>
-  <z-option value="50" label="等级 Lv.50"></z-option>
-  <z-option value="60" label="等级 Lv.60" disabled></z-option>
+import { computed } from 'vue'
+import { $t } from '@/locale'
+
+const codes = computed(() => ({
+  general: `<z-select placeholder="${$t('component.select.placeholder')}">
+  <z-option value="30" label="${$t('component.select.opt-1')}"></z-option>
+  <z-option value="40" label="${$t('component.select.opt-2')}"></z-option>
+  <z-option value="50" label="${$t('component.select.opt-3')}"></z-option>
+  <z-option value="60" label="${$t('component.select.opt-4')}" disabled></z-option>
 </z-select>`,
-  disabled: `<z-select placeholder="请选择" disabled>
-  <z-option value="30" label="等级 Lv.30"></z-option>
-  <z-option value="40" label="等级 Lv.40"></z-option>
-  <z-option value="50" label="等级 Lv.50"></z-option>
-  <z-option value="60" label="等级 Lv.60" disabled></z-option>
+  disabled: `<z-select placeholder="${$t('component.select.placeholder')}" disabled>
+  <z-option value="30" label="${$t('component.select.opt-1')}"></z-option>
+  <z-option value="40" label="${$t('component.select.opt-2')}"></z-option>
+  <z-option value="50" label="${$t('component.select.opt-3')}"></z-option>
+  <z-option value="60" label="${$t('component.select.opt-4')}" disabled></z-option>
 </z-select>`,
-  clearable: `<z-select placeholder="请选择" clearable>
-  <z-option value="30" label="等级 Lv.30"></z-option>
-  <z-option value="40" label="等级 Lv.40"></z-option>
-  <z-option value="50" label="等级 Lv.50"></z-option>
-  <z-option value="60" label="等级 Lv.60" disabled></z-option>
+  clearable: `<z-select placeholder="${$t('component.select.placeholder')}" clearable>
+  <z-option value="30" label="${$t('component.select.opt-1')}"></z-option>
+  <z-option value="40" label="${$t('component.select.opt-2')}"></z-option>
+  <z-option value="50" label="${$t('component.select.opt-3')}"></z-option>
+  <z-option value="60" label="${$t('component.select.opt-4')}" disabled></z-option>
 </z-select>`,
-  custom: `<z-select placeholder="请选择">
-  <z-option value="30" label="等级 Lv.30">
+  custom: `<z-select placeholder="${$t('component.select.placeholder')}">
+  <z-option value="30" label="${$t('component.select.opt-1')}">
     <i class="z-icon-info"></i>
-    <span style="margin-left: 5px;">等级 Lv.30</span>
+    <span style="margin-left: 5px;">${$t('component.select.opt-1')}</span>
   </z-option>
-  <z-option value="40" label="等级 Lv.40"></z-option>
-  <z-option value="50" label="等级 Lv.50"></z-option>
-  <z-option value="60" label="等级 Lv.60" disabled></z-option>
+  <z-option value="40" label="${$t('component.select.opt-2')}"></z-option>
+  <z-option value="50" label="${$t('component.select.opt-3')}"></z-option>
+  <z-option value="60" label="${$t('component.select.opt-4')}" disabled></z-option>
 </z-select>`,
-  size: `<z-select placeholder="请选择" size="extra">
-  <z-option value="30" label="等级 Lv.30"></z-option>
-  <z-option value="40" label="等级 Lv.40"></z-option>
-  <z-option value="50" label="等级 Lv.50"></z-option>
-  <z-option value="60" label="等级 Lv.60" disabled></z-option>
+  size: `<z-select placeholder="${$t('component.select.placeholder')}" size="extra">
+  <z-option value="30" label="${$t('component.select.opt-1')}"></z-option>
+  <z-option value="40" label="${$t('component.select.opt-2')}"></z-option>
+  <z-option value="50" label="${$t('component.select.opt-3')}"></z-option>
+  <z-option value="60" label="${$t('component.select.opt-4')}" disabled></z-option>
 </z-select>
-<z-select placeholder="请选择" size="large">
-  <z-option value="30" label="等级 Lv.30"></z-option>
-  <z-option value="40" label="等级 Lv.40"></z-option>
-  <z-option value="50" label="等级 Lv.50"></z-option>
-  <z-option value="60" label="等级 Lv.60" disabled></z-option>
+<z-select placeholder="${$t('component.select.placeholder')}" size="large">
+  <z-option value="30" label="${$t('component.select.opt-1')}"></z-option>
+  <z-option value="40" label="${$t('component.select.opt-2')}"></z-option>
+  <z-option value="50" label="${$t('component.select.opt-3')}"></z-option>
+  <z-option value="60" label="${$t('component.select.opt-4')}" disabled></z-option>
 </z-select>
-<z-select placeholder="请选择">
-  <z-option value="30" label="等级 Lv.30"></z-option>
-  <z-option value="40" label="等级 Lv.40"></z-option>
-  <z-option value="50" label="等级 Lv.50"></z-option>
-  <z-option value="60" label="等级 Lv.60" disabled></z-option>
+<z-select placeholder="${$t('component.select.placeholder')}">
+  <z-option value="30" label="${$t('component.select.opt-1')}"></z-option>
+  <z-option value="40" label="${$t('component.select.opt-2')}"></z-option>
+  <z-option value="50" label="${$t('component.select.opt-3')}"></z-option>
+  <z-option value="60" label="${$t('component.select.opt-4')}" disabled></z-option>
 </z-select>
-<z-select placeholder="请选择" size="small">
-  <z-option value="30" label="等级 Lv.30"></z-option>
-  <z-option value="40" label="等级 Lv.40"></z-option>
-  <z-option value="50" label="等级 Lv.50"></z-option>
-  <z-option value="60" label="等级 Lv.60" disabled></z-option>
+<z-select placeholder="${$t('component.select.placeholder')}" size="small">
+  <z-option value="30" label="${$t('component.select.opt-1')}"></z-option>
+  <z-option value="40" label="${$t('component.select.opt-2')}"></z-option>
+  <z-option value="50" label="${$t('component.select.opt-3')}"></z-option>
+  <z-option value="60" label="${$t('component.select.opt-4')}" disabled></z-option>
 </z-select>
-<z-select placeholder="请选择" size="mini">
-  <z-option value="30" label="等级 Lv.30"></z-option>
-  <z-option value="40" label="等级 Lv.40"></z-option>
-  <z-option value="50" label="等级 Lv.50"></z-option>
-  <z-option value="60" label="等级 Lv.60" disabled></z-option>
+<z-select placeholder="${$t('component.select.placeholder')}" size="mini">
+  <z-option value="30" label="${$t('component.select.opt-1')}"></z-option>
+  <z-option value="40" label="${$t('component.select.opt-2')}"></z-option>
+  <z-option value="50" label="${$t('component.select.opt-3')}"></z-option>
+  <z-option value="60" label="${$t('component.select.opt-4')}" disabled></z-option>
 </z-select>`
-}
-const selectAttributes = [{
+}))
+const selectAttributes = computed(() => [{
+  prop: 'v-model',
+  desc: $t('attribute.select.v-model'),
+  type: 'string / number'
+}, {
   prop: 'name',
-  desc: '选择器的 name 属性',
+  desc: $t('attribute.select.name'),
   type: 'string'
 }, {
   prop: 'disabled',
-  desc: '是否禁用',
+  desc: $t('attribute.select.disabled'),
   type: 'boolean',
   default: 'false'
 }, {
   prop: 'placeholder',
-  desc: '占位符',
+  desc: $t('attribute.select.placeholder'),
   type: 'string'
 }, {
   prop: 'clearable',
-  desc: '是否可清空',
+  desc: $t('attribute.select.clearable'),
   type: 'boolean',
   default: 'false'
 }, {
   prop: 'size',
-  desc: '选择器的尺寸',
+  desc: $t('attribute.select.size'),
   type: 'string',
   values: 'extra / large / small / mini'
 }, {
   prop: 'empty-text',
-  desc: '选项为空时显示的文字',
+  desc: $t('attribute.select.empty-text'),
   type: 'string',
-  default: '暂无数据... \\[ o_x ]/'
-}]
-const selectSlots = [{
+  default: $t('attribute.select.empty-text-default')
+}])
+const selectSlots = computed(() => [{
   name: 'default',
-  desc: 'option 列表'
+  desc: $t('slot.select.default')
 }, {
   name: 'empty',
-  desc: '选项为空时显示的内容'
-}]
-const selectEvents = [{
+  desc: $t('slot.select.empty')
+}])
+const selectEvents = computed(() => [{
   name: 'change',
-  desc: '选中值发生变化时触发',
-  params: '当前选中的值'
+  desc: $t('event.select.change'),
+  params: $t('event.select.change-params')
 }, {
   name: 'clear',
-  desc: '点击清空时触发'
-}]
-const optionAttributes = [{
+  desc: $t('event.select.clear')
+}])
+const optionAttributes = computed(() => [{
   prop: 'value',
-  desc: '选项的值',
+  desc: $t('attribute.option.value'),
   type: 'string / number'
 }, {
   prop: 'label',
-  desc: '选项的标签',
+  desc: $t('attribute.option.label'),
   type: 'string',
-  default: '与 value 相同'
+  default: $t('attribute.option.label-default')
 }, {
   prop: 'disabled',
-  desc: '是否禁用',
+  desc: $t('attribute.option.disabled'),
   type: 'boolean',
   default: 'false'
-}]
+}])
 </script>
 
 <style scoped>

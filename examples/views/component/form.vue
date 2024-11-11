@@ -1,19 +1,19 @@
 <template>
   <div class="component">
-    <div class="component-title">Form 表单</div>
-    <div class="component-header">基础用法</div>
+    <div class="component-title">{{ $t('component.form.title') }}</div>
+    <div class="component-header">{{ $t('component.form.usage') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
         <z-form label-width="100px" style="width: 500px;">
           <z-form-item label="Input">
-            <z-input placeholder="请输入"></z-input>
+            <z-input :placeholder="$t('component.input.placeholder')"></z-input>
           </z-form-item>
           <z-form-item label="Select" style="width: 350px;">
-            <z-select placeholder="请选择">
-              <z-option value="30" label="等级 Lv.30"></z-option>
-              <z-option value="40" label="等级 Lv.40"></z-option>
-              <z-option value="50" label="等级 Lv.50"></z-option>
-              <z-option value="60" label="等级 Lv.60"></z-option>
+            <z-select :placeholder="$t('component.select.placeholder')">
+              <z-option value="30" :label="$t('component.select.opt-1')"></z-option>
+              <z-option value="40" :label="$t('component.select.opt-2')"></z-option>
+              <z-option value="50" :label="$t('component.select.opt-3')"></z-option>
+              <z-option value="60" :label="$t('component.select.opt-4')"></z-option>
             </z-select>
           </z-form-item>
           <z-form-item label="Switch">
@@ -21,22 +21,22 @@
           </z-form-item>
           <z-form-item label="Radio">
             <z-radio-group>
-              <z-radio value="1">备选项</z-radio>
-              <z-radio value="2">备选项</z-radio>
+              <z-radio value="1">{{ $t('component.radio.opt-1') }}</z-radio>
+              <z-radio value="2">{{ $t('component.radio.opt-2') }}</z-radio>
             </z-radio-group>
           </z-form-item>
           <z-form-item label="Checkbox">
             <z-checkbox-group>
-              <z-checkbox value="1">备选项</z-checkbox>
-              <z-checkbox value="2">备选项</z-checkbox>
-              <z-checkbox value="3">备选项</z-checkbox>
+              <z-checkbox value="1">{{ $t('component.checkbox.opt-1') }}</z-checkbox>
+              <z-checkbox value="2">{{ $t('component.checkbox.opt-2') }}</z-checkbox>
+              <z-checkbox value="3">{{ $t('component.checkbox.opt-3') }}</z-checkbox>
             </z-checkbox-group>
           </z-form-item>
           <z-form-item label="Slider">
             <z-slider></z-slider>
           </z-form-item>
           <z-form-item label="Textarea">
-            <z-textarea rows="4" placeholder="请输入"></z-textarea>
+            <z-textarea rows="4" :placeholder="$t('component.textarea.placeholder')"></z-textarea>
           </z-form-item>
           <z-form-item>
             <z-button :icon="{ success: '#00cc0d' }">Submit</z-button>
@@ -46,15 +46,15 @@
       </div>
       <source-code collapse :code="codes.general"></source-code>
     </div>
-    <div class="component-header">行内表单</div>
+    <div class="component-header">{{ $t('component.form.inline') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
         <z-form inline>
           <z-form-item label="Input1">
-            <z-input placeholder="请输入" style="width: 200px"></z-input>
+            <z-input :placeholder="$t('component.input.placeholder')" style="width: 200px"></z-input>
           </z-form-item>
           <z-form-item label="Input2">
-            <z-input placeholder="请输入" style="width: 200px"></z-input>
+            <z-input :placeholder="$t('component.input.placeholder')" style="width: 200px"></z-input>
           </z-form-item>
           <z-form-item>
             <z-button :icon="{ success: '#00cc0d' }">Submit</z-button>
@@ -63,69 +63,55 @@
       </div>
       <source-code collapse :code="codes.inline"></source-code>
     </div>
-    <div class="component-header">对齐方式</div>
+    <div class="component-header">{{ $t('component.form.align') }}</div>
     <div class="component-preview is-dark">
       <div class="component-preview-line">
         <z-radio-group v-model="labelPosition">
-          <z-radio-button value="left">左对齐</z-radio-button>
-          <z-radio-button value="right">右对齐</z-radio-button>
-          <z-radio-button value="top">顶部对齐</z-radio-button>
+          <z-radio-button value="left">{{ $t('component.form.left') }}</z-radio-button>
+          <z-radio-button value="right">{{ $t('component.form.right') }}</z-radio-button>
+          <z-radio-button value="top">{{ $t('component.form.top') }}</z-radio-button>
         </z-radio-group>
       </div>
       <div class="component-preview-line">
         <z-form label-width="100px" :label-position="labelPosition" style="width: 400px;">
           <z-form-item label="Input1">
-            <z-input placeholder="请输入"></z-input>
+            <z-input :placeholder="$t('component.input.placeholder')"></z-input>
           </z-form-item>
           <z-form-item label="Input2">
-            <z-input placeholder="请输入"></z-input>
+            <z-input :placeholder="$t('component.input.placeholder')"></z-input>
           </z-form-item>
           <z-form-item label="Input3">
-            <z-input placeholder="请输入"></z-input>
+            <z-input :placeholder="$t('component.input.placeholder')"></z-input>
           </z-form-item>
         </z-form>
       </div>
       <source-code collapse :code="codes.align"></source-code>
     </div>
     <div class="component-header">Form Attributes</div>
-    <z-table :data="formAttributes">
-      <z-table-column prop="prop" label="参数"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="type" label="类型"></z-table-column>
-      <z-table-column prop="values" label="可选值"></z-table-column>
-      <z-table-column prop="default" label="默认值"></z-table-column>
-    </z-table>
+    <attribute-table :data="formAttributes"></attribute-table>
     <div class="component-header">Form-Item Attributes</div>
-    <z-table :data="formItemAttributes">
-      <z-table-column prop="prop" label="参数"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="type" label="类型"></z-table-column>
-      <z-table-column prop="values" label="可选值"></z-table-column>
-      <z-table-column prop="default" label="默认值"></z-table-column>
-    </z-table>
+    <attribute-table :data="formItemAttributes"></attribute-table>
     <div class="component-header">Form-Item Slots</div>
-    <z-table :data="formItemSlots">
-      <z-table-column prop="name" label="name"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-    </z-table>
+    <slot-table :data="formItemSlots"></slot-table>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { $t } from '@/locale'
 
 const labelPosition = ref('right')
-const codes = {
+const codes = computed(() => ({
   general: `<z-form label-width="100px" style="width: 500px;">
   <z-form-item label="Input">
-    <z-input placeholder="请输入"></z-input>
+    <z-input placeholder="${$t('component.input.placeholder')}"></z-input>
   </z-form-item>
   <z-form-item label="Select" style="width: 350px;">
-    <z-select placeholder="请选择">
-      <z-option value="30" label="等级 Lv.30"></z-option>
-      <z-option value="40" label="等级 Lv.40"></z-option>
-      <z-option value="50" label="等级 Lv.50"></z-option>
-      <z-option value="60" label="等级 Lv.60"></z-option>
+    <z-select placeholder="${$t('component.select.placeholder')}">
+      <z-option value="30" label="${$t('component.select.opt-1')}"></z-option>
+      <z-option value="40" label="${$t('component.select.opt-2')}"></z-option>
+      <z-option value="50" label="${$t('component.select.opt-3')}"></z-option>
+      <z-option value="60" label="${$t('component.select.opt-4')}"></z-option>
     </z-select>
   </z-form-item>
   <z-form-item label="Switch">
@@ -133,22 +119,22 @@ const codes = {
   </z-form-item>
   <z-form-item label="Radio">
     <z-radio-group>
-      <z-radio value="1">备选项</z-radio>
-      <z-radio value="2">备选项</z-radio>
+      <z-radio value="1">${$t('component.radio.opt-1')}</z-radio>
+      <z-radio value="2">${$t('component.radio.opt-2')}</z-radio>
     </z-radio-group>
   </z-form-item>
   <z-form-item label="Checkbox">
     <z-checkbox-group>
-      <z-checkbox value="1">备选项</z-checkbox>
-      <z-checkbox value="2">备选项</z-checkbox>
-      <z-checkbox value="3">备选项</z-checkbox>
+      <z-checkbox value="1">${$t('component.checkbox.opt-1')}</z-checkbox>
+      <z-checkbox value="2">${$t('component.checkbox.opt-2')}</z-checkbox>
+      <z-checkbox value="3">${$t('component.checkbox.opt-3')}</z-checkbox>
     </z-checkbox-group>
   </z-form-item>
   <z-form-item label="Slider">
     <z-slider></z-slider>
   </z-form-item>
   <z-form-item label="Textarea">
-    <z-textarea rows="4" placeholder="请输入"></z-textarea>
+    <z-textarea rows="4" placeholder="${$t('component.textarea.placeholder')}"></z-textarea>
   </z-form-item>
   <z-form-item>
     <z-button :icon="{ success: '#00cc0d' }">Submit</z-button>
@@ -157,30 +143,30 @@ const codes = {
 </z-form>`,
   inline: `<z-form inline>
   <z-form-item label="Input1">
-    <z-input placeholder="请输入" style="width: 200px"></z-input>
+    <z-input placeholder="${$t('component.input.placeholder')}" style="width: 200px"></z-input>
   </z-form-item>
   <z-form-item label="Input2">
-    <z-input placeholder="请输入" style="width: 200px"></z-input>
+    <z-input placeholder="${$t('component.input.placeholder')}" style="width: 200px"></z-input>
   </z-form-item>
   <z-form-item>
     <z-button :icon="{ success: '#00cc0d' }">Submit</z-button>
   </z-form-item>
 </z-form>`,
   align: `<z-radio-group v-model="labelPosition">
-  <z-radio-button value="left">左对齐</z-radio-button>
-  <z-radio-button value="right">右对齐</z-radio-button>
-  <z-radio-button value="top">顶部对齐</z-radio-button>
+  <z-radio-button value="left">${$t('component.form.left')}</z-radio-button>
+  <z-radio-button value="right">${$t('component.form.right')}</z-radio-button>
+  <z-radio-button value="top">${$t('component.form.top')}</z-radio-button>
 </z-radio-group>
 
 <z-form label-width="100px" :label-position="labelPosition" style="width: 400px;">
   <z-form-item label="Input1">
-    <z-input placeholder="请输入"></z-input>
+    <z-input placeholder="${$t('component.input.placeholder')}"></z-input>
   </z-form-item>
   <z-form-item label="Input2">
-    <z-input placeholder="请输入"></z-input>
+    <z-input placeholder="${$t('component.input.placeholder')}"></z-input>
   </z-form-item>
   <z-form-item label="Input3">
-    <z-input placeholder="请输入"></z-input>
+    <z-input placeholder="${$t('component.input.placeholder')}"></z-input>
   </z-form-item>
 </z-form>
 
@@ -189,42 +175,42 @@ import { ref } from 'vue'
 
 const labelPosition = ref('right')
 <\/script>`
-}
-const formAttributes = [{
+}))
+const formAttributes = computed(() => [{
   prop: 'inline',
-  desc: '行内表单模式',
+  desc: $t('attribute.form.inline'),
   type: 'boolean',
   default: 'false'
 }, {
   prop: 'label-width',
-  desc: '表单标签的宽度',
+  desc: $t('attribute.form.label-width'),
   type: 'string / number'
 }, {
   prop: 'label-position',
-  desc: '表单标签的位置',
+  desc: $t('attribute.form.label-position'),
   type: 'string',
   values: 'left / right / top',
   default: 'right'
-}]
-const formItemAttributes = [{
+}])
+const formItemAttributes = computed(() => [{
   prop: 'label',
-  desc: '表单标签的内容',
+  desc: $t('attribute.form-item.label'),
   type: 'string'
 }, {
   prop: 'label-width',
-  desc: '表单标签的宽度',
+  desc: $t('attribute.form-item.label-width'),
   type: 'string / number'
 }, {
   prop: 'required',
-  desc: '是否必填',
+  desc: $t('attribute.form-item.required'),
   type: 'boolean',
   default: 'false'
-}]
-const formItemSlots = [{
+}])
+const formItemSlots = computed(() => [{
   name: 'default',
-  desc: '表单项内容'
+  desc: $t('slot.form-item.default')
 }, {
   name: 'label',
-  desc: '表单标签的内容'
-}]
+  desc: $t('slot.form-item.label')
+}])
 </script>

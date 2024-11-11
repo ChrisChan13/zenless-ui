@@ -1,30 +1,25 @@
 <template>
   <div class="component">
-    <div class="component-title">Backtop 回到顶部</div>
-    <div class="component-header">基础用法</div>
+    <div class="component-title">{{ $t('component.backtop.title') }}</div>
+    <div class="component-header">{{ $t('component.backtop.usage') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <span>查看屏幕最右下角按钮</span>
+        <span>{{ $t('component.backtop.usage-desc') }}</span>
         <z-backtop :target="scrollTarget" :visible-height="0"></z-backtop>
       </div>
       <source-code :code="codes.general" collapse></source-code>
     </div>
     <div class="component-header">Backtop Attributes</div>
-    <z-table :data="backtopAttributes">
-      <z-table-column prop="prop" label="参数"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="type" label="类型"></z-table-column>
-      <z-table-column prop="values" label="可选值"></z-table-column>
-      <z-table-column prop="default" label="默认值"></z-table-column>
-    </z-table>
+    <attribute-table :data="backtopAttributes"></attribute-table>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
+import { $t } from '@/locale'
 
 const scrollTarget = ref()
-const codes = {
+const codes = computed(() => ({
   general: `<z-backtop :target="scrollTarget"></z-backtop>
 
 <script>
@@ -35,27 +30,27 @@ onMounted(() => {
   scrollTarget.value = document.body
 })
 <\/script>`
-}
-const backtopAttributes = [{
+}))
+const backtopAttributes = computed(() => [{
   prop: 'target',
-  desc: '触发滚动的元素',
+  desc: $t('attribute.backtop.target'),
   type: 'element'
 }, {
   prop: 'visible-height',
-  desc: '显示按钮的滚动高度阈值',
+  desc: $t('attribute.backtop.visible-height'),
   type: 'number',
   default: '200'
 }, {
   prop: 'right',
-  desc: '按钮的窗口右边距',
+  desc: $t('attribute.backtop.right'),
   type: 'number',
   default: '60'
 }, {
   prop: 'bottom',
-  desc: '按钮的窗口底部边距',
+  desc: $t('attribute.backtop.bottom'),
   type: 'number',
   default: '60'
-}]
+}])
 
 onMounted(() => {
   scrollTarget.value = document.querySelector('.container>.container-wrap>.z-scrollbar__wrap')

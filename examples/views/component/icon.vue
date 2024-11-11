@@ -1,8 +1,8 @@
 <template>
   <div class="component">
-    <div class="component-title">Icon 图标</div>
-    <div class="component-header">使用方法</div>
-    <div class="component-content">直接通过设置类名为<code>z-icon-iconName</code>，或使用<code>z-icon</code>组件。例如：</div>
+    <div class="component-title">{{ $t('component.icon.title') }}</div>
+    <div class="component-header">{{ $t('component.icon.usage') }}</div>
+    <div class="component-content" v-html="$t('component.icon.usage-desc')"></div>
     <div class="component-preview">
       <div class="component-preview-line">
         <i class="z-icon-success"></i>
@@ -12,17 +12,11 @@
       </div>
       <source-code collapse :code="codes.general"></source-code>
     </div>
-    <div class="component-header">Tips</div>
-    <div class="component-content">你可以引入自己准备的图标字体，将图标字体类名替换<code>z-icon-</code>作为类名的前缀，从而达到拓展图标库图标的效果。</div>
+    <div class="component-header">{{ $t('component.icon.tips') }}</div>
+    <div class="component-content" v-html="$t('component.icon.tips-desc')"></div>
     <div class="component-header">Attributes</div>
-    <z-table :data="attributes">
-      <z-table-column prop="prop" label="参数"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="type" label="类型"></z-table-column>
-      <z-table-column prop="values" label="可选值"></z-table-column>
-      <z-table-column prop="default" label="默认值"></z-table-column>
-    </z-table>
-    <div class="component-header">图标集合</div>
+    <attribute-table :data="attributes"></attribute-table>
+    <div class="component-header">{{ $t('component.icon.icons') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
         <div class="icon-wrap">
@@ -103,25 +97,28 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { $t } from '@/locale'
+
 const codes = {
   general: `<i class="z-icon-success"></i>
 <z-icon name="error"></z-icon>
 <i class="z-icon-success" style="font-size: 40px; color: #00cc0d;"></i>
 <z-icon name="error" :size="40" color="#c01c00"></z-icon>`
 }
-const attributes = [{
+const attributes = computed(() => [{
   prop: 'name',
-  desc: '图标名称，省略“z-icon-”前缀',
+  desc: $t('attribute.icon.name'),
   type: 'string'
 }, {
   prop: 'size',
-  desc: '图标大小，number 类型默认使用 px 单位',
+  desc: $t('attribute.icon.size'),
   type: 'number / string'
 }, {
   prop: 'color',
-  desc: '图标颜色',
+  desc: $t('attribute.icon.color'),
   type: 'string'
-}]
+}])
 </script>
 
 <style scoped lang="scss">

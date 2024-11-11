@@ -1,105 +1,86 @@
 <template>
   <div class="component">
-    <div class="component-title">Radio 单选框</div>
-    <div class="component-header">基础用法</div>
+    <div class="component-title">{{ $t('component.radio.title') }}</div>
+    <div class="component-header">{{ $t('component.radio.usage') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-radio v-model="value1" value="1">备选项</z-radio>
-        <z-radio v-model="value1" value="2">备选项</z-radio>
+        <z-radio v-model="value1" value="1">{{ $t('component.radio.opt-1') }}</z-radio>
+        <z-radio v-model="value1" value="2">{{ $t('component.radio.opt-2') }}</z-radio>
       </div>
       <source-code collapse :code="codes.general"></source-code>
     </div>
-    <div class="component-header">禁用状态</div>
+    <div class="component-header">{{ $t('component.radio.disabled') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-radio v-model="value1" value="1" disabled>备选项</z-radio>
-        <z-radio v-model="value1" value="2" disabled>备选项</z-radio>
+        <z-radio v-model="value1" value="1" disabled>{{ $t('component.radio.opt-1') }}</z-radio>
+        <z-radio v-model="value1" value="2" disabled>{{ $t('component.radio.opt-2') }}</z-radio>
       </div>
       <source-code collapse :code="codes.disabled"></source-code>
     </div>
-    <div class="component-header">单选框组</div>
+    <div class="component-header">{{ $t('component.radio.group') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
         <z-radio-group v-model="value2">
-          <z-radio value="1">备选项</z-radio>
-          <z-radio value="2">备选项</z-radio>
-          <z-radio value="3">备选项</z-radio>
+          <z-radio value="1">{{ $t('component.radio.opt-1') }}</z-radio>
+          <z-radio value="2">{{ $t('component.radio.opt-2') }}</z-radio>
+          <z-radio value="3">{{ $t('component.radio.opt-3') }}</z-radio>
         </z-radio-group>
       </div>
       <source-code collapse :code="codes.group"></source-code>
     </div>
-    <div class="component-header">不同尺寸</div>
+    <div class="component-header">{{ $t('component.radio.size') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-radio v-model="value3" value="1" size="extra">超大选项</z-radio>
-        <z-radio v-model="value3" value="2" size="large">大型选项</z-radio>
-        <z-radio v-model="value3" value="3">默认选项</z-radio>
-        <z-radio v-model="value3" value="4" size="small">小型选项</z-radio>
-        <z-radio v-model="value3" value="5" size="mini">超小选项</z-radio>
+        <z-radio v-model="value3" value="1" size="extra">{{ $t('component.radio.extra') }}</z-radio>
+        <z-radio v-model="value3" value="2" size="large">{{ $t('component.radio.large') }}</z-radio>
+        <z-radio v-model="value3" value="3">{{ $t('component.radio.default') }}</z-radio>
+        <z-radio v-model="value3" value="4" size="small">{{ $t('component.radio.small') }}</z-radio>
+        <z-radio v-model="value3" value="5" size="mini">{{ $t('component.radio.mini') }}</z-radio>
       </div>
       <source-code collapse :code="codes.size"></source-code>
     </div>
-    <div class="component-header">按钮样式</div>
+    <div class="component-header">{{ $t('component.radio.button') }}</div>
     <div class="component-preview is-dark">
       <div class="component-preview-line">
         <z-radio-group v-model="value4">
-          <z-radio-button value="1">备选项</z-radio-button>
-          <z-radio-button value="2">备选项</z-radio-button>
-          <z-radio-button value="3" disabled>备选项</z-radio-button>
+          <z-radio-button value="1">{{ $t('component.radio.opt-1') }}</z-radio-button>
+          <z-radio-button value="2">{{ $t('component.radio.opt-2') }}</z-radio-button>
+          <z-radio-button value="3" disabled>{{ $t('component.radio.opt-3') }}</z-radio-button>
         </z-radio-group>
       </div>
       <source-code collapse :code="codes.button"></source-code>
     </div>
     <div class="component-header">Radio / RadioButton Attributes</div>
-    <z-table :data="radioAttributes">
-      <z-table-column prop="prop" label="参数"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="type" label="类型"></z-table-column>
-      <z-table-column prop="values" label="可选值"></z-table-column>
-      <z-table-column prop="default" label="默认值"></z-table-column>
-    </z-table>
+    <attribute-table :data="radioAttributes"></attribute-table>
     <div class="component-header">Radio / RadioButton Events</div>
-    <z-table :data="radioEvents">
-      <z-table-column prop="name" label="事件名"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="params" label="回调参数"></z-table-column>
-    </z-table>
+    <event-table :data="radioEvents"></event-table>
     <div class="component-header">RadioGroup Attributes</div>
-    <z-table :data="radioGroupAttributes">
-      <z-table-column prop="prop" label="参数"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="type" label="类型"></z-table-column>
-      <z-table-column prop="values" label="可选值"></z-table-column>
-      <z-table-column prop="default" label="默认值"></z-table-column>
-    </z-table>
+    <attribute-table :data="radioGroupAttributes"></attribute-table>
     <div class="component-header">RadioGroup Events</div>
-    <z-table :data="radioGroupEvents">
-      <z-table-column prop="name" label="事件名"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="params" label="回调参数"></z-table-column>
-    </z-table>
+    <event-table :data="radioGroupEvents"></event-table>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { $t } from '@/locale'
 
 const value1 = ref('1')
 const value2 = ref('1')
 const value3 = ref('3')
 const value4 = ref('1')
 
-const codes = {
-  general: `<z-radio v-model="value" value="1">备选项</z-radio>
-<z-radio v-model="value" value="2">备选项</z-radio>
+const codes = computed(() => ({
+  general: `<z-radio v-model="value" value="1">${$t('component.radio.opt-1')}</z-radio>
+<z-radio v-model="value" value="2">${$t('component.radio.opt-2')}</z-radio>
 
 <script setup>
 import { ref } from 'vue'
 
 const value = ref('1')
 <\/script>`,
-  disabled: `<z-radio v-model="value" value="1" disabled>备选项</z-radio>
-<z-radio v-model="value" value="2" disabled>备选项</z-radio>
+  disabled: `<z-radio v-model="value" value="1" disabled>${$t('component.radio.opt-1')}</z-radio>
+<z-radio v-model="value" value="2" disabled>${$t('component.radio.opt-2')}</z-radio>
 
 <script setup>
 import { ref } from 'vue'
@@ -107,9 +88,9 @@ import { ref } from 'vue'
 const value = ref('1')
 <\/script>`,
   group: `<z-radio-group v-model="value">
-  <z-radio value="1">备选项</z-radio>
-  <z-radio value="2">备选项</z-radio>
-  <z-radio value="3">备选项</z-radio>
+  <z-radio value="1">${$t('component.radio.opt-1')}</z-radio>
+  <z-radio value="2">${$t('component.radio.opt-2')}</z-radio>
+  <z-radio value="3">${$t('component.radio.opt-3')}</z-radio>
 </z-radio-group>
 
 <script setup>
@@ -117,11 +98,11 @@ import { ref } from 'vue'
 
 const value = ref('1')
 <\/script>`,
-  size: `<z-radio v-model="value" value="1" size="extra">超大选项</z-radio>
-<z-radio v-model="value" value="2" size="large">大型选项</z-radio>
-<z-radio v-model="value" value="3">默认选项</z-radio>
-<z-radio v-model="value" value="4" size="small">小型选项</z-radio>
-<z-radio v-model="value" value="5" size="mini">超小选项</z-radio>
+  size: `<z-radio v-model="value" value="1" size="extra">${$t('component.radio.extra')}</z-radio>
+<z-radio v-model="value" value="2" size="large">${$t('component.radio.large')}</z-radio>
+<z-radio v-model="value" value="3">${$t('component.radio.default')}</z-radio>
+<z-radio v-model="value" value="4" size="small">${$t('component.radio.small')}</z-radio>
+<z-radio v-model="value" value="5" size="mini">${$t('component.radio.mini')}</z-radio>
 
 <script setup>
 import { ref } from 'vue'
@@ -129,9 +110,9 @@ import { ref } from 'vue'
 const value = ref('3')
 <\/script>`,
   button: `<z-radio-group v-model="value">
-  <z-radio-button value="1">备选项</z-radio-button>
-  <z-radio-button value="2">备选项</z-radio-button>
-  <z-radio-button value="3" disabled>备选项</z-radio-button>
+  <z-radio-button value="1">${$t('component.radio.opt-1')}</z-radio-button>
+  <z-radio-button value="2">${$t('component.radio.opt-2')}</z-radio-button>
+  <z-radio-button value="3" disabled>${$t('component.radio.opt-3')}</z-radio-button>
 </z-radio-group>
 
 <script setup>
@@ -139,53 +120,53 @@ import { ref } from 'vue'
 
 const value = ref('1')
 <\/script>`
-}
-const radioAttributes = [{
+}))
+const radioAttributes = computed(() => [{
   prop: 'v-model',
-  desc: '绑定值，选中的 radio 的 value',
+  desc: $t('attribute.radio.v-model'),
   type: 'string / number / boolean'
 }, {
   prop: 'value',
-  desc: 'radio input 的 value',
+  desc: $t('attribute.radio.value'),
   type: 'string / number / boolean'
 }, {
   prop: 'disabled',
-  desc: '禁用状态',
+  desc: $t('attribute.radio.disabled'),
   type: 'boolean',
   default: 'false'
 }, {
   prop: 'size',
-  desc: '尺寸',
+  desc: $t('attribute.radio.size'),
   type: 'string',
   values: 'extra / large / small / mini'
 }, {
   prop: 'name',
-  desc: '原生 name 属性',
+  desc: $t('attribute.radio.name'),
   type: 'string'
-}]
-const radioEvents = [{
+}])
+const radioEvents = computed(() => [{
   name: 'change',
-  desc: '绑定值变化时触发的回调',
-  params: '选中的 radio 的 value 值'
-}]
-const radioGroupAttributes = [{
+  desc: $t('event.radio.change'),
+  params: $t('event.radio.change-params')
+}])
+const radioGroupAttributes = computed(() => [{
   prop: 'v-model',
-  desc: '绑定值，选中的 radio 的 value',
+  desc: $t('attribute.radio-group.v-model'),
   type: 'string / number / boolean'
 }, {
   prop: 'disabled',
-  desc: '禁用状态',
+  desc: $t('attribute.radio-group.disabled'),
   type: 'boolean',
   default: 'false'
 }, {
   prop: 'size',
-  desc: '尺寸',
+  desc: $t('attribute.radio-group.size'),
   type: 'string',
   values: 'extra / large / small / mini'
-}]
-const radioGroupEvents = [{
+}])
+const radioGroupEvents = computed(() => [{
   name: 'change',
-  desc: '绑定值变化时触发的回调',
-  params: '选中的 radio 的 value 值'
-}]
+  desc: $t('event.radio-group.change'),
+  params: $t('event.radio-group.change-params')
+}])
 </script>

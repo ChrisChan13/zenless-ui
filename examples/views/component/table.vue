@@ -1,168 +1,97 @@
 <template>
   <div class="component">
-    <div class="component-title">Table 表格</div>
-    <div class="component-header">基础用法</div>
+    <div class="component-title">{{ $t('component.table.title') }}</div>
+    <div class="component-header">{{ $t('component.table.usage') }}</div>
     <div class="component-preview is-dark">
       <div class="component-preview-line">
         <z-table :data="tableData">
-          <z-table-column prop="type" label="信号类型"></z-table-column>
-          <z-table-column prop="name" label="信号列表">
+          <z-table-column prop="type" :label="$t('component.table.col-type')"></z-table-column>
+          <z-table-column prop="name" :label="$t('component.table.col-name')">
             <template #default="scoped">
               <span :style="{
                 color: scoped.row.color
               }">{{ scoped.row.name }}</span>
             </template>
           </z-table-column>
-          <z-table-column prop="from" label="频段类型"></z-table-column>
-          <z-table-column prop="date" label="调频时间"></z-table-column>
+          <z-table-column prop="from" :label="$t('component.table.col-from')"></z-table-column>
+          <z-table-column prop="date" :label="$t('component.table.col-date')"></z-table-column>
         </z-table>
       </div>
       <source-code collapse :code="codes.general"></source-code>
     </div>
     <div class="component-header">Table Attributes</div>
-    <z-table :data="tableAttributes">
-      <z-table-column prop="prop" label="参数"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="type" label="类型"></z-table-column>
-      <z-table-column prop="values" label="可选值"></z-table-column>
-      <z-table-column prop="default" label="默认值"></z-table-column>
-    </z-table>
+    <attribute-table :data="tableAttributes"></attribute-table>
     <div class="component-header">Table Slots</div>
-    <z-table :data="tableSlots">
-      <z-table-column prop="name" label="name"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-    </z-table>
+    <slot-table :data="tableSlots"></slot-table>
     <div class="component-header">TableColumn Attributes</div>
-    <z-table :data="tableColumnAttributes">
-      <z-table-column prop="prop" label="参数"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="type" label="类型"></z-table-column>
-      <z-table-column prop="values" label="可选值"></z-table-column>
-      <z-table-column prop="default" label="默认值"></z-table-column>
-    </z-table>
+    <attribute-table :data="tableColumnAttributes"></attribute-table>
     <div class="component-header">TableColumn Slots</div>
-    <z-table :data="tableColumnSlots">
-      <z-table-column prop="name" label="name"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-    </z-table>
+    <slot-table :data="tableColumnSlots"></slot-table>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed } from 'vue'
+import { $t } from '@/locale'
 
-const tableData = ref([{
-  type: '代理人',
-  name: '艾莲',
-  color: '#ffb500',
-  from: '独家频段',
-  date: '2024-07-09 20:13:29'
-}, {
-  type: '代理人',
-  name: '妮可',
-  color: '#e900ff',
-  from: '独家频段',
-  date: '2024-07-09 20:13:29'
-}, {
-  type: '音擎',
-  name: '「月相」-晦',
-  from: '独家频段',
-  date: '2024-07-09 20:13:29'
-}, {
-  type: '音擎',
-  name: '「电磁暴」-叁式',
-  from: '独家频段',
-  date: '2024-07-09 20:13:29'
-}, {
-  type: '音擎',
-  name: '「湍流」-斧型',
-  from: '独家频段',
-  date: '2024-07-09 20:13:29'
-}])
-const codes = {
-  general: `<z-table :data="tableData">
-  <z-table-column prop="type" label="信号类型"></z-table-column>
-  <z-table-column prop="name" label="信号列表">
+const tableData = computed(() => $t('component.table.data', []))
+const codes = computed(() => ({
+  general: `<z-table :data="data">
+  <z-table-column prop="type" label="${$t('component.table.col-type')}"></z-table-column>
+  <z-table-column prop="name" label="${$t('component.table.col-name')}">
     <template #default="scoped">
       <span :style="{
         color: scoped.row.color
       }">{{ scoped.row.name }}</span>
     </template>
   </z-table-column>
-  <z-table-column prop="from" label="频段类型"></z-table-column>
-  <z-table-column prop="date" label="调频时间"></z-table-column>
+  <z-table-column prop="from" label="${$t('component.table.col-from')}"></z-table-column>
+  <z-table-column prop="date" label="${$t('component.table.col-date')}"></z-table-column>
 </z-table>
 
 <script setup>
 import { ref } from 'vue'
 
-const tableData = ref([{
-  type: '代理人',
-  name: '艾莲',
-  color: '#ffb500',
-  from: '独家频段',
-  date: '2024-07-09 20:13:29'
-}, {
-  type: '代理人',
-  name: '妮可',
-  color: '#e900ff',
-  from: '独家频段',
-  date: '2024-07-09 20:13:29'
-}, {
-  type: '音擎',
-  name: '「月相」-晦',
-  from: '独家频段',
-  date: '2024-07-09 20:13:29'
-}, {
-  type: '音擎',
-  name: '「电磁暴」-叁式',
-  from: '独家频段',
-  date: '2024-07-09 20:13:29'
-}, {
-  type: '音擎',
-  name: '「湍流」-斧型',
-  from: '独家频段',
-  date: '2024-07-09 20:13:29'
-}])
-<\/script>`
-}
-const tableAttributes = [{
+const data = ref(${JSON.stringify($t('component.table.data'))})
+<\/script>\n\n`
+}))
+const tableAttributes = computed(() => [{
   prop: 'data',
-  desc: '显示的数据',
+  desc: $t('attribute.table.data'),
   type: 'array'
 }, {
   prop: 'border',
-  desc: '是否带有纵向边框',
+  desc: $t('attribute.table.border'),
   type: 'boolean',
   default: 'true'
 }, {
   prop: 'empty-text',
-  desc: '空数据时显示的文本内容',
+  desc: $t('attribute.table.empty-text'),
   type: 'string',
-  default: '暂无数据... \\[ o_x ]/'
-}]
-const tableSlots = [{
+  default: $t('attribute.table.empty-text-default')
+}])
+const tableSlots = computed(() => [{
   name: 'empty',
-  desc: '空数据时显示的自定义内容'
-}]
-const tableColumnAttributes = [{
+  desc: $t('slot.table.empty')
+}])
+const tableColumnAttributes = computed(() => [{
   prop: 'prop',
-  desc: '对应列内容的字段名',
+  desc: $t('attribute.table-column.prop'),
   type: 'string'
 }, {
   prop: 'label',
-  desc: '显示的标题',
+  desc: $t('attribute.table-column.label'),
   type: 'string'
 }, {
   prop: 'width',
-  desc: '对应列的宽度',
+  desc: $t('attribute.table-column.width'),
   type: 'number'
-}]
-const tableColumnSlots = [{
+}])
+const tableColumnSlots = computed(() => [{
   name: 'default',
-  desc: '自定义列的内容，参数为 { row, column, index }'
+  desc: $t('slot.table-column.default')
 }, {
   name: 'header',
-  desc: '自定义表头的内容，参数为 { column }'
-}]
+  desc: $t('slot.table-column.header')
+}])
 </script>

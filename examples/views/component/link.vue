@@ -1,130 +1,127 @@
 <template>
   <div class="component">
-    <div class="component-title">Link 文字链接</div>
-    <div class="component-header">基础用法</div>
+    <div class="component-title">{{ $t('component.link.title') }}</div>
+    <div class="component-header">{{ $t('component.link.usage') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-link>默认链接</z-link>
-        <z-link type="primary">主要链接</z-link>
-        <z-link type="success">成功链接</z-link>
-        <z-link type="info">信息链接</z-link>
-        <z-link type="warning">警告链接</z-link>
-        <z-link type="danger">危险链接</z-link>
+        <z-link>{{ $t('component.link.default') }}</z-link>
+        <z-link type="primary">{{ $t('component.link.primary') }}</z-link>
+        <z-link type="success">{{ $t('component.link.success') }}</z-link>
+        <z-link type="info">{{ $t('component.link.info') }}</z-link>
+        <z-link type="warning">{{ $t('component.link.warning') }}</z-link>
+        <z-link type="danger">{{ $t('component.link.danger') }}</z-link>
       </div>
       <div class="component-preview-line">
-        <z-link type="ether">以太链接</z-link>
-        <z-link type="fire">火系链接</z-link>
-        <z-link type="electric">电系链接</z-link>
-        <z-link type="ice">冰系链接</z-link>
-        <z-link type="physical">物理链接</z-link>
-        <z-link highlight>醒目链接</z-link>
+        <z-link type="ether">{{ $t('component.link.ether') }}</z-link>
+        <z-link type="fire">{{ $t('component.link.fire') }}</z-link>
+        <z-link type="electric">{{ $t('component.link.electric') }}</z-link>
+        <z-link type="ice">{{ $t('component.link.ice') }}</z-link>
+        <z-link type="physical">{{ $t('component.link.physical') }}</z-link>
+        <z-link highlight>{{ $t('component.link.highlight') }}</z-link>
       </div>
       <source-code collapse :code="codes.general"></source-code>
     </div>
-    <div class="component-header">禁用状态</div>
+    <div class="component-header">{{ $t('component.link.disabled') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-link disabled>默认链接</z-link>
-        <z-link disabled type="primary">主要链接</z-link>
-        <z-link disabled type="success">成功链接</z-link>
-        <z-link disabled type="info">信息链接</z-link>
-        <z-link disabled type="warning">警告链接</z-link>
-        <z-link disabled type="danger">危险链接</z-link>
+        <z-link disabled>{{ $t('component.link.default') }}</z-link>
+        <z-link disabled type="primary">{{ $t('component.link.primary') }}</z-link>
+        <z-link disabled type="success">{{ $t('component.link.success') }}</z-link>
+        <z-link disabled type="info">{{ $t('component.link.info') }}</z-link>
+        <z-link disabled type="warning">{{ $t('component.link.warning') }}</z-link>
+        <z-link disabled type="danger">{{ $t('component.link.danger') }}</z-link>
       </div>
       <source-code collapse :code="codes.disabled"></source-code>
     </div>
-    <div class="component-header">下划线</div>
+    <div class="component-header">{{ $t('component.link.underline') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
-        <z-link>无下划线</z-link>
-        <z-link underline>有下划线</z-link>
+        <z-link>{{ $t('component.link.without-underline') }}</z-link>
+        <z-link underline>{{ $t('component.link.with-underline') }}</z-link>
       </div>
       <source-code collapse :code="codes.underline"></source-code>
     </div>
-    <div class="component-header">图标</div>
+    <div class="component-header">{{ $t('component.link.icon') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
         <z-link type="success">
           <i class="z-icon-success"></i>
-          <span>确认</span>
+          <span>{{ $t('component.link.confirm') }}</span>
         </z-link>
         <z-link type="danger">
           <i class="z-icon-error"></i>
-          <span>取消</span>
+          <span>{{ $t('component.link.cancel') }}</span>
         </z-link>
       </div>
       <source-code collapse :code="codes.icon"></source-code>
     </div>
     <div class="component-header">Attributes</div>
-    <z-table :data="attributes">
-      <z-table-column prop="prop" label="参数"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="type" label="类型"></z-table-column>
-      <z-table-column prop="values" label="可选值"></z-table-column>
-      <z-table-column prop="default" label="默认值"></z-table-column>
-    </z-table>
+    <attribute-table :data="attributes"></attribute-table>
   </div>
 </template>
 
 <script setup>
-const codes = {
-  general: `<z-link>默认链接</z-link>
-<z-link type="primary">主要链接</z-link>
-<z-link type="success">成功链接</z-link>
-<z-link type="info">信息链接</z-link>
-<z-link type="warning">警告链接</z-link>
-<z-link type="danger">危险链接</z-link>
+import { computed } from 'vue'
+import { $t } from '@/locale'
 
-<z-link type="ether">以太链接</z-link>
-<z-link type="fire">火系链接</z-link>
-<z-link type="electric">电系链接</z-link>
-<z-link type="ice">冰系链接</z-link>
-<z-link type="physical">物理链接</z-link>
-<z-link highlight>醒目链接</z-link>`,
-  disabled: `<z-link disabled>默认链接</z-link>
-<z-link disabled type="primary">主要链接</z-link>
-<z-link disabled type="success">成功链接</z-link>
-<z-link disabled type="info">信息链接</z-link>
-<z-link disabled type="warning">警告链接</z-link>
-<z-link disabled type="danger">危险链接</z-link>`,
-  underline: `<z-link>无下划线</z-link>
-<z-link underline>有下划线</z-link>`,
+const codes = computed(() => ({
+  general: `<z-link>${$t('component.link.default')}</z-link>
+<z-link type="primary">${$t('component.link.primary')}</z-link>
+<z-link type="success">${$t('component.link.success')}</z-link>
+<z-link type="info">${$t('component.link.info')}</z-link>
+<z-link type="warning">${$t('component.link.warning')}</z-link>
+<z-link type="danger">${$t('component.link.danger')}</z-link>
+
+<z-link type="ether">${$t('component.link.ether')}</z-link>
+<z-link type="fire">${$t('component.link.fire')}</z-link>
+<z-link type="electric">${$t('component.link.electric')}</z-link>
+<z-link type="ice">${$t('component.link.ice')}</z-link>
+<z-link type="physical">${$t('component.link.physical')}</z-link>
+<z-link highlight>${$t('component.link.highlight')}</z-link>`,
+  disabled: `<z-link disabled>${$t('component.link.default')}</z-link>
+<z-link disabled type="primary">${$t('component.link.primary')}</z-link>
+<z-link disabled type="success">${$t('component.link.success')}</z-link>
+<z-link disabled type="info">${$t('component.link.info')}</z-link>
+<z-link disabled type="warning">${$t('component.link.warning')}</z-link>
+<z-link disabled type="danger">${$t('component.link.danger')}</z-link>`,
+  underline: `<z-link>${$t('component.link.without-underline')}</z-link>
+<z-link underline>${$t('component.link.with-underline')}</z-link>`,
   icon: `<z-link type="success">
   <i class="z-icon-success"></i>
-  <span>确认</span>
+  <span>${$t('component.link.confirm')}</span>
 </z-link>
 <z-link type="danger">
   <i class="z-icon-error"></i>
-  <span>取消</span>
+  <span>${$t('component.link.cancel')}</span>
 </z-link>`
-}
-const attributes = [{
+}))
+const attributes = computed(() => [{
   prop: 'type',
-  desc: '类型',
+  desc: $t('attribute.link.type'),
   type: 'string',
   values: 'primary / success / danger / warning / info /\nether / fire / electric / ice / physical'
 }, {
   prop: 'highlight',
-  desc: '醒目链接',
+  desc: $t('attribute.link.highlight'),
   type: 'boolean',
-  default: false
+  default: 'false'
 }, {
   prop: 'underline',
-  desc: '下划线',
+  desc: $t('attribute.link.underline'),
   type: 'boolean',
-  default: false
+  default: 'false'
 }, {
   prop: 'disabled',
-  desc: '禁用链接',
+  desc: $t('attribute.link.disabled'),
   type: 'boolean',
-  default: false
+  default: 'false'
 }, {
   prop: 'href',
-  desc: '原生 href 属性',
+  desc: $t('attribute.link.href'),
   type: 'string'
 }, {
   prop: 'icon',
-  desc: '链接图标',
+  desc: $t('attribute.link.icon'),
   type: 'string'
-}]
+}])
 </script>

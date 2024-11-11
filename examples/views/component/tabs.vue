@@ -1,87 +1,69 @@
 <template>
   <div class="component">
-    <div class="component-title">Tabs 标签页</div>
-    <div class="component-header">基础用法</div>
+    <div class="component-title">{{ $t('component.tabs.title') }}</div>
+    <div class="component-header">{{ $t('component.tabs.usage') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
         <z-tabs v-model="value1">
-          <z-tab-panel label="基础" name="basic">基础</z-tab-panel>
-          <z-tab-panel label="技能" name="skills">技能</z-tab-panel>
-          <z-tab-panel label="装备" name="gears">装备</z-tab-panel>
+          <z-tab-panel :label="$t('component.tabs.tab-1')" name="basic">{{ $t('component.tabs.tab-1') }}</z-tab-panel>
+          <z-tab-panel :label="$t('component.tabs.tab-2')" name="skills">{{ $t('component.tabs.tab-2') }}</z-tab-panel>
+          <z-tab-panel :label="$t('component.tabs.tab-3')" name="gears">{{ $t('component.tabs.tab-3') }}</z-tab-panel>
         </z-tabs>
       </div>
       <source-code collapse :code="codes.general"></source-code>
     </div>
-    <div class="component-header">自定义标签页</div>
+    <div class="component-header">{{ $t('component.tabs.custom') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
         <z-tabs v-model="value2">
-          <z-tab-panel label="基础" name="basic">
+          <z-tab-panel :label="$t('component.tabs.tab-1')" name="basic">
             <template #label>
-              <span style="margin-right: 5px">测试</span>
+              <span style="margin-right: 5px">{{ $t('component.tabs.tab-1') }}</span>
               <i class="z-icon-success"></i>
             </template>
-            基础
+            {{ $t('component.tabs.tab-1') }}
           </z-tab-panel>
-          <z-tab-panel label="技能" name="skills">技能</z-tab-panel>
-          <z-tab-panel label="装备" name="gears">装备</z-tab-panel>
+          <z-tab-panel :label="$t('component.tabs.tab-2')" name="skills">{{ $t('component.tabs.tab-2') }}</z-tab-panel>
+          <z-tab-panel :label="$t('component.tabs.tab-3')" name="gears">{{ $t('component.tabs.tab-3') }}</z-tab-panel>
         </z-tabs>
       </div>
       <source-code collapse :code="codes.custom"></source-code>
     </div>
-    <div class="component-header">标签页禁用效果</div>
+    <div class="component-header">{{ $t('component.tabs.disabled') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
         <z-tabs v-model="value3">
-          <z-tab-panel label="基础" name="basic">基础</z-tab-panel>
-          <z-tab-panel label="技能" name="skills">技能</z-tab-panel>
-          <z-tab-panel label="装备" name="gears" disabled>装备</z-tab-panel>
+          <z-tab-panel :label="$t('component.tabs.tab-1')" name="basic">{{ $t('component.tabs.tab-1') }}</z-tab-panel>
+          <z-tab-panel :label="$t('component.tabs.tab-2')" name="skills">{{ $t('component.tabs.tab-2') }}</z-tab-panel>
+          <z-tab-panel :label="$t('component.tabs.tab-3')" name="gears" disabled>{{ $t('component.tabs.tab-3') }}</z-tab-panel>
         </z-tabs>
       </div>
       <source-code collapse :code="codes.disabled"></source-code>
     </div>
     <div class="component-header">Tabs Attributes</div>
-    <z-table :data="tabsAttributes">
-      <z-table-column prop="prop" label="参数"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="type" label="类型"></z-table-column>
-      <z-table-column prop="values" label="可选值"></z-table-column>
-      <z-table-column prop="default" label="默认值"></z-table-column>
-    </z-table>
+    <attribute-table :data="tabsAttributes"></attribute-table>
     <div class="component-header">Tabs Events</div>
-    <z-table :data="tabsEvents">
-      <z-table-column prop="name" label="事件名"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="params" label="回调参数"></z-table-column>
-    </z-table>
+    <event-table :data="tabsEvents"></event-table>
     <div class="component-header">TabPanel Attributes</div>
-    <z-table :data="tabPanelAttributes">
-      <z-table-column prop="prop" label="参数"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="type" label="类型"></z-table-column>
-      <z-table-column prop="values" label="可选值"></z-table-column>
-      <z-table-column prop="default" label="默认值"></z-table-column>
-    </z-table>
+    <attribute-table :data="tabPanelAttributes"></attribute-table>
     <div class="component-header">TabPanel Slots</div>
-    <z-table :data="tabPanelSlots">
-      <z-table-column prop="name" label="name"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-    </z-table>
+    <slot-table :data="tabPanelSlots"></slot-table>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { $t } from '@/locale'
 
 const value1 = ref('basic')
 const value2 = ref('basic')
 const value3 = ref('basic')
 
-const codes = {
+const codes = computed(() => ({
   general: `<z-tabs v-model="value">
-  <z-tab-panel label="基础" name="basic">基础</z-tab-panel>
-  <z-tab-panel label="技能" name="skills">技能</z-tab-panel>
-  <z-tab-panel label="装备" name="gears">装备</z-tab-panel>
+  <z-tab-panel label="${$t('component.tabs.tab-1')}" name="basic">${$t('component.tabs.tab-1')}</z-tab-panel>
+  <z-tab-panel label="${$t('component.tabs.tab-2')}" name="skills">${$t('component.tabs.tab-2')}</z-tab-panel>
+  <z-tab-panel label="${$t('component.tabs.tab-3')}" name="gears">${$t('component.tabs.tab-3')}</z-tab-panel>
 </z-tabs>
 
 <script setup>
@@ -90,15 +72,15 @@ import { ref } from 'vue'
 const value = ref('basic')
 <\/script>`,
   custom: `<z-tabs v-model="value">
-  <z-tab-panel label="基础" name="basic">
+  <z-tab-panel label="${$t('component.tabs.tab-1')}" name="basic">
     <template #label>
-      <span style="margin-right: 5px">测试</span>
+      <span style="margin-right: 5px">${$t('component.tabs.tab-2')}</span>
       <i class="z-icon-success"></i>
     </template>
-    基础
+    ${$t('component.tabs.tab-1')}
   </z-tab-panel>
-  <z-tab-panel label="技能" name="skills">技能</z-tab-panel>
-  <z-tab-panel label="装备" name="gears">装备</z-tab-panel>
+  <z-tab-panel label="${$t('component.tabs.tab-2')}" name="skills">${$t('component.tabs.tab-2')}</z-tab-panel>
+  <z-tab-panel label="${$t('component.tabs.tab-3')}" name="gears">${$t('component.tabs.tab-3')}</z-tab-panel>
 </z-tabs>
 
 <script setup>
@@ -107,9 +89,9 @@ import { ref } from 'vue'
 const value = ref('basic')
 <\/script>`,
   disabled: `<z-tabs v-model="value">
-  <z-tab-panel label="基础" name="basic">基础</z-tab-panel>
-  <z-tab-panel label="技能" name="skills">技能</z-tab-panel>
-  <z-tab-panel label="装备" name="gears" disabled>装备</z-tab-panel>
+  <z-tab-panel label="${$t('component.tabs.tab-1')}" name="basic">${$t('component.tabs.tab-1')}</z-tab-panel>
+  <z-tab-panel label="${$t('component.tabs.tab-2')}" name="skills">${$t('component.tabs.tab-2')}</z-tab-panel>
+  <z-tab-panel label="${$t('component.tabs.tab-3')}" name="gears" disabled>${$t('component.tabs.tab-3')}</z-tab-panel>
 </z-tabs>
 
 <script setup>
@@ -117,47 +99,47 @@ import { ref } from 'vue'
 
 const value = ref('basic')
 <\/script>`
-}
-const tabsAttributes = [{
+}))
+const tabsAttributes = computed(() => [{
   prop: 'v-model',
-  desc: '绑定值，选中的 tab-panel 的 name 的值',
+  desc: $t('attribute.tabs.v-model'),
   type: 'string / number'
 }, {
   prop: 'placement',
-  desc: '标签的位置',
+  desc: $t('attribute.tabs.placement'),
   type: 'boolean',
   values: 'top / top-left / top-right /\nbottom / bottom-left /\nbottom-right',
   default: 'top-right'
-}]
+}])
 const tabsEvents = [{
   name: 'change',
-  desc: '选项激活回调',
-  params: '选中的选项的 name'
+  desc: $t('event.tabs.change'),
+  params: $t('event.tabs.change-params')
 }]
 const tabPanelAttributes = [{
   prop: 'label',
-  desc: '选项卡标题',
+  desc: $t('attribute.tab-panel.label'),
   type: 'string'
 }, {
   prop: 'name',
-  desc: '唯一标识',
+  desc: $t('attribute.tab-panel.name'),
   type: 'string / number'
 }, {
   prop: 'disabled',
-  desc: '禁用状态',
+  desc: $t('attribute.tab-panel.disabled'),
   type: 'boolean',
   default: 'false'
 }, {
   prop: 'lazy',
-  desc: '延迟渲染，即选中时再渲染对应选项卡内容',
+  desc: $t('attribute.tab-panel.lazy'),
   type: 'boolean',
   default: 'false'
 }]
 const tabPanelSlots = [{
   name: 'default',
-  desc: '选项卡的内容'
+  desc: $t('slot.tab-panel.default')
 }, {
   name: 'label',
-  desc: '选项卡的标题'
+  desc: $t('slot.tab-panel.label')
 }]
 </script>

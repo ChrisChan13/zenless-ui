@@ -5,7 +5,7 @@
       <h3>页面似乎找不到了 \[ o_x ]/</h3>
       <span>Page not found</span>
       <router-link :to="{ name: 'home' }">
-        <z-button size="large">回到首页</z-button>
+        <z-button size="large">{{ $t('global.404.home') }}</z-button>
       </router-link>
     </div>
   </div>

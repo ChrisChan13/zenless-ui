@@ -1,106 +1,82 @@
 <template>
   <div class="component">
-    <div class="component-title">Menu 导航菜单</div>
-    <div class="component-header">基础用法</div>
+    <div class="component-title">{{ $t('component.menu.title') }}</div>
+    <div class="component-header">{{ $t('component.menu.usage') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
         <z-menu v-model="value">
-          <z-sub-menu name="1-0" icon="info" title="导航一">
-            <z-menu-item name="1-1" icon="info" title="选项一" ></z-menu-item>
-            <z-menu-item name="1-2">选项二</z-menu-item>
-            <z-menu-item name="1-3" disabled>选项三</z-menu-item>
+          <z-sub-menu name="1-0" icon="info" :title="$t('component.menu.nav-1')">
+            <z-menu-item name="1-1" icon="info" :title="$t('component.menu.opt-1')" ></z-menu-item>
+            <z-menu-item name="1-2">{{ $t('component.menu.opt-2') }}</z-menu-item>
+            <z-menu-item name="1-3" disabled>{{ $t('component.menu.opt-3') }}</z-menu-item>
           </z-sub-menu>
           <z-sub-menu name="2-0" icon="info">
             <template #title>
-              <span>导航二</span>
+              <span>{{ $t('component.menu.nav-2') }}</span>
             </template>
-            <z-menu-item name="2-1" title="选项四"></z-menu-item>
+            <z-menu-item name="2-1" :title="$t('component.menu.opt-4')"></z-menu-item>
           </z-sub-menu>
-          <z-menu-item name="3-0">导航三</z-menu-item>
-          <z-menu-item name="4-0" disabled>导航四</z-menu-item>
+          <z-menu-item name="3-0">{{ $t('component.menu.nav-3') }}</z-menu-item>
+          <z-menu-item name="4-0" disabled>{{ $t('component.menu.nav-4') }}</z-menu-item>
         </z-menu>
       </div>
       <source-code collapse :code="codes.general"></source-code>
     </div>
-    <div class="component-header">手风琴效果</div>
+    <div class="component-header">{{ $t('component.menu.accordion') }}</div>
     <div class="component-preview">
       <div class="component-preview-line">
         <z-menu accordion>
-          <z-sub-menu name="1-0" title="导航一">
-            <z-menu-item name="1-1" title="选项一" ></z-menu-item>
-            <z-menu-item name="1-2">选项二</z-menu-item>
-            <z-menu-item name="1-3">选项三</z-menu-item>
+          <z-sub-menu name="1-0" :title="$t('component.menu.nav-1')">
+            <z-menu-item name="1-1" :title="$t('component.menu.opt-1')" ></z-menu-item>
+            <z-menu-item name="1-2">{{ $t('component.menu.opt-2') }}</z-menu-item>
+            <z-menu-item name="1-3">{{ $t('component.menu.opt-3') }}</z-menu-item>
           </z-sub-menu>
-          <z-sub-menu name="2-0" title="导航二">
-            <z-menu-item name="2-1" title="选项四"></z-menu-item>
+          <z-sub-menu name="2-0" :title="$t('component.menu.nav-2')">
+            <z-menu-item name="2-1" :title="$t('component.menu.opt-4')"></z-menu-item>
           </z-sub-menu>
-          <z-sub-menu name="3-0" title="导航三">
-            <z-menu-item name="3-1" title="选项五"></z-menu-item>
+          <z-sub-menu name="3-0" :title="$t('component.menu.nav-3')">
+            <z-menu-item name="3-1" :title="$t('component.menu.opt-5')"></z-menu-item>
           </z-sub-menu>
-          <z-sub-menu name="4-0" title="导航四">
-            <z-menu-item name="4-1" title="选项六"></z-menu-item>
+          <z-sub-menu name="4-0" :title="$t('component.menu.nav-4')">
+            <z-menu-item name="4-1" :title="$t('component.menu.opt-6')"></z-menu-item>
           </z-sub-menu>
         </z-menu>
       </div>
       <source-code collapse :code="codes.accordion"></source-code>
     </div>
     <div class="component-header">Menu Attributes</div>
-    <z-table :data="menuAttributes">
-      <z-table-column prop="prop" label="参数"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="type" label="类型"></z-table-column>
-      <z-table-column prop="values" label="可选值"></z-table-column>
-      <z-table-column prop="default" label="默认值"></z-table-column>
-    </z-table>
+    <attribute-table :data="menuAttributes"></attribute-table>
     <div class="component-header">Menu Events</div>
-    <z-table :data="menuEvents">
-      <z-table-column prop="name" label="事件名"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="params" label="回调参数"></z-table-column>
-    </z-table>
+    <event-table :data="menuEvents"></event-table>
     <div class="component-header">SubMenu Attributes</div>
-    <z-table :data="subMenuAttributes">
-      <z-table-column prop="prop" label="参数"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="type" label="类型"></z-table-column>
-      <z-table-column prop="values" label="可选值"></z-table-column>
-      <z-table-column prop="default" label="默认值"></z-table-column>
-    </z-table>
+    <attribute-table :data="subMenuAttributes"></attribute-table>
     <div class="component-header">SubMenu Slots</div>
-    <z-table :data="subMenuSlots">
-      <z-table-column prop="name" label="name"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-    </z-table>
+    <slot-table :data="subMenuSlots"></slot-table>
     <div class="component-header">MenuItem Attributes</div>
-    <z-table :data="menuItemAttributes">
-      <z-table-column prop="prop" label="参数"></z-table-column>
-      <z-table-column prop="desc" label="说明"></z-table-column>
-      <z-table-column prop="type" label="类型"></z-table-column>
-      <z-table-column prop="values" label="可选值"></z-table-column>
-      <z-table-column prop="default" label="默认值"></z-table-column>
-    </z-table>
+    <attribute-table :data="menuItemAttributes"></attribute-table>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { $t } from '@/locale'
 
 const value = ref('1-2')
-const codes = {
+const codes = computed(() => ({
   general: `<z-menu v-model="value">
-  <z-sub-menu name="1-0" icon="info" title="导航一">
-    <z-menu-item name="1-1" icon="info" title="选项一" ></z-menu-item>
-    <z-menu-item name="1-2">选项二</z-menu-item>
-    <z-menu-item name="1-3" disabled>选项三</z-menu-item>
+  <z-sub-menu name="1-0" icon="info" title="${$t('component.menu.nav-1')}">
+    <z-menu-item name="1-1" icon="info" title="${$t('component.menu.opt-1')}" ></z-menu-item>
+    <z-menu-item name="1-2">${$t('component.menu.opt-1')}</z-menu-item>
+    <z-menu-item name="1-3" disabled>${$t('component.menu.opt-3')}</z-menu-item>
   </z-sub-menu>
   <z-sub-menu name="2-0" icon="info">
     <template #title>
-      <span>导航二</span>
+      <span>${$t('component.menu.nav-2')}</span>
     </template>
-    <z-menu-item name="2-1" title="选项四"></z-menu-item>
+    <z-menu-item name="2-1" title="${$t('component.menu.opt-4')}"></z-menu-item>
   </z-sub-menu>
-  <z-menu-item name="3-0">导航三</z-menu-item>
-  <z-menu-item name="4-0" disabled>导航四</z-menu-item>
+  <z-menu-item name="3-0">${$t('component.menu.nav-3')}</z-menu-item>
+  <z-menu-item name="4-0" disabled>${$t('component.menu.nav-4')}</z-menu-item>
 </z-menu>
 
 <script setup>
@@ -109,82 +85,82 @@ import { ref } from 'vue'
 const value = ref('1-2')
 <\/script>`,
   accordion: `<z-menu accordion>
-  <z-sub-menu name="1-0" title="导航一">
-    <z-menu-item name="1-1" title="选项一" ></z-menu-item>
-    <z-menu-item name="1-2">选项二</z-menu-item>
-    <z-menu-item name="1-3">选项三</z-menu-item>
+  <z-sub-menu name="1-0" title="${$t('component.menu.nav-1')}">
+    <z-menu-item name="1-1" title="${$t('component.menu.opt-1')}" ></z-menu-item>
+    <z-menu-item name="1-2">${$t('component.menu.opt-1')}</z-menu-item>
+    <z-menu-item name="1-3">${$t('component.menu.opt-3')}</z-menu-item>
   </z-sub-menu>
-  <z-sub-menu name="2-0" title="导航二">
-    <z-menu-item name="2-1" title="选项四"></z-menu-item>
+  <z-sub-menu name="2-0" title="${$t('component.menu.nav-2')}">
+    <z-menu-item name="2-1" title="${$t('component.menu.opt-4')}"></z-menu-item>
   </z-sub-menu>
-  <z-sub-menu name="3-0" title="导航三">
-    <z-menu-item name="3-1" title="选项五"></z-menu-item>
+  <z-sub-menu name="3-0" title="${$t('component.menu.nav-3')}">
+    <z-menu-item name="3-1" title="${$t('component.menu.opt-5')}"></z-menu-item>
   </z-sub-menu>
-  <z-sub-menu name="4-0" title="导航四">
-    <z-menu-item name="4-1" title="选项六"></z-menu-item>
+  <z-sub-menu name="4-0" title="${$t('component.menu.nav-4')}">
+    <z-menu-item name="4-1" title="${$t('component.menu.opt-6')}"></z-menu-item>
   </z-sub-menu>
 </z-menu>`
-}
-const menuAttributes = [{
+}))
+const menuAttributes = computed(() => [{
   prop: 'v-model',
-  desc: '绑定值，选中的 menu-item 的 name 的值',
+  desc: $t('attribute.menu.v-model'),
   type: 'string / number'
 }, {
   prop: 'accordion',
-  desc: '手风琴模式',
+  desc: $t('attribute.menu.accordion'),
   type: 'boolean',
   default: 'false'
 }, {
   prop: 'default-open',
-  desc: '默认展开的 sub-menu 的 name 的值或数组',
+  desc: $t('attribute.menu.default-open'),
   type: 'string / number / array'
-}]
-const menuEvents = [{
+}])
+const menuEvents = computed(() => [{
   name: 'change',
-  desc: '菜单激活回调',
-  params: '选中的菜单项的 name'
-}]
-const subMenuAttributes = [{
+  desc: $t('event.menu.change'),
+  params: $t('event.menu.change-params')
+}])
+const subMenuAttributes = computed(() => [{
   prop: 'name',
-  desc: '唯一标识',
+  desc: $t('attribute.sub-menu.name'),
   type: 'string / number'
 }, {
   prop: 'title',
-  desc: '菜单项标题',
+  desc: $t('attribute.sub-menu.title'),
   type: 'string'
 }, {
   prop: 'disabled',
-  desc: '禁用状态',
+  desc: $t('attribute.sub-menu.disabled'),
   type: 'boolean',
   default: 'false'
 }, {
   prop: 'icon',
-  desc: '菜单项图标',
+  desc: $t('attribute.sub-menu.icon'),
   type: 'string'
-}]
-const subMenuSlots = [{
+}])
+const subMenuSlots = computed(() => [{
   name: 'default',
-  desc: '子菜单'
+  desc: $t('slot.sub-menu.default')
 }, {
   name: 'title',
-  desc: '菜单项标题'
-}]
-const menuItemAttributes = [{
+  desc: $t('slot.sub-menu.title')
+}])
+const menuItemAttributes = computed(() => [{
   prop: 'name',
-  desc: '唯一标识',
+  desc: $t('attribute.menu-item.name'),
   type: 'string / number'
 }, {
   prop: 'title',
-  desc: '菜单项标题',
+  desc: $t('attribute.menu-item.title'),
   type: 'string'
 }, {
   prop: 'disabled',
-  desc: '禁用状态',
+  desc: $t('attribute.menu-item.disabled'),
   type: 'boolean',
   default: 'false'
 }, {
   prop: 'icon',
-  desc: '菜单项图标',
+  desc: $t('attribute.menu-item.icon'),
   type: 'string'
-}]
+}])
 </script>
