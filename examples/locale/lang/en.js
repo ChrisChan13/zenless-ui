@@ -26,6 +26,9 @@ export default {
     },
     404: {
       home: 'Home Page'
+    },
+    menu: {
+      text: 'MENU'
     }
   },
   layout: {

@@ -26,6 +26,9 @@ export default {
     },
     404: {
       home: '回到首页'
+    },
+    menu: {
+      text: '菜单'
     }
   },
   layout: {

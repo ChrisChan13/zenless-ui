@@ -27,7 +27,7 @@
                 </z-button>
               </z-link>
               <div class="nav-item">
-                <z-button class="menu" @click="toggleMenu()">菜单</z-button>
+                <z-button class="menu" @click="toggleMenu()">{{ $t('global.menu.text') }}</z-button>
               </div>
             </div>
           </div>
