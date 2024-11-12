@@ -26,15 +26,28 @@
                   <span>Github</span>
                 </z-button>
               </z-link>
+              <div class="nav-item">
+                <z-button class="menu" @click="toggleMenu()">菜单</z-button>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="content">
+        <div v-show="menuVisible" class="side-mask" @click="toggleMenu()">
+          <z-link class="github" target="_blank" href="https://github.com/ChrisChan13/zenless-ui">
+            <z-button>
+              <svg class="github-icon" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M12.5.75C6.146.75 1 5.896 1 12.25c0 5.089 3.292 9.387 7.863 10.91.575.101.79-.244.79-.546 0-.273-.014-1.178-.014-2.142-2.889.532-3.636-.704-3.866-1.35-.13-.331-.69-1.352-1.18-1.625-.402-.216-.977-.748-.014-.762.906-.014 1.553.834 1.769 1.179 1.035 1.74 2.688 1.25 3.349.948.1-.747.402-1.25.733-1.538-2.559-.287-5.232-1.279-5.232-5.678 0-1.25.445-2.285 1.178-3.09-.115-.288-.517-1.467.115-3.048 0 0 .963-.302 3.163 1.179.92-.259 1.897-.388 2.875-.388.977 0 1.955.13 2.875.388 2.2-1.495 3.162-1.179 3.162-1.179.633 1.581.23 2.76.115 3.048.733.805 1.179 1.825 1.179 3.09 0 4.413-2.688 5.39-5.247 5.678.417.36.776 1.05.776 2.128 0 1.538-.014 2.774-.014 3.162 0 .302.216.662.79.547C20.709 21.637 24 17.324 24 12.25 24 5.896 18.854.75 12.5.75Z"></path>
+              </svg>
+              <span>Github</span>
+            </z-button>
+          </z-link>
+        </div>
         <z-menu
           v-model="routeName"
           :default-open="defaultOpen"
-          class="side-nav"
+          :class="['side-nav', { 'show': menuVisible }]"
           @change="onMenuChange"
         >
           <!-- <z-menu-item name="changelog">{{ $t('layout.menu.changelog') }}</z-menu-item> -->
@@ -90,7 +103,7 @@
         <z-button circle icon="bold" size="extra" :highlight="zenless.isBold" @click="switchFontWeight"></z-button>
       </z-tooltip>
     </div>
-    <z-backtop :target="scrollTarget" :right="120" :bottom="80"></z-backtop>
+    <z-backtop class="backtop" :target="scrollTarget" :right="120" :bottom="80"></z-backtop>
   </div>
 </template>
 
@@ -109,6 +122,7 @@ const routeName = ref(route.name)
 const scrollBarRef = ref(null)
 const defaultOpen = ['component-general', 'component-navigation', 'component-data-entry', 'component-data-display', 'component-feedback', 'component-other']
 const translated = ref(false)
+const menuVisible = ref(false)
 
 const scrollTarget = computed(() => {
   if (scrollBarRef.value) {
@@ -133,6 +147,9 @@ onMounted(() => {
 
 const onMenuChange = (name) => {
   router.push({ name })
+  if (menuVisible.value) {
+    toggleMenu()
+  }
 }
 const switchFontStyle = () => {
   zenless.isItalic = !zenless.isItalic
@@ -147,6 +164,9 @@ const switchLanguage = () => {
   zenless.locale = translated.value ? locale.en : locale.zhCn
   i18nCtx.value = translated.value ? i18n.en : i18n.zhCn
   localStorage.setItem('page_translated', translated.value)
+}
+const toggleMenu = () => {
+  menuVisible.value = !menuVisible.value
 }
 </script>
 
@@ -221,6 +241,9 @@ const switchLanguage = () => {
       .lang .nav-icon {
         left: 8px;
       }
+      &:has(.menu) {
+        display: none;
+      }
     }
     &-icon {
       position: absolute;
@@ -230,6 +253,9 @@ const switchLanguage = () => {
   }
 }
 .content {
+  .side-mask {
+    display: none;
+  }
   .side-nav {
     position: fixed;
     left: 50%;
@@ -249,6 +275,72 @@ const switchLanguage = () => {
   .z-tooltip {
     margin-left: 0;
     margin-top: 10px;
+  }
+}
+@media screen and (max-width: 1205px) {
+  .container {
+    &-wrap {
+      :deep(.z-scrollbar__bar) {
+        display: none;
+      }
+    }
+  }
+  .header {
+    &-content {
+      width: 95vw;
+    }
+    .nav-item:has(.github) {
+      display: none;
+    }
+    .nav-item:has(.menu) {
+      display: block !important;
+    }
+  }
+  .float-btn {
+    right: 5vw;
+    bottom: 164px;
+  }
+  .backtop {
+    right: 5vw !important;
+    bottom: 102px !important;
+  }
+  .content {
+    .side-mask {
+      display: block;
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 13;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(6px);
+      .github {
+        position: absolute;
+        right: 2.5vw;
+        top: 20px;
+        .z-button {
+          padding-left: 58px;
+        }
+        &-icon {
+          position: absolute;
+          left: 7px;
+          fill: currentColor;
+        }
+      }
+    }
+    .side-nav {
+      left: 2.5vw;
+      top: 2.5vw;
+      width: 50vw;
+      height: calc(100vh - 5vw);
+      transform: translateX(-100vw);
+      transition: transform 0.14s ease-in-out;
+      z-index: 13;
+      &.show {
+        transform: translateX(0);
+      }
+    }
   }
 }
 </style>

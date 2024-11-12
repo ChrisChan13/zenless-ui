@@ -72,4 +72,11 @@ html, body {
 .z-table__cell {
   white-space: break-spaces;
 }
+@media screen and (max-width: 1205px) {
+  .component {
+    width: 95vw;
+    margin: 0 auto;
+    padding: 50px 0;
+  }
+}
 </style>

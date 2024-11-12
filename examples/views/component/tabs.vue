@@ -111,12 +111,12 @@ const tabsAttributes = computed(() => [{
   values: 'top / top-left / top-right /\nbottom / bottom-left /\nbottom-right',
   default: 'top-right'
 }])
-const tabsEvents = [{
+const tabsEvents = computed(() => [{
   name: 'change',
   desc: $t('event.tabs.change'),
   params: $t('event.tabs.change-params')
-}]
-const tabPanelAttributes = [{
+}])
+const tabPanelAttributes = computed(() => [{
   prop: 'label',
   desc: $t('attribute.tab-panel.label'),
   type: 'string'
@@ -134,12 +134,12 @@ const tabPanelAttributes = [{
   desc: $t('attribute.tab-panel.lazy'),
   type: 'boolean',
   default: 'false'
-}]
-const tabPanelSlots = [{
+}])
+const tabPanelSlots = computed(() => [{
   name: 'default',
   desc: $t('slot.tab-panel.default')
 }, {
   name: 'label',
   desc: $t('slot.tab-panel.label')
-}]
+}])
 </script>
