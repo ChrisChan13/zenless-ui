@@ -90,6 +90,7 @@
           <z-sub-menu name="component-other" :title="$t('layout.menu.other')">
             <z-menu-item name="component-scrollbar">{{ $t('layout.menu.scrollbar') }}</z-menu-item>
             <z-menu-item name="component-backtop">{{ $t('layout.menu.backtop') }}</z-menu-item>
+            <z-menu-item name="component-pattern">{{ $t('layout.menu.pattern') }}</z-menu-item>
           </z-sub-menu>
         </z-menu>
         <router-view></router-view>

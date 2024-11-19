@@ -30,6 +30,7 @@ import MessageView from '@/views/component/message.vue'
 import ProgressView from '@/views/component/progress.vue'
 import TableView from '@/views/component/table.vue'
 import FormView from '@/views/component/form.vue'
+import PatternView from '@/views/component/pattern.vue'
 
 const routes = [
   {
@@ -190,6 +191,11 @@ const routes = [
         name: 'component-form',
         path: 'form',
         component: FormView
+      },
+      {
+        name: 'component-pattern',
+        path: 'pattern',
+        component: PatternView
       }
     ]
   },

@@ -1,0 +1,1 @@
+export const patternTypes = ['stripes', 'squares', 'rhombus']

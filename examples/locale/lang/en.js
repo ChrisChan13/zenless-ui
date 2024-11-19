@@ -68,7 +68,8 @@ export default {
       drawer: 'Drawer',
       other: 'Other',
       scrollbar: 'Scrollbar',
-      backtop: 'Backtop'
+      backtop: 'Backtop',
+      pattern: 'Pattern'
     },
     float: {
       italic: 'Global Italic',
@@ -487,6 +488,10 @@ export default {
       title: 'Backtop',
       usage: 'Usage',
       'usage-desc': 'Checkout the bottom-right button of the screen'
+    },
+    pattern: {
+      title: 'Pattern',
+      usage: 'Usage'
     }
   },
   attribute: {
@@ -755,6 +760,9 @@ export default {
       'visible-height': `the minimum scroll height value to show the button`,
       right: 'right distance',
       bottom: 'bottom distance'
+    },
+    pattern: {
+      type: `pattern's type`
     }
   },
   slot: {

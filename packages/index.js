@@ -43,6 +43,7 @@ import ZTable from 'zenless-ui/table/index'
 import ZTableColumn from 'zenless-ui/table-column/index'
 import ZForm from 'zenless-ui/form/index'
 import ZFormItem from 'zenless-ui/form-item/index'
+import ZPattern from 'zenless-ui/pattern/index'
 import './index.css'
 
 const components = [
@@ -84,7 +85,8 @@ const components = [
   ZTable,
   ZTableColumn,
   ZForm,
-  ZFormItem
+  ZFormItem,
+  ZPattern
 ]
 
 const install = (app, opts = { isBold: false }) => {
@@ -145,6 +147,7 @@ export { ZTable }
 export { ZTableColumn }
 export { ZForm }
 export { ZFormItem }
+export { ZPattern }
 export default {
   install
 }

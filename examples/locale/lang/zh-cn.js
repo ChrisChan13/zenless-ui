@@ -68,7 +68,8 @@ export default {
       drawer: 'Drawer 抽屉',
       other: '其他组件',
       scrollbar: 'Scrollbar 滚动视图',
-      backtop: 'Backtop 回到顶部'
+      backtop: 'Backtop 回到顶部',
+      pattern: 'Pattern 图案'
     },
     float: {
       italic: '全局斜体',
@@ -492,6 +493,10 @@ export default {
       title: 'Backtop 回到顶部',
       usage: '基础用法',
       'usage-desc': '查看屏幕最右下角按钮'
+    },
+    pattern: {
+      title: 'Pattern 图案',
+      usage: '基础用法'
     }
   },
   attribute: {
@@ -761,6 +766,9 @@ export default {
       'visible-height': '显示按钮的滚动高度阈值',
       right: '按钮的窗口右边距',
       bottom: '按钮的窗口底部边距'
+    },
+    pattern: {
+      type: '图案类型'
     }
   },
   slot: {

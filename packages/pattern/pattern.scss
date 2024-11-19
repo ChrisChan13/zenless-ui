@@ -1,0 +1,11 @@
+.z-pattern {
+  &--stripes {
+    @include linear-pattern-background;
+  }
+  &--squares {
+    @include chessboard-background;
+  }
+  &--rhombus {
+    @include grid-pattern-background;
+  }
+}
