@@ -10,6 +10,7 @@
     padding: $--menu-vertical-padding-y $--menu-vertical-padding-x;
     position: relative;
     background: $--menu-vertical-background;
+    backdrop-filter: blur(2px);
     &::after {
       content: '';
       position: absolute;
