@@ -1,5 +1,24 @@
 <template>
   <div class="container" id="container">
+    <video
+      poster="https://act.hoyoverse.com/zzz/event/e20241106landing-cg6snd/images/kv.049f813f..jpg"
+      src="https://fastcdn.hoyoverse.com/mi18n/nap_global/m20241009hy2aabqznk/upload/07f88c48250acfd593b054d6b55e644e_6937996018516850397.mp4"
+      autoplay="autoplay"
+      loop="loop"
+      muted="muted"
+      playsinline="playsinline"
+      webkit-playsinline="webkit-playsinline"
+      x5-playsinline="x5-playsinline"
+      x-webkit-airplay="allow"
+      x5-video-orientation="portraint"
+      x5-video-player-type="h5"
+      x5-video-player-fullscreen="true"
+      crossorigin="anonymous"
+      preload="auto"
+      controlslist="nodownload"
+      class="container-event"
+    />
+    <div class="container-background" />
     <z-scrollbar ref="scrollBarRef" class="container-wrap">
       <div class="header">
         <div class="header-wrap">
@@ -175,8 +194,27 @@ const toggleMenu = () => {
 .container {
   height: 100vh;
   background: black;
-  @include linear-pattern-background;
   color: white;
+  &-event {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+  &-background {
+    position: fixed;
+    left: -10px;
+    top: -10px;
+    bottom: -10px;
+    right: -10px;
+    filter: blur(2px);
+    background: rgba(0, 0, 0, 0.88);
+    @include linear-pattern-background;
+    backdrop-filter: blur(6px);
+  }
   &-wrap {
     width: 100vw;
     height: 100vh;

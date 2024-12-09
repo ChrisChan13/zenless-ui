@@ -36,7 +36,7 @@ html, body {
   }
   &-codeblock {
     background: #222;
-    border-radius: 5px;
+    border-radius: 16px;
     overflow: hidden;
   }
   &-preview {
