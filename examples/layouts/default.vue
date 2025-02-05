@@ -1,8 +1,8 @@
 <template>
   <div class="container" id="container">
     <video
-      poster="https://act.hoyoverse.com/zzz/event/e20241106landing-cg6snd/images/kv.049f813f..jpg"
-      src="https://fastcdn.hoyoverse.com/mi18n/nap_global/m20241009hy2aabqznk/upload/07f88c48250acfd593b054d6b55e644e_6937996018516850397.mp4"
+      poster="https://act.mihoyo.com/zzz/event/e20250122-landing-un5bfh/images/kv.83046a05..jpg"
+      src="https://fastcdn.mihoyo.com/mi18n/nap_cn/m20250106hy6b6uvym8/upload/82af01579310d407655d4b4e889034fa_4783859438161558392.mp4"
       autoplay="autoplay"
       loop="loop"
       muted="muted"
