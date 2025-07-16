@@ -1,8 +1,8 @@
 <template>
   <div class="container" id="container">
     <video
-      poster="https://act-webstatic.mihoyo.com/puzzle/zzz/pz_hx6rjQtL4N/resource/puzzle/2025/05/28/88408564228e2436d9c0c4faa5469217_1333248810531322504.png?x-oss-process=image/format,webp/quality,Q_90"
-      src="https://act-webstatic.mihoyo.com/puzzle/zzz/pz_hx6rjQtL4N/resource/puzzle/2025/06/04/71893934b535b55e406d64a296b7e39d_8780928983999560489.mp4"
+      poster="https://act-webstatic.mihoyo.com/puzzle/zzz/pz_F0oxrgZ9U_/resource/puzzle/2025/07/08/31770edda70a8d9208f29487bff37f6f_1763533793121640543.png?x-oss-process=image/format,webp/quality,Q_90"
+      src="https://act-webstatic.mihoyo.com/puzzle/zzz/pz_F0oxrgZ9U_/resource/puzzle/2025/07/08/38b8c41c1f28f924081f894b84251896_401722559154469106.mp4"
       autoplay="autoplay"
       loop="loop"
       muted="muted"
